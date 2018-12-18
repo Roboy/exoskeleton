@@ -1,4 +1,14 @@
 import xml.etree.ElementTree as ET
+from xml.dom import minidom
+
+
+def prettify(elem):
+    """Return a pretty-printed XML string for the Element.
+    """
+    rough_string = ET.tostring(elem, 'utf-8')
+    reparsed = minidom.parseString(rough_string)
+    return reparsed.toprettyxml(indent="  ")
+
 
 def forceset_adjustment(forceset):
     # forceset adjustement
@@ -65,23 +75,33 @@ def future_shizzle(bodyset):
         new_body.set("name", body.get("name"))
 
 
-def main():
-    tree = ET.parse('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
+def create_osim(file_path):
+    # read the osim xml file and transform it to a XML ElementTree
+    tree = ET.parse(file_path)
     root = tree.getroot()
 
+    # get the Body and the ForceSet from the original file
     bodyset = [body for body in root.iter("BodySet")]
     forceset = [force for force in root.iter("ForceSet")]
-    forceset_adjustment(forceset[0])
 
+    # make some adjustment like deleting some nodes
+    forceset_adjustment(forceset[0])
     bodyset_adjustment(bodyset[0])
 
+    # create a new node root node that will get the adjusted body and foceset as child nodes
     new_osim = ET.Element(root.tag)
     new_osim.set("Version", root.get("Version"))
     model = ET.SubElement(new_osim, "Model")
     model.append(forceset[0])
     model.append(bodyset[0])
-    print ET.tostring(new_osim)
+
+    # add according new lines and tabs, and the xml version line
+    pretty_string = prettify(new_osim)
+
+    # write it into a file
+    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/muscles.osim", "w") as output_file:
+        output_file.write(pretty_string)
 
 
 if __name__ == "__main__":
-    main()
+    create_osim('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
