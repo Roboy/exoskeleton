@@ -1,5 +1,7 @@
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
+import os
+from shutil import copy2
 
 
 def prettify(elem):
@@ -207,6 +209,14 @@ def add_sdf_visuals(body, link):
         visible_object = [temp for temp in body.iter("VisibleObject")][0]
         geometry_set = [temp for temp in visible_object.iter("GeometrySet")][0]
         geometry_set_object = [temp for temp in geometry_set.iter("objects")][0]
+
+        # create meshes directory
+        try:
+            os.makedirs("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/visual")
+        except OSError:
+            # it just says that the path already exists
+            print "meshes/visual already exists"
+
         for geometry in geometry_set_object.findall("DisplayGeometry"):
             # find the file because its content is needed first
             geometry_file = [temp for temp in geometry.iter("geometry_file")][0]
@@ -226,6 +236,12 @@ def add_sdf_visuals(body, link):
             uri.text = 'model://' + body.get("name") + '/meshes/visual/' + geometry_file.text
             scale = ET.SubElement(mesh, "scale")
             scale.text = [temp for temp in geometry.iter("scale_factors")][0].text
+
+            # copy the file into meshes/visual
+            for dirpath, dirnames, filenames in os.walk("/Applications/OpenSim 4.0-2018-08-27-ae111a4/OpenSim 4.0-2018-08-27-ae111a4.app/Contents"):
+                for filename in [f for f in filenames if f.endswith(geometry_file.text)]:
+                    # copy that file into the dedicated place
+                    copy2(os.path.join(dirpath, filename), "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/visual/")
 
 
 if __name__ == "__main__":
