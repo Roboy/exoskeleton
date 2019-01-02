@@ -103,5 +103,130 @@ def create_osim(file_path):
         output_file.write(pretty_string)
 
 
+def create_sdf(file_path):
+    # read the osim xml file to a ElementTree
+    osim_tree = ET.parse(file_path)
+    osim_root = osim_tree.getroot()
+
+    # start the sdf tree
+    sdf_node = ET.Element("sdf")
+    sdf_node.set("version", "1.5")
+
+    # get the model name
+    osim_model = [model for model in osim_root.iter("Model")][0]
+
+    # create a sdf model node with the same name
+    sdf_model = ET.SubElement(sdf_node, "model", {"name": osim_model.get("name")})
+
+    # add the osim partner as "muscles"
+    muscle_node = ET.SubElement(sdf_model, "muscles")
+    muscle_node.text = 'model://arm26/muscles.osim'
+
+    # start adding body parts as links
+    # first get the bodyset
+    bodyset = [body for body in osim_root.iter("BodySet")][0]
+    body_to_link(bodyset, sdf_model)
+
+    #TODO: figure out how to convert the joints properly
+
+    # operation joint per joint
+    bodyset_objects = [objects for objects in bodyset.iter("objects")][0]
+    for body in bodyset_objects.findall("Body"):
+        for osim_joint in body.iter("Joint"):
+            sdf_joint = ET.SubElement(sdf_model, "joint")
+
+            if osim_joint.find("WeldJoint") is not None:
+                weld_joint = [temp for temp in osim_joint.iter("WeldJoint")][0]
+                sdf_joint.set("name", weld_joint.get("name"))
+                parent = ET.SubElement(sdf_joint, "parent")
+                parent.text = [temp for temp in weld_joint.iter("parent_body")][0].text
+
+            if osim_joint.find("CustomJoint") is not None:
+                custom_joint = [temp for temp in osim_joint.iter("CustomJoint")][0]
+                sdf_joint.set("name", custom_joint.get("name"))
+                sdf_joint.set("type", "MeDunnoYet")
+                parent = ET.SubElement(sdf_joint, "parent")
+                parent.text = [temp for temp in custom_joint.iter("parent_body")][0].text
+
+            # parent is written down, child is the body that is used right now
+            child = ET.SubElement(sdf_joint, "child")
+            child.text = body.get("name")
+
+    # add the plugin that converts the muscles
+    ET.SubElement(sdf_model, "plugin", {"filename": "libgazebo_ros_muscle_interface.so",
+                                                "name": "muscle_interface_plugin"})
+    pretty_string =  prettify(sdf_node)
+
+    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/model.sdf", "w") as output_file:
+        output_file.write(pretty_string)
+
+
+def body_to_link(bodyset, sdf_model):
+    bodyset_objects = [objects for objects in bodyset.iter("objects")][0]
+    for body in bodyset_objects.findall("Body"):
+        # create new link that is the equivalence to a body
+        link = ET.SubElement(sdf_model, "link", {"name": body.get("name")})
+        # a pose where don't know right now where it is coming from
+        pose = ET.SubElement(link, "pose")
+        pose.text = '0.0 0.0 0.0 0.0 0.0 0.0'
+
+        # add the inertial part
+        inertial = ET.SubElement(link, "inertial")
+        # and its subcomponents
+        mass = ET.SubElement(inertial, "mass")
+        mass.text = [body_mass for body_mass in body.iter("mass")][0].text
+        inertial_pose = ET.SubElement(inertial, "pose")
+        inertial_pose.text = '0.0 0.0 0.0 0.0 0.0 0.0'
+
+        inertia_sub = ET.SubElement(inertial, "inertia")
+        ixx = ET.SubElement(inertia_sub, "ixx")
+        ixx.text = [inertia_xx for inertia_xx in body.iter("inertia_xx")][0].text
+
+        ixy = ET.SubElement(inertia_sub, "ixy")
+        ixy.text = [inertia_xy for inertia_xy in body.iter("inertia_xy")][0].text
+
+        ixz = ET.SubElement(inertia_sub, "ixz")
+        ixz.text = [inertia_xz for inertia_xz in body.iter("inertia_xz")][0].text
+
+        iyy = ET.SubElement(inertia_sub, "iyy")
+        iyy.text = [inertia_yy for inertia_yy in body.iter("inertia_yy")][0].text
+
+        iyz = ET.SubElement(inertia_sub, "iyz")
+        iyz.text = [inertia_yz for inertia_yz in body.iter("inertia_yz")][0].text
+
+        izz = ET.SubElement(inertia_sub, "izz")
+        izz.text = [inertia_zz for inertia_zz in body.iter("inertia_zz")][0].text
+
+        add_sdf_visuals(body, link)
+
+
+def add_sdf_visuals(body, link):
+    if body.find("VisibleObject") is not None:
+        # the visual part that is the counterpart to the GeometrySet
+        # find the geometry set in the VisibleObject
+        visible_object = [temp for temp in body.iter("VisibleObject")][0]
+        geometry_set = [temp for temp in visible_object.iter("GeometrySet")][0]
+        geometry_set_object = [temp for temp in geometry_set.iter("objects")][0]
+        for geometry in geometry_set_object.findall("DisplayGeometry"):
+            # find the file because its content is needed first
+            geometry_file = [temp for temp in geometry.iter("geometry_file")][0]
+
+            # with the file info, create the visual object for the sdf
+            visual = ET.SubElement(link, "visual", {"name": geometry_file.text.split(".")[0]})
+
+            # add the necessary visual parts
+            # pose equals transform
+            visual_pose = ET.SubElement(visual, "pose")
+            visual_pose.text = [temp for temp in geometry.iter("transform")][0].text
+
+            # geometry contains the info about the file and the scale factor
+            visual_geometry = ET.SubElement(visual, "geometry")
+            mesh = ET.SubElement(visual_geometry, "mesh")
+            uri = ET.SubElement(mesh, "uri")
+            uri.text = 'model://' + body.get("name") + '/meshes/visual/' + geometry_file.text
+            scale = ET.SubElement(mesh, "scale")
+            scale.text = [temp for temp in geometry.iter("scale_factors")][0].text
+
+
 if __name__ == "__main__":
-    create_osim('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
+    create_sdf('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
