@@ -136,9 +136,10 @@ def create_sdf(file_path):
     bodyset_objects = [objects for objects in bodyset.iter("objects")][0]
     for body in bodyset_objects.findall("Body"):
         for osim_joint in body.iter("Joint"):
-            sdf_joint = ET.SubElement(sdf_model, "joint")
+
 
             if osim_joint.find("WeldJoint") is not None:
+                sdf_joint = ET.SubElement(sdf_model, "joint")
                 weld_joint = [temp for temp in osim_joint.iter("WeldJoint")][0]
                 sdf_joint.set("name", weld_joint.get("name"))
                 sdf_joint.set("type", "fixed")
@@ -150,8 +151,12 @@ def create_sdf(file_path):
                 orientation = [temp for temp in weld_joint.iter("orientation_in_parent")][0].text
                 pose = ET.SubElement(sdf_joint, "pose")
                 pose.text = location + " " + orientation
+                # parent is written down, child is the body that is used right now
+                child = ET.SubElement(sdf_joint, "child")
+                child.text = body.get("name")
 
             if osim_joint.find("CustomJoint") is not None:
+                sdf_joint = ET.SubElement(sdf_model, "joint")
                 custom_joint = [temp for temp in osim_joint.iter("CustomJoint")][0]
                 sdf_joint.set("name", custom_joint.get("name"))
                 sdf_joint.set("type", "ball")
@@ -163,9 +168,9 @@ def create_sdf(file_path):
                 orientation = [temp for temp in custom_joint.iter("orientation_in_parent")][0].text
                 pose = ET.SubElement(sdf_joint, "pose")
                 pose.text = location + orientation
-            # parent is written down, child is the body that is used right now
-            child = ET.SubElement(sdf_joint, "child")
-            child.text = body.get("name")
+                # parent is written down, child is the body that is used right now
+                child = ET.SubElement(sdf_joint, "child")
+                child.text = body.get("name")
 
     # add the plugin that converts the muscles
     ET.SubElement(sdf_model, "plugin", {"filename": "libgazebo_ros_muscle_interface.so",
@@ -251,7 +256,7 @@ def add_sdf_visuals(body, link):
             uri = ET.SubElement(mesh, "uri")
 
             # we already point to the resulting dae file, that will exist after the vtp to dae conversion
-            uri.text = 'model://' + body.get("name") + '/meshes/visuals/' + geometry_file.text.split('.')[0] + ".dae"
+            uri.text = 'model://' + "arm26" + '/meshes/visuals/' + geometry_file.text.split('.')[0] + ".dae"
             scale = ET.SubElement(mesh, "scale")
             scale.text = [temp for temp in geometry.iter("scale_factors")][0].text
 
@@ -298,5 +303,5 @@ def create_config():
 
 
 if __name__ == "__main__":
-    #create_sdf('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
-    create_config()
+    create_sdf('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
+    #create_config()
