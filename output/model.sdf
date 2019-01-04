@@ -386,8 +386,12 @@
         </geometry>
       </visual>
     </link>
-    <joint name="offset" type="fixed">
+    <joint name="world_fix" type="fixed">
       <parent>world</parent>
+      <child>ground</child>
+    </joint>
+    <joint name="offset" type="fixed">
+      <parent>ground</parent>
       <pose>0 0.8 0 0 0 0</pose>
       <child>base</child>
     </joint>
