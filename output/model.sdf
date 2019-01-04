@@ -35,7 +35,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://base/meshes/visual/ground_ribs.vtp</uri>
+            <uri>model://base/meshes/visuals/ground_ribs.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -44,7 +44,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://base/meshes/visual/ground_spine.vtp</uri>
+            <uri>model://base/meshes/visuals/ground_spine.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -53,7 +53,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://base/meshes/visual/ground_skull.vtp</uri>
+            <uri>model://base/meshes/visuals/ground_skull.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -62,7 +62,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://base/meshes/visual/ground_jaw.vtp</uri>
+            <uri>model://base/meshes/visuals/ground_jaw.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -71,7 +71,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://base/meshes/visual/ground_r_clavicle.vtp</uri>
+            <uri>model://base/meshes/visuals/ground_r_clavicle.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -80,7 +80,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://base/meshes/visual/ground_r_scapula.vtp</uri>
+            <uri>model://base/meshes/visuals/ground_r_scapula.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -104,7 +104,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_humerus/meshes/visual/arm_r_humerus.vtp</uri>
+            <uri>model://r_humerus/meshes/visuals/arm_r_humerus.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -128,7 +128,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_ulna.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_ulna.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -137,7 +137,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_radius.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_radius.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -146,7 +146,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_lunate.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_lunate.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -155,7 +155,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_scaphoid.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_scaphoid.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -164,7 +164,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_pisiform.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_pisiform.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -173,7 +173,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_triquetrum.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_triquetrum.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -182,7 +182,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_capitate.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_capitate.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -191,7 +191,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_trapezium.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_trapezium.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -200,7 +200,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_trapezoid.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_trapezoid.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -209,7 +209,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_hamate.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_hamate.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -218,7 +218,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_1mc.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_1mc.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -227,7 +227,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_2mc.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_2mc.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -236,7 +236,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_3mc.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_3mc.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -245,7 +245,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_4mc.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_4mc.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -254,7 +254,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_5mc.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_5mc.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -263,7 +263,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_thumbprox.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_thumbprox.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -272,7 +272,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_thumbdist.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_thumbdist.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -281,7 +281,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_2proxph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_2proxph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -290,7 +290,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_2midph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_2midph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -299,7 +299,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_2distph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_2distph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -308,7 +308,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_3proxph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_3proxph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -317,7 +317,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_3midph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_3midph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -326,7 +326,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_3distph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_3distph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -335,7 +335,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_4proxph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_4proxph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -344,7 +344,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_4midph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_4midph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -353,7 +353,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_4distph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_4distph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -362,7 +362,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_5proxph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_5proxph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -371,7 +371,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_5midph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_5midph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>
@@ -380,7 +380,7 @@
         <pose> -0 0 -0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://r_ulna_radius_hand/meshes/visual/arm_r_5distph.vtp</uri>
+            <uri>model://r_ulna_radius_hand/meshes/visuals/arm_r_5distph.dae</uri>
             <scale> 1 1 1</scale>
           </mesh>
         </geometry>

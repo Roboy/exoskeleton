@@ -1,7 +1,8 @@
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import os
-from shutil import copy2
+from shutil import copy2, rmtree
+import vtp_dae_converter as vtp_conv
 
 
 def prettify(elem):
@@ -210,9 +211,12 @@ def add_sdf_visuals(body, link):
         geometry_set = [temp for temp in visible_object.iter("GeometrySet")][0]
         geometry_set_object = [temp for temp in geometry_set.iter("objects")][0]
 
+        # the intermediate directory that contains the vtp files
+        vtp_dir = "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/vtp"
+
         # create meshes directory
         try:
-            os.makedirs("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/visual")
+            os.makedirs(vtp_dir)
         except OSError:
             # it just says that the path already exists
             print "meshes/visual already exists"
@@ -233,15 +237,23 @@ def add_sdf_visuals(body, link):
             visual_geometry = ET.SubElement(visual, "geometry")
             mesh = ET.SubElement(visual_geometry, "mesh")
             uri = ET.SubElement(mesh, "uri")
-            uri.text = 'model://' + body.get("name") + '/meshes/visual/' + geometry_file.text
+
+            # we already point to the resulting dae file, that will exist after the vtp to dae conversion
+            uri.text = 'model://' + body.get("name") + '/meshes/visuals/' + geometry_file.text.split('.')[0] + ".dae"
             scale = ET.SubElement(mesh, "scale")
             scale.text = [temp for temp in geometry.iter("scale_factors")][0].text
 
             # copy the file into meshes/visual
-            for dirpath, dirnames, filenames in os.walk("/Applications/OpenSim 4.0-2018-08-27-ae111a4/OpenSim 4.0-2018-08-27-ae111a4.app/Contents"):
+            for dirpath, dirnames, filenames in os.walk(
+                    "/Applications/OpenSim 4.0-2018-08-27-ae111a4/OpenSim 4.0-2018-08-27-ae111a4.app/Contents"):
                 for filename in [f for f in filenames if f.endswith(geometry_file.text)]:
                     # copy that file into the dedicated place
-                    copy2(os.path.join(dirpath, filename), "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/visual/")
+                    copy2(os.path.join(dirpath, filename), vtp_dir + "/")
+
+        # after this step the vtp files are in the dedicated folder, so we can start the conversion
+        vtp_conv.vtp_to_dae(vtp_dir, "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/")
+        # leftover,  we have a vtp folder that we don't need any more
+        rmtree(vtp_dir)
 
 
 if __name__ == "__main__":
