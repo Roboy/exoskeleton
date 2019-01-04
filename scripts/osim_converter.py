@@ -268,5 +268,35 @@ def add_sdf_visuals(body, link):
         rmtree(vtp_dir)
 
 
+def create_config():
+    # create model.config
+    model = ET.Element("model")
+
+    name = ET.SubElement(model, "name")
+    name.text = "arm26"
+
+    version = ET.SubElement(model, "version")
+    version.text = "1.0"
+
+    sdf = ET.SubElement(model, "sdf")
+    sdf.set("version", "1.6")
+    sdf.text = "model.sdf"
+
+    author = ET.SubElement(model, "author")
+    author_name = ET.SubElement(author, "name")
+    author_name.text = "Kevin Just"
+    author_email = ET.SubElement(author, "email")
+    author_email.text = "kevinjust87@gmail.com"
+
+    description = ET.SubElement(model, "description")
+    description.text = "Gazebo Model of the arm26 OpenSim Model"
+
+    pretty_string = prettify(model)
+
+    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/model.config", "w") as output_file:
+        output_file.write(pretty_string)
+
+
 if __name__ == "__main__":
-    create_sdf('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
+    #create_sdf('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
+    create_config()
