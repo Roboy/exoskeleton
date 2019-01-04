@@ -141,16 +141,28 @@ def create_sdf(file_path):
             if osim_joint.find("WeldJoint") is not None:
                 weld_joint = [temp for temp in osim_joint.iter("WeldJoint")][0]
                 sdf_joint.set("name", weld_joint.get("name"))
+                sdf_joint.set("type", "fixed")
                 parent = ET.SubElement(sdf_joint, "parent")
-                parent.text = [temp for temp in weld_joint.iter("parent_body")][0].text
+                parent.text = 'world'  # [temp for temp in weld_joint.iter("parent_body")][0].text
+
+                # the pose of the joint being stuffed together from location_in_parent & orientation_in_parent
+                location = [temp for temp in weld_joint.iter("location_in_parent")][0].text
+                orientation = [temp for temp in weld_joint.iter("orientation_in_parent")][0].text
+                pose = ET.SubElement(sdf_joint, "pose")
+                pose.text = location + " " + orientation
 
             if osim_joint.find("CustomJoint") is not None:
                 custom_joint = [temp for temp in osim_joint.iter("CustomJoint")][0]
                 sdf_joint.set("name", custom_joint.get("name"))
-                sdf_joint.set("type", "MeDunnoYet")
+                sdf_joint.set("type", "ball")
                 parent = ET.SubElement(sdf_joint, "parent")
                 parent.text = [temp for temp in custom_joint.iter("parent_body")][0].text
 
+                # the pose of the joint being stuffed together from location_in_parent & orientation_in_parent
+                location = [temp for temp in custom_joint.iter("location_in_parent")][0].text
+                orientation = [temp for temp in custom_joint.iter("orientation_in_parent")][0].text
+                pose = ET.SubElement(sdf_joint, "pose")
+                pose.text = location + orientation
             # parent is written down, child is the body that is used right now
             child = ET.SubElement(sdf_joint, "child")
             child.text = body.get("name")

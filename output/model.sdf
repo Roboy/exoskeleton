@@ -389,16 +389,19 @@
     <joint>
       <child>ground</child>
     </joint>
-    <joint name="offset">
-      <parent>ground</parent>
+    <joint name="offset" type="fixed">
+      <parent>world</parent>
+      <pose>0 0.8 0 0 0 0</pose>
       <child>base</child>
     </joint>
-    <joint name="r_shoulder" type="MeDunnoYet">
+    <joint name="r_shoulder" type="ball">
       <parent>base</parent>
+      <pose> -0.017545 -0.007 0.17 0 0 0</pose>
       <child>r_humerus</child>
     </joint>
-    <joint name="r_elbow" type="MeDunnoYet">
+    <joint name="r_elbow" type="ball">
       <parent>r_humerus</parent>
+      <pose> 0.0061 -0.2904 -0.0123 0 0 0</pose>
       <child>r_ulna_radius_hand</child>
     </joint>
     <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
