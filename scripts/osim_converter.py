@@ -197,6 +197,8 @@ def body_to_link(bodyset, sdf_model):
         # and its subcomponents
         mass = ET.SubElement(inertial, "mass")
         mass.text = [body_mass for body_mass in body.iter("mass")][0].text
+        if mass.text == "0":
+            mass.text = "0.0001"
         inertial_pose = ET.SubElement(inertial, "pose")
         inertial_pose.text = '0.0 0.0 0.0 0.0 0.0 0.0'
 
@@ -286,7 +288,7 @@ def create_config():
     version.text = "1.0"
 
     sdf = ET.SubElement(model, "sdf")
-    sdf.set("version", "1.6")
+    sdf.set("version", "1.5")
     sdf.text = "model.sdf"
 
     author = ET.SubElement(model, "author")
