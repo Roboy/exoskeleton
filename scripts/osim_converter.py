@@ -153,8 +153,11 @@ def joints(bodyset_objects, sdf_model):
                 sdf_joint.set("name", custom_joint.get("name"))
                 sdf_joint.set("type", "ball")
                 parent = ET.SubElement(sdf_joint, "parent")
-                parent.text = [temp for temp in custom_joint.iter("parent_body")][0].text
+                possible_parent = [temp for temp in custom_joint.iter("parent_body")][0].text
 
+                if possible_parent == "ground":
+                    possible_parent = "world"
+                parent.text = possible_parent
                 # the pose of the joint being stuffed together from location_in_parent & orientation_in_parent
                 # location = [temp for temp in custom_joint.iter("location_in_parent")][0].text
                 # orientation = [temp for temp in custom_joint.iter("orientation_in_parent")][0].text

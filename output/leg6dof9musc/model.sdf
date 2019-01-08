@@ -198,7 +198,7 @@
       </visual>
     </link>
     <joint name="ground_pelvis" type="ball">
-      <parent>ground</parent>
+      <parent>world</parent>
       <child>pelvis</child>
     </joint>
     <joint name="hip_r" type="ball">
