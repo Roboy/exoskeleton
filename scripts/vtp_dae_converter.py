@@ -10,7 +10,7 @@ def vtp_to_dae(vtp_dir, dae_output_dir):
     :param dae_output_dir: the output directory that will get the visual and the collisions folder
     with the according files
     """
-    stl_dir = "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/stl"
+    stl_dir = "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes/stl"
 
     # create stl directory if it doesn't exist
     try:
@@ -60,5 +60,5 @@ def vtp_to_stl(vtp_file, stl_file):
 
 
 if __name__ == "__main__":
-    vtp_to_dae("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/visual",
-               '/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/')
+    vtp_to_dae("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes/visual",
+               '/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes/')

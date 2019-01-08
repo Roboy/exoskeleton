@@ -102,7 +102,7 @@ def create_osim(file_path):
     pretty_string = prettify(new_osim)
 
     # write it into a file
-    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/muscles.osim", "w") as output_file:
+    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/muscles.osim", "w") as output_file:
         output_file.write(pretty_string)
 
 
@@ -130,28 +130,45 @@ def create_sdf(file_path):
     bodyset = [body for body in osim_root.iter("BodySet")][0]
     body_to_link(bodyset, sdf_model)
 
-    #TODO: figure out how to convert the joints properly
-
     # operation joint per joint
     bodyset_objects = [objects for objects in bodyset.iter("objects")][0]
+    joints(bodyset_objects, sdf_model)
+
+    # add the plugin that converts the muscles
+    ET.SubElement(sdf_model, "plugin", {"filename": "libgazebo_ros_muscle_interface.so",
+                                                "name": "muscle_interface_plugin"})
+    pretty_string =  prettify(sdf_node)
+
+    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/model.sdf", "w") as output_file:
+        output_file.write(pretty_string)
+
+
+def joints(bodyset_objects, sdf_model):
     for body in bodyset_objects.findall("Body"):
         for osim_joint in body.iter("Joint"):
-            sdf_joint = ET.SubElement(sdf_model, "joint")
-
             if osim_joint.find("WeldJoint") is not None:
+                sdf_joint = ET.SubElement(sdf_model, "joint")
                 weld_joint = [temp for temp in osim_joint.iter("WeldJoint")][0]
                 sdf_joint.set("name", weld_joint.get("name"))
                 sdf_joint.set("type", "fixed")
                 parent = ET.SubElement(sdf_joint, "parent")
-                parent.text = [temp for temp in weld_joint.iter("parent_body")][0].text
+                possible_parent = [temp for temp in weld_joint.iter("parent_body")][0].text
+                if possible_parent == "ground":
+                    possible_parent = "world"
+                parent.text = possible_parent
 
                 # the pose of the joint being stuffed together from location_in_parent & orientation_in_parent
-                location = [temp for temp in weld_joint.iter("location_in_parent")][0].text
-                orientation = [temp for temp in weld_joint.iter("orientation_in_parent")][0].text
-                pose = ET.SubElement(sdf_joint, "pose")
-                pose.text = location + " " + orientation
+                # location = [temp for temp in weld_joint.iter("location_in_parent")][0].text
+                # orientation = [temp for temp in weld_joint.iter("orientation_in_parent")][0].text
+                # pose = ET.SubElement(sdf_joint, "pose")
+                # pose.text = location + " " + orientation
+
+                # parent is written down, child is the body that is used right now
+                child = ET.SubElement(sdf_joint, "child")
+                child.text = body.get("name")
 
             elif osim_joint.find("CustomJoint") is not None:
+                sdf_joint = ET.SubElement(sdf_model, "joint")
                 custom_joint = [temp for temp in osim_joint.iter("CustomJoint")][0]
                 sdf_joint.set("name", custom_joint.get("name"))
                 sdf_joint.set("type", "ball")
@@ -159,41 +176,67 @@ def create_sdf(file_path):
                 parent.text = [temp for temp in custom_joint.iter("parent_body")][0].text
 
                 # the pose of the joint being stuffed together from location_in_parent & orientation_in_parent
-                location = [temp for temp in custom_joint.iter("location_in_parent")][0].text
-                orientation = [temp for temp in custom_joint.iter("orientation_in_parent")][0].text
-                pose = ET.SubElement(sdf_joint, "pose")
-                pose.text = location + orientation
+                # location = [temp for temp in custom_joint.iter("location_in_parent")][0].text
+                # orientation = [temp for temp in custom_joint.iter("orientation_in_parent")][0].text
+                # pose = ET.SubElement(sdf_joint, "pose")
+                # pose.text = location + orientation
 
-            else:
-                # this means it's a fixed joint that is just used as an anchor
-                sdf_joint.set("name", "world_fix")
-                sdf_joint.set("type", "fixed")
-                parent = ET.SubElement(sdf_joint, "parent")
-                parent.text = "world"
-            # parent is written down, child is the body that is used right now
-            child = ET.SubElement(sdf_joint, "child")
-            child.text = body.get("name")
-
-    # add the plugin that converts the muscles
-    ET.SubElement(sdf_model, "plugin", {"filename": "libgazebo_ros_muscle_interface.so",
-                                                "name": "muscle_interface_plugin"})
-    pretty_string =  prettify(sdf_node)
-
-    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/model.sdf", "w") as output_file:
-        output_file.write(pretty_string)
+                # parent is written down, child is the body that is used right now
+                child = ET.SubElement(sdf_joint, "child")
+                child.text = body.get("name")
 
 
 def body_to_link(bodyset, sdf_model):
     bodyset_objects = [objects for objects in bodyset.iter("objects")][0]
+    pose_offset = [0.0, 0.0, 0.0, 1.5708, 0.0, 0.0]
     for body in bodyset_objects.findall("Body"):
+        # ignore the ground body, it's not needed in gazebo
+        if body.get("name") == "ground":
+            continue
+
         # create new link that is the equivalence to a body
         link = ET.SubElement(sdf_model, "link", {"name": body.get("name")})
-        # a pose where don't know right now where it is coming from
-        pose = ET.SubElement(link, "pose")
-        pose.text = '0.0 0.0 0.0 0.0 0.0 0.0'
+
+        # the pose is derived from the joint location and orientation of the previous joints
+        # and the ones from this joint
+        osim_joint = [temp for temp in body.iter("Joint")][0]
+        location = None
+        orientation = None
+
+        if osim_joint.find("WeldJoint") is not None:
+            weld_joint = [temp for temp in osim_joint.iter("WeldJoint")][0]
+
+            # the pose of the joint being stuffed together from location_in_parent & orientation_in_parent
+            location = [temp for temp in weld_joint.iter("location_in_parent")][0].text
+            orientation = [temp for temp in weld_joint.iter("orientation_in_parent")][0].text
+
+        elif osim_joint.find("CustomJoint") is not None:
+            custom_joint = [temp for temp in osim_joint.iter("CustomJoint")][0]
+
+            # the pose of the joint being stuffed together from location_in_parent & orientation_in_parent
+            location = [temp for temp in custom_joint.iter("location_in_parent")][0].text
+            orientation = [temp for temp in custom_joint.iter("orientation_in_parent")][0].text
+
+        pose = ET.SubElement(link, "pose", {"frame": ""})
+        try:
+            pose_offset[0] += float(location.strip().split(" ")[0])
+            pose_offset[1] -= float(location.strip().split(" ")[2])
+            pose_offset[2] += float(location.strip().split(" ")[1])
+
+            pose_offset[3] += float(orientation.strip().split(" ")[0])
+            pose_offset[4] += float(orientation.strip().split(" ")[1])
+            pose_offset[5] += float(orientation.strip().split(" ")[2])
+        except ValueError:
+            print "location ", location.strip().split(" ")
+            print "orientation ", orientation.strip().split(" ")
+            exit(1)
+
+        pose.text = str(pose_offset[0]) + ' ' + str(pose_offset[1]) + ' ' + str(pose_offset[2]) + ' ' + \
+                    str(pose_offset[3]) + ' ' + str(pose_offset[4]) + ' ' + str(pose_offset[5])
 
         # add the inertial part
         inertial = ET.SubElement(link, "inertial")
+
         # and its subcomponents
         mass = ET.SubElement(inertial, "mass")
         mass.text = [body_mass for body_mass in body.iter("mass")][0].text
@@ -233,7 +276,7 @@ def add_sdf_visuals(body, link):
         geometry_set_object = [temp for temp in geometry_set.iter("objects")][0]
 
         # the intermediate directory that contains the vtp files
-        vtp_dir = "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/vtp"
+        vtp_dir = "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes/vtp"
 
         # create meshes directory
         try:
@@ -272,7 +315,7 @@ def add_sdf_visuals(body, link):
                     copy2(os.path.join(dirpath, filename), vtp_dir + "/")
 
         # after this step the vtp files are in the dedicated folder, so we can start the conversion
-        vtp_conv.vtp_to_dae(vtp_dir, "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/meshes/")
+        vtp_conv.vtp_to_dae(vtp_dir, "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes/")
         # leftover,  we have a vtp folder that we don't need any more
         rmtree(vtp_dir)
 
@@ -302,10 +345,23 @@ def create_config():
 
     pretty_string = prettify(model)
 
-    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/model.config", "w") as output_file:
+    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/model.config", "w") as output_file:
         output_file.write(pretty_string)
 
 
 if __name__ == "__main__":
+    try:
+        os.makedirs("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26")
+    except OSError:
+        # it just says that the path already exists
+        print "arm26 already exists"
+
+    try:
+        os.makedirs("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes")
+    except OSError:
+        # it just says that the path already exists
+        print "arm26/meshes already exists"
+
+    create_osim('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
     create_sdf('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
-    #create_config()
+    create_config()
