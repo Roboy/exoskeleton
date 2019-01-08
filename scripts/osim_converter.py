@@ -16,40 +16,20 @@ def prettify(elem):
 def forceset_adjustment(forceset):
     # forceset adjustement
     for muscle in forceset.iter("Thelen2003Muscle"):
-        for node in muscle.findall("isDisabled"):
-            muscle.remove(node)
-        for node in muscle.findall("min_control"):
-            muscle.remove(node)
-        for node in muscle.findall("max_control"):
-            muscle.remove(node)
-        for node in muscle.findall("optimal_force"):
-            muscle.remove(node)
-        for node in muscle.findall("pennation_angle_at_optimal"):
-            muscle.remove(node)
-        for node in muscle.findall("max_contraction_velocity"):
-            muscle.remove(node)
-        for node in muscle.findall("activation_time_constant"):
-            muscle.remove(node)
-        for node in muscle.findall("deactivation_time_constant"):
-            muscle.remove(node)
-        for node in muscle.findall("FmaxTendonStrain"):
-            muscle.remove(node)
-        for node in muscle.findall("FmaxMuscleStrain"):
-            muscle.remove(node)
-        for node in muscle.findall("KshapeActive"):
-            muscle.remove(node)
-        for node in muscle.findall("KshapePassive"):
-            muscle.remove(node)
-        for node in muscle.findall("Af"):
-            muscle.remove(node)
-        for node in muscle.findall("Flen"):
-            muscle.remove(node)
+        del_list = ["isDisabled", "min_control", "max_control", "optimal_force", "pennation_angle_at_optimal",
+                    "max_contraction_velocity", "activation_time_constant", "deactivation_time_constant",
+                    "FmaxTendonStrain", "FmaxMuscleStrain", "KshapeActive", "KshapePassive", "Af", "Flen"]
+        remove_nodes(del_list, muscle)
 
     for geometry in forceset.iter("GeometryPath"):
-        for node in geometry.findall("VisibleObject"):
-            geometry.remove(node)
-        for node in geometry.findall("PathWrapSet"):
-            geometry.remove(node)
+        del_list = ["VisibleObject", "PathWrapSet"]
+        remove_nodes(del_list, geometry)
+
+
+def remove_nodes(del_list, parent):
+    for to_del in del_list:
+        for node in parent.findall(to_del):
+            parent.remove(node)
 
 
 def bodyset_adjustment(bodyset):
@@ -63,9 +43,7 @@ def bodyset_adjustment(bodyset):
         else:
             del_list = ["mass", "mass_center", "inertia_xx", "inertia_yy", "inertia_zz", "inertia_xy",
                         "inertia_xz", "inertia_yz", "Joint", "VisibleObject"]
-            for to_del in del_list:
-                for node in body.findall(to_del):
-                    body.remove(node)
+            remove_nodes(del_list, body)
 
 
 def future_shizzle(bodyset):
@@ -79,6 +57,7 @@ def future_shizzle(bodyset):
 
 
 def create_osim(file_path):
+    model_name = file_path.split("/")[-1].split(".")[0]
     # read the osim xml file and transform it to a XML ElementTree
     tree = ET.parse(file_path)
     root = tree.getroot()
@@ -102,11 +81,12 @@ def create_osim(file_path):
     pretty_string = prettify(new_osim)
 
     # write it into a file
-    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/muscles.osim", "w") as output_file:
+    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name + "/muscles.osim", "w") as output_file:
         output_file.write(pretty_string)
 
 
 def create_sdf(file_path):
+    model_name = file_path.split("/")[-1].split(".")[0]
     # read the osim xml file to a ElementTree
     osim_tree = ET.parse(file_path)
     osim_root = osim_tree.getroot()
@@ -123,7 +103,7 @@ def create_sdf(file_path):
 
     # add the osim partner as "muscles"
     muscle_node = ET.SubElement(sdf_model, "muscles")
-    muscle_node.text = 'model://arm26/muscles.osim'
+    muscle_node.text = 'model://' + model_name + '/muscles.osim'
 
     # start adding body parts as links
     # first get the bodyset
@@ -139,7 +119,7 @@ def create_sdf(file_path):
                                                 "name": "muscle_interface_plugin"})
     pretty_string =  prettify(sdf_node)
 
-    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/model.sdf", "w") as output_file:
+    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name + "/model.sdf", "w") as output_file:
         output_file.write(pretty_string)
 
 
@@ -264,10 +244,10 @@ def body_to_link(bodyset, sdf_model):
         izz = ET.SubElement(inertia_sub, "izz")
         izz.text = [inertia_zz for inertia_zz in body.iter("inertia_zz")][0].text
 
-        add_sdf_visuals(body, link)
+        add_sdf_visuals(body, link, sdf_model.get("name"))
 
 
-def add_sdf_visuals(body, link):
+def add_sdf_visuals(body, link, model_name):
     if body.find("VisibleObject") is not None:
         # the visual part that is the counterpart to the GeometrySet
         # find the geometry set in the VisibleObject
@@ -276,7 +256,7 @@ def add_sdf_visuals(body, link):
         geometry_set_object = [temp for temp in geometry_set.iter("objects")][0]
 
         # the intermediate directory that contains the vtp files
-        vtp_dir = "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes/vtp"
+        vtp_dir = "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name + "/meshes/vtp"
 
         # create meshes directory
         try:
@@ -303,7 +283,7 @@ def add_sdf_visuals(body, link):
             uri = ET.SubElement(mesh, "uri")
 
             # we already point to the resulting dae file, that will exist after the vtp to dae conversion
-            uri.text = 'model://' + "arm26" + '/meshes/visuals/' + geometry_file.text.split('.')[0] + ".dae"
+            uri.text = 'model://' + model_name + '/meshes/visuals/' + geometry_file.text.split('.')[0] + ".dae"
             scale = ET.SubElement(mesh, "scale")
             scale.text = [temp for temp in geometry.iter("scale_factors")][0].text
 
@@ -315,17 +295,18 @@ def add_sdf_visuals(body, link):
                     copy2(os.path.join(dirpath, filename), vtp_dir + "/")
 
         # after this step the vtp files are in the dedicated folder, so we can start the conversion
-        vtp_conv.vtp_to_dae(vtp_dir, "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes/")
+        vtp_conv.vtp_to_dae(vtp_dir, "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name
+                            + "/meshes/")
         # leftover,  we have a vtp folder that we don't need any more
         rmtree(vtp_dir)
 
 
-def create_config():
+def create_config(model_name):
     # create model.config
     model = ET.Element("model")
 
     name = ET.SubElement(model, "name")
-    name.text = "arm26"
+    name.text = model_name
 
     version = ET.SubElement(model, "version")
     version.text = "1.0"
@@ -341,27 +322,35 @@ def create_config():
     author_email.text = "kevinjust87@gmail.com"
 
     description = ET.SubElement(model, "description")
-    description.text = "Gazebo Model of the arm26 OpenSim Model"
+    description.text = "Gazebo Model of the " + model_name + " OpenSim Model"
 
     pretty_string = prettify(model)
 
-    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/model.config", "w") as output_file:
+    with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name + "/model.config", "w")\
+            as output_file:
         output_file.write(pretty_string)
 
 
+def convert_osim(osim_file):
+    model_name = osim_file.split("/")[-1].split(".")[0]
+
+    try:
+        os.makedirs("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name)
+    except OSError:
+        # it just says that the path already exists
+        print model_name + " already exists"
+
+    try:
+        os.makedirs("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name + "/meshes")
+    except OSError:
+        # it just says that the path already exists
+        print model_name + "/meshes already exists"
+
+    create_osim(osim_file)
+    create_sdf(osim_file)
+    create_config(model_name)
+
+
 if __name__ == "__main__":
-    try:
-        os.makedirs("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26")
-    except OSError:
-        # it just says that the path already exists
-        print "arm26 already exists"
-
-    try:
-        os.makedirs("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes")
-    except OSError:
-        # it just says that the path already exists
-        print "arm26/meshes already exists"
-
-    create_osim('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
-    create_sdf('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
-    create_config()
+    #convert_osim('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
+    convert_osim("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/leg6dof9musc.osim")

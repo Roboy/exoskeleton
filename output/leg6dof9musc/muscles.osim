@@ -1,0 +1,1150 @@
+<?xml version="1.0" ?>
+<OpenSimDocument Version="20303">
+  <Model>
+    <ForceSet>
+      
+			
+      <objects>
+        
+				
+        <Thelen2003Muscle name="bifemlh_r">
+          
+					
+					
+          <GeometryPath>
+            
+						
+            <PathPointSet>
+              
+							
+              <objects>
+                
+								
+                <PathPoint name="bifemlh_r-P1">
+                  
+									
+                  <location> -0.131752 -0.107287 0.0726333</location>
+                  
+									
+                  <body>pelvis</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="bifemlh_r-P2">
+                  
+									
+                  <location> -0.0338242 -0.0404542 0.0330713</location>
+                  
+									
+                  <body>tibia_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="bifemlh_r-P3">
+                  
+									
+                  <location> -0.0262952 -0.0632659 0.0385439</location>
+                  
+									
+                  <body>tibia_r</body>
+                  
+								
+                </PathPoint>
+                
+							
+              </objects>
+              
+							
+              <groups/>
+              
+						
+            </PathPointSet>
+            
+						
+          </GeometryPath>
+          
+					
+					
+          <max_isometric_force>2594</max_isometric_force>
+          
+					
+					
+          <optimal_fiber_length>0.12823851</optimal_fiber_length>
+          
+					
+					
+          <tendon_slack_length>0.38353904</tendon_slack_length>
+          
+					
+					
+        </Thelen2003Muscle>
+        
+				
+        <Thelen2003Muscle name="bifemsh_r">
+          
+					
+					
+          <GeometryPath>
+            
+						
+            <PathPointSet>
+              
+							
+              <objects>
+                
+								
+                <PathPoint name="bifemsh_r-P1">
+                  
+									
+                  <location> 0.0058689 -0.247785 0.0274665</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="bifemsh_r-P2">
+                  
+									
+                  <location> -0.0338242 -0.0404542 0.0330713</location>
+                  
+									
+                  <body>tibia_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="bifemsh_r-P3">
+                  
+									
+                  <location> -0.0262952 -0.0632659 0.0385439</location>
+                  
+									
+                  <body>tibia_r</body>
+                  
+								
+                </PathPoint>
+                
+							
+              </objects>
+              
+							
+              <groups/>
+              
+						
+            </PathPointSet>
+            
+						
+          </GeometryPath>
+          
+					
+					
+          <max_isometric_force>960</max_isometric_force>
+          
+					
+					
+          <optimal_fiber_length>0.20083733</optimal_fiber_length>
+          
+					
+					
+          <tendon_slack_length>0.10332094</tendon_slack_length>
+          
+					
+					
+        </Thelen2003Muscle>
+        
+				
+        <Thelen2003Muscle name="glut_max2_r">
+          
+					
+					
+          <GeometryPath>
+            
+						
+            <PathPointSet>
+              
+							
+              <objects>
+                
+								
+                <PathPoint name="glut_max2_r-P1">
+                  
+									
+                  <location> -0.141103 0.0184094 0.058889</location>
+                  
+									
+                  <body>pelvis</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="glut_max2_r-P2">
+                  
+									
+                  <location> -0.143928 -0.0543913 0.0956031</location>
+                  
+									
+                  <body>pelvis</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="glut_max2_r-P3">
+                  
+									
+                  <location> -0.050003 -0.0622103 0.0343917</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="glut_max2_r-P4">
+                  
+									
+                  <location> -0.018311 -0.119256 0.0491814</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+								
+                </PathPoint>
+                
+							
+              </objects>
+              
+							
+              <groups/>
+              
+						
+            </PathPointSet>
+            
+						
+          </GeometryPath>
+          
+					
+					
+          <max_isometric_force>1944</max_isometric_force>
+          
+					
+					
+          <optimal_fiber_length>0.16291391</optimal_fiber_length>
+          
+					
+					
+          <tendon_slack_length>0.14074875</tendon_slack_length>
+          
+					
+					
+        </Thelen2003Muscle>
+        
+				
+        <Thelen2003Muscle name="psoas_r">
+          
+					
+					
+          <GeometryPath>
+            
+						
+            <PathPointSet>
+              
+							
+              <objects>
+                
+								
+                <PathPoint name="psoas_r-P1">
+                  
+									
+                  <location> -0.0676753 0.0927789 0.030229</location>
+                  
+									
+                  <body>pelvis</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="psoas_r-P2">
+                  
+									
+                  <location> -0.0248945 -0.0596212 0.0793903</location>
+                  
+									
+                  <body>pelvis</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <ConditionalPathPoint name="psoas_r-P3">
+                  
+									
+                  <location> -0.0301244 -0.0842019 0.0853524</location>
+                  
+									
+                  <body>pelvis</body>
+                  
+									
+                  <range> -1.5708 0.785398</range>
+                  
+									
+                  <coordinate>hip_flexion_r</coordinate>
+                  
+								
+                </ConditionalPathPoint>
+                
+								
+                <PathPoint name="psoas_r-P4">
+                  
+									
+                  <location> 0.00187804 -0.0595106 0.00446036</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="psoas_r-P5">
+                  
+									
+                  <location> -0.0220671 -0.0700747 0.0122073</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+								
+                </PathPoint>
+                
+							
+              </objects>
+              
+							
+              <groups/>
+              
+						
+            </PathPointSet>
+            
+						
+          </GeometryPath>
+          
+					
+					
+          <max_isometric_force>2342</max_isometric_force>
+          
+					
+					
+          <optimal_fiber_length>0.10742816</optimal_fiber_length>
+          
+					
+					
+          <tendon_slack_length>0.17188505</tendon_slack_length>
+          
+					
+					
+        </Thelen2003Muscle>
+        
+				
+        <Thelen2003Muscle name="rect_fem_r">
+          
+					
+					
+          <GeometryPath>
+            
+						
+            <PathPointSet>
+              
+							
+              <objects>
+                
+								
+                <PathPoint name="rect_fem_r-P1">
+                  
+									
+                  <location> -0.0308566 -0.0325302 0.101251</location>
+                  
+									
+                  <body>pelvis</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <ConditionalPathPoint name="rect_fem_r-P2">
+                  
+									
+                  <location> 0.0392043 -0.473033 0.00223019</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+									
+                  <range> -2.61799 -1.45997</range>
+                  
+									
+                  <coordinate>knee_angle_r</coordinate>
+                  
+								
+                </ConditionalPathPoint>
+                
+								
+                <MovingPathPoint name="rect_fem_r-P3">
+                  
+									
+                  <location> 0.0483849 0.0271086 0.00157322</location>
+                  
+									
+                  <body>tibia_r</body>
+                  
+									
+                  <x_location>
+                    
+										
+                    <MultiplierFunction>
+                      
+											
+                      <function>
+                        
+												
+                        <SimmSpline>
+                          
+													
+                          <x> -2.0944 -1.99997 -1.5708 -1.45752 -1.39626 -1.0472 -0.698132 -0.526391 -0.349066 -0.174533 0 0.00017453 0.00034907 0.0279253 0.0872665 0.174533 2.0944</x>
+                          
+													
+                          <y> 0.0175082 0.0202202 0.0309116 0.0333257 0.0345676 0.0410942 0.0474297 0.0506691 0.0543783 0.0600407 0.0693987 0.0694092 0.0694196 0.0711413 0.075283 0.0823732 0.0644437</y>
+                          
+												
+                        </SimmSpline>
+                        
+											
+                      </function>
+                      
+											
+                      <scale>1</scale>
+                      
+										
+                    </MultiplierFunction>
+                    
+									
+                  </x_location>
+                  
+									
+                  <x_coordinate>knee_angle_r</x_coordinate>
+                  
+									
+                  <y_location>
+                    
+										
+                    <MultiplierFunction>
+                      
+											
+                      <function>
+                        
+												
+                        <SimmSpline>
+                          
+													
+                          <x> -2.0944 -1.99997 -1.5708 -1.45752 -1.39626 -1.0472 -0.698132 -0.526391 -0.349066 -0.174533 0 0.00017453 0.00034907 0.0279253 0.0872665 0.174533 2.0944</x>
+                          
+													
+                          <y> 0.0263083 0.0267012 0.0282215 0.0284073 0.0284468 0.0280015 0.0272362 0.026795 0.0263174 0.025581 0.0235803 0.0235774 0.0235745 0.0230617 0.0215479 0.0179296 -0.0757138</y>
+                          
+												
+                        </SimmSpline>
+                        
+											
+                      </function>
+                      
+											
+                      <scale>1</scale>
+                      
+										
+                    </MultiplierFunction>
+                    
+									
+                  </y_location>
+                  
+									
+                  <y_coordinate>knee_angle_r</y_coordinate>
+                  
+									
+                  <z_location>
+                    
+										
+                    <MultiplierFunction>
+                      
+											
+                      <function>
+                        
+												
+                        <SimmSpline>
+                          
+													
+                          <x> -2.0944 0.1745</x>
+                          
+													
+                          <y> 0.00157322 0.00157322</y>
+                          
+												
+                        </SimmSpline>
+                        
+											
+                      </function>
+                      
+											
+                      <scale>1</scale>
+                      
+										
+                    </MultiplierFunction>
+                    
+									
+                  </z_location>
+                  
+									
+                  <z_coordinate>knee_angle_r</z_coordinate>
+                  
+								
+                </MovingPathPoint>
+                
+							
+              </objects>
+              
+							
+              <groups/>
+              
+						
+            </PathPointSet>
+            
+						
+          </GeometryPath>
+          
+					
+					
+          <max_isometric_force>1169</max_isometric_force>
+          
+					
+					
+          <optimal_fiber_length>0.1328739</optimal_fiber_length>
+          
+					
+					
+          <tendon_slack_length>0.36132377</tendon_slack_length>
+          
+					
+					
+        </Thelen2003Muscle>
+        
+				
+        <Thelen2003Muscle name="vas_int_r">
+          
+					
+					
+          <GeometryPath>
+            
+						
+            <PathPointSet>
+              
+							
+              <objects>
+                
+								
+                <PathPoint name="vas_int_r-P1">
+                  
+									
+                  <location> 0.0340396 -0.225835 0.0363872</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="vas_int_r-P2">
+                  
+									
+                  <location> 0.0393216 -0.244616 0.0334527</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <ConditionalPathPoint name="vas_int_r-P3">
+                  
+									
+                  <location> 0.0402607 -0.473033 0.00645579</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+									
+                  <range> -2.61799 -1.42</range>
+                  
+									
+                  <coordinate>knee_angle_r</coordinate>
+                  
+								
+                </ConditionalPathPoint>
+                
+								
+                <MovingPathPoint name="vas_int_r-P4">
+                  
+									
+                  <location> 0.0402373 0.0297699 0.00202271</location>
+                  
+									
+                  <body>tibia_r</body>
+                  
+									
+                  <x_location>
+                    
+										
+                    <MultiplierFunction>
+                      
+											
+                      <function>
+                        
+												
+                        <SimmSpline>
+                          
+													
+                          <x> -2.0944 -1.99997 -1.5708 -1.45752 -1.39626 -1.0472 -0.698132 -0.526391 -0.349066 -0.174533 0 0.00017453 0.00034907 0.0279253 0.0872665 0.174533 2.0944</x>
+                          
+													
+                          <y> 0.00929694 0.0120089 0.022704 0.0251187 0.0263607 0.0328932 0.0392704 0.0425567 0.0463615 0.0522856 0.0623256 0.0623371 0.0623486 0.0642454 0.0688531 0.0769044 0.0729095</y>
+                          
+												
+                        </SimmSpline>
+                        
+											
+                      </function>
+                      
+											
+                      <scale>1</scale>
+                      
+										
+                    </MultiplierFunction>
+                    
+									
+                  </x_location>
+                  
+									
+                  <x_coordinate>knee_angle_r</x_coordinate>
+                  
+									
+                  <y_location>
+                    
+										
+                    <MultiplierFunction>
+                      
+											
+                      <function>
+                        
+												
+                        <SimmSpline>
+                          
+													
+                          <x> -2.0944 -1.99997 -1.5708 -1.45752 -1.39626 -1.0472 -0.698132 -0.526391 -0.349066 -0.174533 0 0.00017453 0.00034907 0.0279253 0.0872665 0.174533 2.0944</x>
+                          
+													
+                          <y> 0.0287664 0.0291593 0.0306917 0.0308797 0.0309195 0.0304938 0.0298616 0.0295622 0.0293503 0.0292314 0.0284217 0.0284203 0.0284189 0.0281523 0.0272157 0.0245296 -0.0770547</y>
+                          
+												
+                        </SimmSpline>
+                        
+											
+                      </function>
+                      
+											
+                      <scale>1</scale>
+                      
+										
+                    </MultiplierFunction>
+                    
+									
+                  </y_location>
+                  
+									
+                  <y_coordinate>knee_angle_r</y_coordinate>
+                  
+									
+                  <z_location>
+                    
+										
+                    <MultiplierFunction>
+                      
+											
+                      <function>
+                        
+												
+                        <SimmSpline>
+                          
+													
+                          <x> -2.0944 2.0944</x>
+                          
+													
+                          <y> 0.00202271 0.00202271</y>
+                          
+												
+                        </SimmSpline>
+                        
+											
+                      </function>
+                      
+											
+                      <scale>1</scale>
+                      
+										
+                    </MultiplierFunction>
+                    
+									
+                  </z_location>
+                  
+									
+                  <z_coordinate>knee_angle_r</z_coordinate>
+                  
+								
+                </MovingPathPoint>
+                
+							
+              </objects>
+              
+							
+              <groups/>
+              
+						
+            </PathPointSet>
+            
+						
+          </GeometryPath>
+          
+					
+					
+          <max_isometric_force>4530</max_isometric_force>
+          
+					
+					
+          <optimal_fiber_length>0.12617328</optimal_fiber_length>
+          
+					
+					
+          <tendon_slack_length>0.13678598</tendon_slack_length>
+          
+					
+					
+        </Thelen2003Muscle>
+        
+				
+        <Thelen2003Muscle name="med_gas_r">
+          
+					
+					
+          <GeometryPath>
+            
+						
+            <PathPointSet>
+              
+							
+              <objects>
+                
+								
+                <PathPoint name="med_gas_r-P1">
+                  
+									
+                  <location> -0.0223018 -0.461178 -0.0275838</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <ConditionalPathPoint name="med_gas_r-P2">
+                  
+									
+                  <location> -0.0352134 -0.472094 -0.0302835</location>
+                  
+									
+                  <body>femur_r</body>
+                  
+									
+                  <range> -0.785398 0.174533</range>
+                  
+									
+                  <coordinate>knee_angle_r</coordinate>
+                  
+								
+                </ConditionalPathPoint>
+                
+								
+                <PathPoint name="med_gas_r-P3">
+                  
+									
+                  <location> 0 0.0318348 -0.00544272</location>
+                  
+									
+                  <body>calcn_r</body>
+                  
+								
+                </PathPoint>
+                
+							
+              </objects>
+              
+							
+              <groups/>
+              
+						
+            </PathPointSet>
+            
+						
+          </GeometryPath>
+          
+					
+					
+          <max_isometric_force>2241</max_isometric_force>
+          
+					
+					
+          <optimal_fiber_length>0.10311281</optimal_fiber_length>
+          
+					
+					
+          <tendon_slack_length>0.41245126</tendon_slack_length>
+          
+					
+					
+        </Thelen2003Muscle>
+        
+				
+        <Thelen2003Muscle name="soleus_r">
+          
+					
+					
+          <GeometryPath>
+            
+						
+            <PathPointSet>
+              
+							
+              <objects>
+                
+								
+                <PathPoint name="soleus_r-P1">
+                  
+									
+                  <location> -0.00269695 -0.172268 0.00797847</location>
+                  
+									
+                  <body>tibia_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="soleus_r-P2">
+                  
+									
+                  <location> 0 0.0318348 -0.00544272</location>
+                  
+									
+                  <body>calcn_r</body>
+                  
+								
+                </PathPoint>
+                
+							
+              </objects>
+              
+							
+              <groups/>
+              
+						
+            </PathPointSet>
+            
+						
+          </GeometryPath>
+          
+					
+					
+          <max_isometric_force>5137</max_isometric_force>
+          
+					
+					
+          <optimal_fiber_length>0.092647</optimal_fiber_length>
+          
+					
+					
+          <tendon_slack_length>0.25477925</tendon_slack_length>
+          
+					
+					
+        </Thelen2003Muscle>
+        
+				
+        <Thelen2003Muscle name="tib_ant_r">
+          
+					
+					
+          <GeometryPath>
+            
+						
+            <PathPointSet>
+              
+							
+              <objects>
+                
+								
+                <PathPoint name="tib_ant_r-P1">
+                  
+									
+                  <location> 0.0201147 -0.182493 0.0129229</location>
+                  
+									
+                  <body>tibia_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="tib_ant_r-P2">
+                  
+									
+                  <location> 0.0369707 -0.443985 -0.01989</location>
+                  
+									
+                  <body>tibia_r</body>
+                  
+								
+                </PathPoint>
+                
+								
+                <PathPoint name="tib_ant_r-P3">
+                  
+									
+                  <location> 0.11974 0.0182793 -0.0313213</location>
+                  
+									
+                  <body>calcn_r</body>
+                  
+								
+                </PathPoint>
+                
+							
+              </objects>
+              
+							
+              <groups/>
+              
+						
+            </PathPointSet>
+            
+						
+          </GeometryPath>
+          
+					
+					
+          <max_isometric_force>1759</max_isometric_force>
+          
+					
+					
+          <optimal_fiber_length>0.11005277</optimal_fiber_length>
+          
+					
+					
+          <tendon_slack_length>0.25042619</tendon_slack_length>
+          
+					
+					
+        </Thelen2003Muscle>
+        
+			
+      </objects>
+      
+			
+      <groups/>
+      
+		
+    </ForceSet>
+    
+		
+		
+    <BodySet>
+      
+			
+      <objects>
+        
+				
+        <Body name="ground">
+          
+					
+          <WrapObjectSet>
+            
+						
+            <objects/>
+            
+						
+            <groups/>
+            
+					
+          </WrapObjectSet>
+          
+				
+        </Body>
+        
+				
+        <Body name="pelvis">
+          
+					
+          <WrapObjectSet>
+            
+						
+            <objects/>
+            
+						
+            <groups/>
+            
+					
+          </WrapObjectSet>
+          
+				
+        </Body>
+        
+				
+        <Body name="femur_r">
+          
+					
+          <WrapObjectSet>
+            
+						
+            <objects/>
+            
+						
+            <groups/>
+            
+					
+          </WrapObjectSet>
+          
+				
+        </Body>
+        
+				
+        <Body name="tibia_r">
+          
+					
+          <WrapObjectSet>
+            
+						
+            <objects/>
+            
+						
+            <groups/>
+            
+					
+          </WrapObjectSet>
+          
+				
+        </Body>
+        
+				
+        <Body name="patella_r">
+          
+					
+          <WrapObjectSet>
+            
+						
+            <objects/>
+            
+						
+            <groups/>
+            
+					
+          </WrapObjectSet>
+          
+				
+        </Body>
+        
+				
+        <Body name="talus_r">
+          
+					
+          <WrapObjectSet>
+            
+						
+            <objects/>
+            
+						
+            <groups/>
+            
+					
+          </WrapObjectSet>
+          
+				
+        </Body>
+        
+				
+        <Body name="calcn_r">
+          
+					
+          <WrapObjectSet>
+            
+						
+            <objects/>
+            
+						
+            <groups/>
+            
+					
+          </WrapObjectSet>
+          
+				
+        </Body>
+        
+				
+        <Body name="toes_r">
+          
+					
+          <WrapObjectSet>
+            
+						
+            <objects/>
+            
+						
+            <groups/>
+            
+					
+          </WrapObjectSet>
+          
+				
+        </Body>
+        
+			
+      </objects>
+      
+			
+      <groups/>
+      
+		
+    </BodySet>
+    
+		
+		
+  </Model>
+</OpenSimDocument>

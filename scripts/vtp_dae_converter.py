@@ -10,14 +10,14 @@ def vtp_to_dae(vtp_dir, dae_output_dir):
     :param dae_output_dir: the output directory that will get the visual and the collisions folder
     with the according files
     """
-    stl_dir = "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/meshes/stl"
+    stl_dir = "stl"
 
     # create stl directory if it doesn't exist
     try:
         os.makedirs(stl_dir)
     except OSError:
         # it just says that the path already exists
-        print "meshes/visual already exists"
+        print stl_dir + " already exists"
 
     # first, convert all vtps to stls
     for dirpath, dirnames, filenames in os.walk(vtp_dir):
