@@ -355,5 +355,4 @@ def convert_osim(osim_file):
 
 
 if __name__ == "__main__":
-    #convert_osim('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
-    convert_osim("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/leg6dof9musc.osim")
+    convert_osim('/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/input/arm26.osim')
