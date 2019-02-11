@@ -1,0 +1,9 @@
+Body: upperArm
+COM: upperArm -9.999593730974146 -1.831379931064267 -8.649315328709056
+exporting stl of upperArm
+Body: lowerArm
+COM: lowerArm -13.489973047534201 0.00018556718807923893 20.192064614969564
+exporting stl of lowerArm
+Body: shoulder
+COM: shoulder -4.265886391238215 -1.3544686165306832 -23.861789205998658
+exporting stl of shoulder

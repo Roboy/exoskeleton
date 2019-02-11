@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE cables SYSTEM "../../../templates/cables.dtd">
+<?xml version="1.0" ?>
+<cables default_cable_set="WORKING">
+	<cable_set id="WORKING">
+		<cable_ideal attachment_reference="com" name="cable 0">
+			<properties>
+				<force_min>10</force_min>
+				<force_max>80</force_max>
+			</properties>
+			<attachments>
+				<attachment>
+					<link>shoulder</link>
+					<location>-0.09181531964895405 0.02533172332392436 -0.013642646593158787</location>
+				</attachment>
+				<attachment>
+					<link>upperArm</link>
+					<location>-0.016071292797300938 0.04047796816006009 -0.07850684671290944</location>
+				</attachment>
+				<attachment>
+					<link>upperArm</link>
+					<location>-0.01900406446349672 0.05152192898424627 0.0854931532721894</location>
+				</attachment>
+				<attachment>
+					<link>lowerArm</link>
+					<location>0.0018997284934875757 0.025138041258412618 -0.07992064433175397</location>
+				</attachment>
+				<attachment>
+					<link>lowerArm</link>
+					<location>-0.036100272072756553 0.024781472602691878 0.0600793577544086</location>
+				</attachment>
+			</attachments>
+		</cable_ideal>
+		<cable_ideal attachment_reference="com" name="cable 1">
+			<properties>
+				<force_min>10</force_min>
+				<force_max>80</force_max>
+			</properties>
+			<attachments>
+				<attachment>
+					<link>shoulder</link>
+					<location>-0.009461096969608774 0.02969336122417322 -0.009744841551357304</location>
+				</attachment>
+				<attachment>
+					<link>upperArm</link>
+					<location>0.011995935998439275 0.04370186441646699 -0.07850684671290944</location>
+				</attachment>
+				<attachment>
+					<link>upperArm</link>
+					<location>0.010995935983538114 0.058660045613063934 0.0854931532721894</location>
+				</attachment>
+				<attachment>
+					<link>lowerArm</link>
+					<location>0.035899729000127056 0.02667173409756654 -0.06992064418274235</location>
+				</attachment>
+				<attachment>
+					<link>lowerArm</link>
+					<location>-0.002100271566117069 0.027107876294416893 0.06907935788851904</location>
+				</attachment>
+			</attachments>
+		</cable_ideal>
+		<cable_ideal attachment_reference="com" name="cable 2">
+			<properties>
+				<force_min>10</force_min>
+				<force_max>80</force_max>
+			</properties>
+			<attachments>
+				<attachment>
+					<link>shoulder</link>
+					<location>-0.012760195897790485 -0.030281939063852903 -0.023052302502228273</location>
+				</attachment>
+				<attachment>
+					<link>upperArm</link>
+					<location>0.011995935998439275 -0.015270088148390362 -0.07850684671290944</location>
+				</attachment>
+				<attachment>
+					<link>upperArm</link>
+					<location>0.009995935968636953 -0.0020798944421368494 0.0854931532721894</location>
+				</attachment>
+				<attachment>
+					<link>lowerArm</link>
+					<location>0.0348997289852259 -0.02724748593064621 -0.06992064418274235</location>
+				</attachment>
+				<attachment>
+					<link>lowerArm</link>
+					<location>-0.0031002715810182304 -0.027649851001708883 0.06907935788851904</location>
+				</attachment>
+			</attachments>
+		</cable_ideal>
+		<cable_ideal attachment_reference="com" name="cable 3">
+			<properties>
+				<force_min>10</force_min>
+				<force_max>80</force_max>
+			</properties>
+			<attachments>
+				<attachment>
+					<link>shoulder</link>
+					<location>-0.09207096840808124 -0.006577406215156825 -0.013578863052045627</location>
+				</attachment>
+				<attachment>
+					<link>upperArm</link>
+					<location>-0.016071292797300938 -0.012046191891983509 -0.07850684671290944</location>
+				</attachment>
+				<attachment>
+					<link>upperArm</link>
+					<location>-0.01800406444859556 0.004360827246111345 0.0854931532721894</location>
+				</attachment>
+				<attachment>
+					<link>lowerArm</link>
+					<location>0.0018997284934875757 -0.0251417526021742 -0.07992064433175397</location>
+				</attachment>
+				<attachment>
+					<link>lowerArm</link>
+					<location>-0.036100272072756553 -0.024785183946453397 0.0600793577544086</location>
+				</attachment>
+			</attachments>
+		</cable_ideal>
+	</cable_set>
+</cables>
