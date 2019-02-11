@@ -375,13 +375,37 @@
       <parent>world</parent>
       <child>base</child>
     </joint>
-    <joint name="r_shoulder" type="ball">
+    <joint name="r_shoulder" type="revolute">
       <parent>base</parent>
       <child>r_humerus</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <dynamics>
+          <damping>1.e-6</damping>
+        </dynamics>
+        <limit>
+          <lower>-1.57079633</lower>
+          <upper>3.14159265</upper>
+          <stiffness>100</stiffness>
+          <dissipation>1.e-2</dissipation>
+        </limit>
+      </axis>
     </joint>
-    <joint name="r_elbow" type="ball">
+    <joint name="r_elbow" type="revolute">
       <parent>r_humerus</parent>
       <child>r_ulna_radius_hand</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <dynamics>
+          <damping>1.e-6</damping>
+        </dynamics>
+        <limit>
+          <lower>0</lower>
+          <upper>2.26892803</upper>
+          <stiffness>100</stiffness>
+          <dissipation>1.e-2</dissipation>
+        </limit>
+      </axis>
     </joint>
     <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
   </model>
