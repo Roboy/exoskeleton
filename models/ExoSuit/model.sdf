@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+	<model name="ExoSuit">
+		<link name="upperArm">
+			<self_collide>false</self_collide>
+			<pose frame="">-0.09999593730974146 -0.01831379931064267 -0.08649315328709056 0.0 -0.0 0.0</pose>
+			<inertial>
+				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
+				<mass>0.018306079755047906</mass>
+				<inertia>
+					<ixx>0.0002063734269802136</ixx>
+					<ixy>-3.352381657866802e-05</ixy>
+					<ixz>-3.1931811260526716e-05</ixz>
+					<iyy>0.0003875524441463487</iyy>
+					<iyz>-0.0001583264241827633</iyz>
+					<izz>0.00019698237660426945</izz>
+				</inertia>
+			</inertial>
+			<visual name="upperArm_visual">
+				<geometry>
+					<mesh>
+						<uri>model://ExoSuit/meshes/CAD/upperArm.stl</uri>
+						<scale>0.001 0.001 0.001</scale>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<link name="lowerArm">
+			<self_collide>false</self_collide>
+			<pose frame="">-0.134899730475342 1.8556718807923893e-06 0.20192064614969563 0.0 -0.0 0.0</pose>
+			<inertial>
+				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
+				<mass>0.03705152455290202</mass>
+				<inertia>
+					<ixx>0.0016228701903049931</ixx>
+					<ixy>1.0355030770459184e-08</ixy>
+					<ixz>-1.679673777492674e-08</ixz>
+					<iyy>0.002302646971872344</iyy>
+					<iyz>0.001029819721509042</iyz>
+					<izz>0.0007151880581449646</izz>
+				</inertia>
+			</inertial>
+			<visual name="lowerArm_visual">
+				<geometry>
+					<mesh>
+						<uri>model://ExoSuit/meshes/CAD/lowerArm.stl</uri>
+						<scale>0.001 0.001 0.001</scale>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<link name="shoulder">
+			<self_collide>false</self_collide>
+			<pose frame="">-0.042658863912382154 -0.013544686165306833 -0.2386178920599866 0.0 -0.0 0.0</pose>
+			<inertial>
+				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
+				<mass>0.031647044171453545</mass>
+				<inertia>
+					<ixx>0.0018914042635938828</ixx>
+					<ixy>-1.2461059697476868e-05</ixy>
+					<ixz>-0.00010405151777591865</ixz>
+					<iyy>0.0019548771397446293</iyy>
+					<iyz>-0.0003425119575491455</iyz>
+					<izz>0.0001825157373626869</izz>
+				</inertia>
+			</inertial>
+			<visual name="shoulder_visual">
+				<geometry>
+					<mesh>
+						<uri>model://ExoSuit/meshes/CAD/shoulder.stl</uri>
+						<scale>0.001 0.001 0.001</scale>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
+		<muscles>model://ExoSuit/muscles.osim</muscles>
+	</model>
+</sdf>
