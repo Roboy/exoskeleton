@@ -8,11 +8,11 @@
 						<PathPointSet>
 							<objects>
 								<PathPoint name="muscle0_node0">
-									<location>0.040323204832898425 0.02643615391095759 -0.011533016107384065</location>
+									<location>0.041485982063279775 0.025828319740562974 -0.014198786698791252</location>
 									<body>shoulder</body>
 								</PathPoint>
 								<PathPoint name="muscle0_node4">
-									<location>0.02542955256027946 -0.0040037907743533906 -0.07637260907037562</location>
+									<location>0.03090077479260676 -0.0038949349860509133 -0.07803709868174159</location>
 									<body>lowerArm</body>
 								</PathPoint>
 							</objects>
@@ -42,11 +42,11 @@
 						<PathPointSet>
 							<objects>
 								<PathPoint name="muscle1_node0">
-									<location>0.038849878653250236 -0.028563846089042392 -0.011533016107384029</location>
+									<location>0.03921254626102123 -0.029171680259436776 -0.014198786698791252</location>
 									<body>shoulder</body>
 								</PathPoint>
 								<PathPoint name="muscle1_node4">
-									<location>0.02558074571240317 -0.03400379077435339 -0.06637260907037561</location>
+									<location>0.03156186754289928 -0.033894934986050805 -0.06803709868174153</location>
 									<body>lowerArm</body>
 								</PathPoint>
 							</objects>
@@ -76,11 +76,11 @@
 						<PathPointSet>
 							<objects>
 								<PathPoint name="muscle2_node0">
-									<location>-0.040321887377237894 0.02643615391095759 -0.011533016107384029</location>
+									<location>-0.04148440045331865 0.025828319740562974 -0.014198786698791252</location>
 									<body>shoulder</body>
 								</PathPoint>
 								<PathPoint name="muscle2_node4">
-									<location>-0.025443829250707425 -0.004003790774353355 -0.07637260907037557</location>
+									<location>-0.030899653024714518 -0.003894934986050949 -0.07803709868174145</location>
 									<body>lowerArm</body>
 								</PathPoint>
 							</objects>
@@ -110,11 +110,11 @@
 						<PathPointSet>
 							<objects>
 								<PathPoint name="muscle3_node0">
-									<location>-0.0388485611975897 -0.028563846089042392 -0.011533016107384029</location>
+									<location>-0.039210964651060096 -0.02917168025943674 -0.014198786698791252</location>
 									<body>shoulder</body>
 								</PathPoint>
 								<PathPoint name="muscle3_node4">
-									<location>-0.025595022402831128 -0.03400379077435339 -0.06637260907037558</location>
+									<location>-0.03156074577500704 -0.033894934986050805 -0.0680370986817416</location>
 									<body>lowerArm</body>
 								</PathPoint>
 							</objects>

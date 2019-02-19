@@ -3,20 +3,17 @@
 	<model name="ExoSuit">
 		<link name="upperArm">
 			<self_collide>false</self_collide>
-			<pose frame="">-4.8871466089383116e-08 -0.16499857703177617 0.05950783329338135 0.0 -0.0 0.0</pose>
+			<pose frame="">-2.2409766979267137e-08 -0.1657005154670546 0.8534292924848815 0.0 -0.0 0.0</pose>
 			<inertial>
 				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
-				<mass>0.03125773792889024</mass>
-				<!-- Ixx+Slop>=std::abs(2*Iyz) && Iyy+Slop>=std::abs(2*Ixz) && Izz+Slop>=std::abs(2*Ixy) -->
+				<mass>0.035365042126382376</mass>
 				<inertia>
-					<ixx>0.0010642723852749359</ixx>
-					<ixy>-2.607141122712431e-10</ixy>
-					<!-- original value <ixz>0.0003069103514171493</ixz> -->
-					<!-- divided by 100 -->
-					<ixz>3.069103514171493e-06</ixz>
-					<iyy>0.00021328698941174915</iyy>
-					<iyz>9.929474746039891e-11</iyz>
-					<izz>0.0008691481313708554</izz>
+					<ixx>0.026848668803316173</ixx>
+					<ixy>-1.3187678389314783e-10</ixy>
+					<ixz>5.001100497211134e-05</ixz>
+					<iyy>0.025877650145663962</iyy>
+					<iyz>6.783687682698769e-10</iyz>
+					<izz>0.0009968080150969218</izz>
 				</inertia>
 			</inertial>
 			<visual name="upperArm_visual">
@@ -30,20 +27,17 @@
 		</link>
 		<link name="lowerArm">
 			<self_collide>false</self_collide>
-			<pose frame="">7.138345213978239e-06 -0.1969621350519357 -0.20336857188452187 0.0 -0.0 0.0</pose>
+			<pose frame="">-5.608839461230489e-07 -0.1964367653816778 0.5886500860734168 0.0 -0.0 0.0</pose>
 			<inertial>
 				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
-				<mass>0.033346020258954064</mass>
+				<mass>0.039028201646435084</mass>
 				<inertia>
-					<!-- Ixx+Slop>=std::abs(2*Iyz) && Iyy+Slop>=std::abs(2*Ixz) && Izz+Slop>=std::abs(2*Ixy) -->
-					<ixx>0.0027675336808194112</ixx>
-					<ixy>4.656414965985567e-08</ixy>
-					<!-- original value <ixz>-0.0013521421192197365</ixz> -->
-					<!-- divided by 100 -->
-					<ixz>-1.3521421192197364e-05</ixz>
-					<iyy>0.0014694825552520768</iyy>
-					<iyz>3.882970080617554e-08</iyz>
-					<izz>0.0013270650875509514</izz>
+					<ixx>0.015146765092909891</ixx>
+					<ixy>-4.303699464980326e-09</ixy>
+					<ixz>4.4952566013562374e-05</ixz>
+					<iyy>0.013636010932529247</iyy>
+					<iyz>1.1960276069666876e-08</iyz>
+					<izz>0.0015571994124993196</izz>
 				</inertia>
 			</inertial>
 			<visual name="lowerArm_visual">
@@ -57,19 +51,17 @@
 		</link>
 		<link name="shoulder">
 			<self_collide>false</self_collide>
-			<pose frame="">-6.5872783026518e-07 -0.1654361539109576 0.281533016107384 0.0 -0.0 0.0</pose>
+			<pose frame="">-7.908049805587664e-07 -0.16397633036233888 1.0812802560574826 0.0 -0.0 0.0</pose>
 			<inertial>
 				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
-				<mass>0.016302791341393893</mass>
+				<mass>0.01630269246947046</mass>
 				<inertia>
-					<ixx>0.0017550156004521207</ixx>
-					<ixy>-1.5874272173754812e-09</ixy>
-					<!-- original value <ixz>0.0007593152842300272</ixz> -->
-					<!-- divided by 100 : -->
-					<ixz>7.593152842300272e-06</ixz>
-					<iyy>0.0013088101973701446</iyy>
-					<iyz>2.668144036599429e-09</iyz>
-					<izz>0.0004728175791307095</izz>
+					<ixx>0.019515568502845942</ixx>
+					<ixy>-1.9966507921631573e-09</ixy>
+					<ixz>2.8905394265479922e-05</ixz>
+					<iyy>0.019077204732443745</iyy>
+					<iyz>1.3722221878786912e-08</iyz>
+					<izz>0.00046497426005389167</izz>
 				</inertia>
 			</inertial>
 			<visual name="shoulder_visual">
