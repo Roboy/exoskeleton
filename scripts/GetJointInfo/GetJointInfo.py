@@ -5,6 +5,7 @@ import adsk.core
 import adsk.fusion
 import adsk.cam
 import traceback
+from collections import defaultdict
 
 
 def run(context):
@@ -13,21 +14,29 @@ def run(context):
     try:
         app = adsk.core.Application.get()
         ui = app.userInterface
-        ui.messageBox('Hello script')
+        #ui.messageBox('Hello script')
         # get active design
         product = app.activeProduct
         design = adsk.fusion.Design.cast(product)
         all_components = design.allComponents
+        allRigidGroups = design.rootComponent.allRigidGroups
         ui.messageBox('trying to get the components')
-        for com in all_components:
-            if com is not None:
-                ui.messageBox("Component: " + com.name)
+        with open("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/geometry.txt", "w") as geometry_file:
+            for com in all_components:
+                if com is not None:
 
-                all_joints = com.asBuiltJoints
+                    all_joints = com.asBuiltJoints
 
-                for joi in all_joints:
-                    if joi is not None:
-                        ui.messageBox("As-Built Joint: " + joi.name)
+                    for joi in all_joints:
+                        if joi is not None:
+                            vec = adsk.fusion.RevoluteJointMotion.cast(joi.jointMotion).rotationAxisVector.asPoint()
+
+                            ui.messageBox("As-Built Joint: " + joi.name +
+                                          "\n rotationalAxisVector.asPoint() :  " + str(vec.asArray()) +
+                                          "\n geometry : " + str(joi.geometry.origin.asArray()))
+                            ui.messageBox("attributes: " + str(joi.objectType))
+                            geometry_file.write(joi.name + " geometry : " + str(joi.geometry.origin.asArray()) + "\n")
+
 
     except:
         if ui:

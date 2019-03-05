@@ -76,7 +76,7 @@
 		<joint name="shoulderJoint" type="revolute">
 			<parent>shoulder</parent>
 			<child>upperArm</child>
-			<pose frame="">2.2409766979267137e-08 0.17570051546705462 -0.8534292924848815 0 0 0</pose>
+			<pose frame="">0.0 0.01 0.0 0 0 0</pose>
 			<axis>
 				<xyz>0.0 1.0 0.0</xyz>
 				<limit>
@@ -89,7 +89,7 @@
 		<joint name="elbow" type="revolute">
 			<parent>upperArm</parent>
 			<child>lowerArm</child>
-			<pose frame="">5.608839443590776e-07 0.20643676538168076 -0.5886500860733177 0 0 0</pose>
+			<pose frame="">-2.064988378536746e-19 0.01 -2.0822111621573518e-20 0 0 0</pose>
 			<axis>
 				<xyz>-2.064988378536746e-17 1.0 -2.0822111621573517e-18</xyz>
 				<limit>

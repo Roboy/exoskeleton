@@ -10,8 +10,8 @@ exporting stl of shoulder
 Joint: EXPORT_shoulderJoint
 	parent: shoulder
 	child: upperArm
-	pos: 2.2409766979267136e-06	17.57005154670546	-85.34292924848815
+	pos: 0.0	1.0	0.0
 Joint: EXPORT_elbow
 	parent: upperArm
 	child: lowerArm
-	pos: 5.608839443590776e-05	20.643676538168076	-58.865008607331774
+	pos: -2.064988378536746e-17	1.0	-2.0822111621573517e-18
