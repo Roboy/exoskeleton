@@ -3,17 +3,17 @@
 	<model name="ExoSuitRaw">
 		<link name="upperArm">
 			<self_collide>false</self_collide>
-			<pose frame="">-2.2409766979267137e-08 -0.1657005154670546 0.8534292924848815 0.0 -0.0 0.0</pose>
+			<pose frame="">-1.7643494710224107e-17 -0.16570084719370073 0.8534314721565275 0.0 -0.0 0.0</pose>
 			<inertial>
 				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
-				<mass>0.035365042126382314</mass>
+				<mass>0.03539550761390621</mass>
 				<inertia>
-					<ixx>0.026848668803308773</ixx>
-					<ixy>-1.3187678727932806e-10</ixy>
-					<ixz>5.0011004972102685e-05</ixz>
-					<iyy>0.025877650145656617</iyy>
-					<iyz>6.783687854117204e-10</iyz>
-					<izz>0.0009968080150968607</izz>
+					<ixx>0.026872035392734427</ixx>
+					<ixy>3.941291737419306e-18</ixy>
+					<ixz>5.0054315680008845e-05</ixz>
+					<iyy>0.02590018905422043</iyy>
+					<iyz>-2.069455717901292e-17</iyz>
+					<izz>0.0009976714073755158</izz>
 				</inertia>
 			</inertial>
 			<collision name="upperArm_collision">
@@ -35,17 +35,17 @@
 		</link>
 		<link name="lowerArm">
 			<self_collide>false</self_collide>
-			<pose frame="">-5.60883944359284e-07 -0.19643676538168076 0.5886500860733177 0.0 -0.0 0.0</pose>
+			<pose frame="">-4.2988457588844647e-16 -0.19643803890239978 0.5886522339290996 0.0 -0.0 0.0</pose>
 			<inertial>
 				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
-				<mass>0.039028201646434786</mass>
+				<mass>0.03906193473620447</mass>
 				<inertia>
-					<ixx>0.015146765092907442</ixx>
-					<ixy>-4.303699452046228e-09</ixy>
-					<ixz>4.495256601356099e-05</ixz>
-					<iyy>0.013636010932526574</iyy>
-					<iyz>1.1960276033873285e-08</iyz>
-					<izz>0.0015571994124995439</izz>
+					<ixx>0.015160051673009383</ixx>
+					<ixy>-3.97459842815806e-18</ixy>
+					<ixz>4.4991700331169586e-05</ixz>
+					<iyy>0.013647989308633632</iyy>
+					<iyz>1.0480505352461477e-17</iyz>
+					<izz>0.0015585655976792054</izz>
 				</inertia>
 			</inertial>
 			<collision name="lowerArm_collision">
@@ -67,17 +67,17 @@
 		</link>
 		<link name="shoulder">
 			<self_collide>false</self_collide>
-			<pose frame="">-7.908049805587664e-07 -0.16397633036233888 1.0812802560574826 0.0 -0.0 0.0</pose>
+			<pose frame="">2.1259319058061285e-17 -0.16398019855092769 1.081265420167624 0.0 -0.0 0.0</pose>
 			<inertial>
 				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
-				<mass>0.01630269246947046</mass>
+				<mass>0.016319652301554036</mass>
 				<inertia>
-					<ixx>0.019515568502845942</ixx>
-					<ixy>-1.9966507921631573e-09</ixy>
-					<ixz>2.8905394265479922e-05</ixz>
-					<iyy>0.019077204732443745</iyy>
-					<iyz>1.3722221878786912e-08</iyz>
-					<izz>0.00046497426005389167</izz>
+					<ixx>0.01953536710482905</ixx>
+					<ixy>-8.881784197001253e-20</ixy>
+					<ixz>2.8935742013549488e-05</ixz>
+					<iyy>0.01909653972423413</iyy>
+					<iyz>-1.332267629550188e-19</iyz>
+					<izz>0.0004654900657675916</izz>
 				</inertia>
 			</inertial>
 			<collision name="shoulder_collision">
@@ -97,6 +97,5 @@
 				</geometry>
 			</visual>
 		</link>
-		<plugin filename="libcardsflow_gazebo_plugin.so" name="cardsflow_gazebo_plugin"/>
 	</model>
 </sdf>
