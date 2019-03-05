@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<cardsflow>
+	<myoMuscle name="motor0">
+		<link name="chest">
+			<viaPoint type="FIXPOINT">0.02 -0.034301508945328116 0.008152740897708953</viaPoint>
+		</link>
+		<link name="upperArm">
+			<viaPoint type="FIXPOINT">0.02 0.0045106746881685925 0.0032651261156090073</viaPoint>
+		</link>
+		<link name="lowerArm">
+			<viaPoint type="FIXPOINT">0.02 0.0016004108361220304 -0.013520375703692765</viaPoint>
+		</link>
+	</myoMuscle>
+	<myoMuscle name="motor1">
+		<link name="chest">
+			<viaPoint type="FIXPOINT">-0.02 -0.034301508945328116 0.008152740897708953</viaPoint>
+		</link>
+		<link name="upperArm">
+			<viaPoint type="FIXPOINT">-0.02 0.0045106746881685925 0.0032651261156090073</viaPoint>
+		</link>
+		<link name="lowerArm">
+			<viaPoint type="FIXPOINT">-0.02 0.0016004108361220304 -0.013520375703692765</viaPoint>
+		</link>
+	</myoMuscle>
+</cardsflow>

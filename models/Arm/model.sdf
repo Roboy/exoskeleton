@@ -1,0 +1,105 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+	<model name="Arm">
+		<link name="lowerArm">
+			<self_collide>false</self_collide>
+			<pose frame="">0.0 -0.16341575352272517 0.5946287977671405 0.0 -0.0 0.0</pose>
+			<inertial>
+				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
+				<mass>6.080200813641378</mass>
+				<inertia>
+					<ixx>2.3511051267027603</ixx>
+					<ixy>-1.2940404303662944e-18</ixy>
+					<ixz>0.00590953764285824</ixz>
+					<iyy>2.1868753098141194</iyy>
+					<iyz>-7.139533408917487e-19</iyz>
+					<izz>0.16581174537619395</izz>
+				</inertia>
+			</inertial>
+			<visual name="lowerArm_visual">
+				<geometry>
+					<mesh>
+						<uri>model://Arm/meshes/CAD/lowerArm.stl</uri>
+						<scale>0.001 0.001 0.001</scale>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<link name="upperArm">
+			<self_collide>false</self_collide>
+			<pose frame="">-1.7055765121060407e-19 -0.1650106746881686 0.861734873884391 0.0 -0.0 0.0</pose>
+			<inertial>
+				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
+				<mass>6.540615957274627</mass>
+				<inertia>
+					<ixx>5.087882934773361</ixx>
+					<ixy>1.3386625141720287e-19</ixy>
+					<ixz>0.009300558157396544</ixz>
+					<iyy>4.908041387324462</iyy>
+					<iyz>2.454214609315386e-19</iyz>
+					<izz>0.18149079140871663</izz>
+				</inertia>
+			</inertial>
+			<visual name="upperArm_visual">
+				<geometry>
+					<mesh>
+						<uri>model://Arm/meshes/CAD/upperArm.stl</uri>
+						<scale>0.001 0.001 0.001</scale>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<link name="chest">
+			<self_collide>false</self_collide>
+			<pose frame="">-7.731645312548676e-19 -0.13419849355806698 1.0258472745100917 0.0 -0.0 0.0</pose>
+			<inertial>
+				<pose frame="">0.0 0.0 0.0 0 0 0</pose>
+				<mass>1.4428392018097171</mass>
+				<inertia>
+					<ixx>1.5473210686112024</ixx>
+					<ixy>-1.7848833522293717e-19</ixy>
+					<ixz>0.0019824514637570294</ixz>
+					<iyy>1.518859157485383</iyy>
+					<iyz>1.227107304657693e-18</iyz>
+					<izz>0.028791206346931466</izz>
+				</inertia>
+			</inertial>
+			<visual name="chest_visual">
+				<geometry>
+					<mesh>
+						<uri>model://Arm/meshes/CAD/chest.stl</uri>
+						<scale>0.001 0.001 0.001</scale>
+					</mesh>
+				</geometry>
+			</visual>
+		</link>
+		<joint name="shoulder" type="revolute">
+			<parent>chest</parent>
+			<child>upperArm</child>
+			<pose frame="">-2.049888398039709e-18 -0.03198932824736016 0.14526514112107833 0 0 0</pose>
+			<axis>
+				<xyz>0.0 -1.0 0.0</xyz>
+				<limit>
+					<lower>0.0</lower>
+					<upper>0.0</upper>
+				</limit>
+				<use_parent_model_frame>0</use_parent_model_frame>
+			</axis>
+		</joint>
+		<joint name="elbow" type="revolute">
+			<parent>lowerArm</parent>
+			<child>upperArm</child>
+			<pose frame="">1.7055765121060407e-19 -0.0299893253118314 -0.141734873884391 0 0 0</pose>
+			<axis>
+				<xyz>0.0 -1.0 0.0</xyz>
+				<limit>
+					<lower>0.0</lower>
+					<upper>0.0</upper>
+				</limit>
+				<use_parent_model_frame>0</use_parent_model_frame>
+			</axis>
+		</joint>
+		<plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
+		<muscles>model://Arm/muscles.osim</muscles>
+	</model>
+</sdf>
