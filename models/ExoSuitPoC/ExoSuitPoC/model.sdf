@@ -1,0 +1,772 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='ExoSuitPoC'>
+    <link name='link_0'>
+      <pose frame=''>-0.008457 -0.020197 0.93249 0 -0 0</pose>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Blue</name>
+          </script>
+          <ambient>0.3 0.3 0.8 1</ambient>
+          <diffuse>0.7 0.7 0.9 1</diffuse>
+          <specular>0.01 0.01 0.05 1</specular>
+          <emissive>0 0 0 1</emissive>
+          <shader type='vertex'>
+            <normal_map>__default__</normal_map>
+          </shader>
+        </material>
+        <cast_shadows>1</cast_shadows>
+        <transparency>0</transparency>
+      </visual>
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+            <bullet>
+              <split_impulse>1</split_impulse>
+              <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </bullet>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <link name='link_1'>
+      <pose frame=''>-0.013731 -0.017229 0.656462 0 -0 0</pose>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.145833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.145833</iyy>
+          <iyz>0</iyz>
+          <izz>0.125</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.2</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+          <ambient>0.8 0.3 0.3 1</ambient>
+          <diffuse>0.9 0.7 0.7 1</diffuse>
+          <specular>0.05 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+          <shader type='vertex'>
+            <normal_map>__default__</normal_map>
+          </shader>
+        </material>
+        <cast_shadows>1</cast_shadows>
+        <transparency>0</transparency>
+      </visual>
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.2</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+            <bullet>
+              <split_impulse>1</split_impulse>
+              <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </bullet>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <link name='link_1_clone'>
+      <pose frame=''>-0.014757 -0.087398 0.357268 0 -0 0</pose>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.145833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.145833</iyy>
+          <iyz>0</iyz>
+          <izz>0.125</izz>
+        </inertia>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </inertial>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+      <visual name='visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.2</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+          <ambient>0.3 0.8 0.3 1</ambient>
+          <diffuse>0.7 0.9 0.7 1</diffuse>
+          <specular>0.01 0.05 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+          <shader type='vertex'>
+            <normal_map>__default__</normal_map>
+          </shader>
+        </material>
+        <cast_shadows>1</cast_shadows>
+        <transparency>0</transparency>
+      </visual>
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.2</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+            <bullet>
+              <split_impulse>1</split_impulse>
+              <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </bullet>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <model name='arm26'>
+      <muscles>model://arm26/muscles.osim</muscles>
+      <link name='base'>
+        <pose frame=''>0 0 0.8 1.5708 -0 0</pose>
+        <inertial>
+          <mass>0.0001</mass>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <visual name='ground_ribs'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/ground_ribs.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='ground_spine'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/ground_spine.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='ground_skull'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/ground_skull.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='ground_jaw'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/ground_jaw.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='ground_r_clavicle'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/ground_r_clavicle.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='ground_r_scapula'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/ground_r_scapula.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+      </link>
+      <link name='r_humerus'>
+        <pose frame=''>-0.017545 -0.17 0.793 1.5708 -0 0</pose>
+        <inertial>
+          <mass>1.86457</mass>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>0.01481</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.004551</iyy>
+            <iyz>0</iyz>
+            <izz>0.013193</izz>
+          </inertia>
+        </inertial>
+        <visual name='arm_r_humerus'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_humerus.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+      </link>
+      <link name='r_ulna_radius_hand'>
+        <pose frame=''>-0.011445 -0.1577 0.5026 1.5708 -0 0</pose>
+        <inertial>
+          <mass>1.53432</mass>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>0.019281</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.001571</iyy>
+            <iyz>0</iyz>
+            <izz>0.020062</izz>
+          </inertia>
+        </inertial>
+        <visual name='arm_r_ulna'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_ulna.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_radius'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_radius.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_lunate'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_lunate.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_scaphoid'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_scaphoid.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_pisiform'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_pisiform.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_triquetrum'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_triquetrum.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_capitate'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_capitate.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_trapezium'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_trapezium.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_trapezoid'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_trapezoid.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_hamate'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_hamate.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_1mc'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_1mc.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_2mc'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_2mc.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_3mc'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_3mc.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_4mc'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_4mc.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_5mc'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_5mc.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_thumbprox'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_thumbprox.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_thumbdist'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_thumbdist.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_2proxph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_2proxph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_2midph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_2midph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_2distph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_2distph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_3proxph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_3proxph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_3midph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_3midph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_3distph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_3distph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_4proxph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_4proxph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_4midph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_4midph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_4distph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_4distph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_5proxph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_5proxph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_5midph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_5midph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='arm_r_5distph'>
+          <pose frame=''>-0 0 -0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://arm26/meshes/visuals/arm_r_5distph.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+      </link>
+      <joint name='offset' type='fixed'>
+        <parent>world</parent>
+        <child>base</child>
+      </joint>
+      <joint name='r_shoulder' type='revolute'>
+        <parent>base</parent>
+        <child>r_humerus</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <dynamics>
+            <damping>1e-06</damping>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <limit>
+            <lower>-1.5708</lower>
+            <upper>3.14159</upper>
+            <stiffness>100</stiffness>
+            <dissipation>0.01</dissipation>
+          </limit>
+          <use_parent_model_frame>0</use_parent_model_frame>
+        </axis>
+      </joint>
+      <joint name='r_elbow' type='revolute'>
+        <parent>r_humerus</parent>
+        <child>r_ulna_radius_hand</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <dynamics>
+            <damping>1e-06</damping>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <limit>
+            <lower>0</lower>
+            <upper>2.26893</upper>
+            <stiffness>100</stiffness>
+            <dissipation>0.01</dissipation>
+          </limit>
+          <use_parent_model_frame>0</use_parent_model_frame>
+        </axis>
+      </joint>
+      <plugin name='muscle_interface_plugin' filename='libgazebo_ros_muscle_interface.so'/>
+      <pose frame=''>0.015549 0.266768 -0.000116 0 -0 0</pose>
+    </model>
+    <joint name='base_JOINT_0' type='fixed'>
+      <parent>arm26::base</parent>
+      <child>link_0</child>
+      <pose frame=''>0 0 0 0.04 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+    <joint name='r_humerus_JOINT_1' type='fixed'>
+      <parent>arm26::r_humerus</parent>
+      <child>link_1</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+    <joint name='r_ulna_radius_hand_JOINT_2' type='fixed'>
+      <parent>arm26::r_ulna_radius_hand</parent>
+      <child>link_1_clone</child>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+          <suspension>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </suspension>
+        </ode>
+      </physics>
+    </joint>
+    <static>0</static>
+    <allow_auto_disable>1</allow_auto_disable>
+  </model>
+</sdf>
