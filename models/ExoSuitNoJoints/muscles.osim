@@ -1,0 +1,148 @@
+<?xml version="1.0" ?>
+<OpenSimDocument Version="30000">
+	<Model>
+		<ForceSet>
+			<objects>
+				<Thelen2003Muscle name="muscle0">
+					<GeometryPath>
+						<PathPointSet>
+							<objects>
+								<PathPoint name="muscle0_node0">
+									<location>0.041485982063279775 0.025828319740562974 -0.014198786698791252</location>
+									<body>shoulder</body>
+								</PathPoint>
+								<PathPoint name="muscle0_node4">
+									<location>0.030900774792604998 -0.0038949349860479643 -0.07803709868164255</location>
+									<body>lowerArm</body>
+								</PathPoint>
+							</objects>
+						</PathPointSet>
+						<PathWrapSet>
+							<objects/>
+						</PathWrapSet>
+					</GeometryPath>
+					<max_isometric_force>546.0</max_isometric_force>
+					<optimal_fiber_length>0.0535</optimal_fiber_length>
+					<tendon_slack_length>0.078</tendon_slack_length>
+					<pennation_angle>0.0</pennation_angle>
+					<activation_time_constant>0.01</activation_time_constant>
+					<deactivation_time_constant>0.04</deactivation_time_constant>
+					<Vmax>10.0</Vmax>
+					<Vmax0>5.0</Vmax0>
+					<FmaxTendonStrain>0.033</FmaxTendonStrain>
+					<FmaxMuscleStrain>0.6</FmaxMuscleStrain>
+					<KshapeActive>0.5</KshapeActive>
+					<KshapePassive>4.0</KshapePassive>
+					<damping>0.05</damping>
+					<Af>0.3</Af>
+					<Flen>1.8</Flen>
+				</Thelen2003Muscle>
+				<Thelen2003Muscle name="muscle1">
+					<GeometryPath>
+						<PathPointSet>
+							<objects>
+								<PathPoint name="muscle1_node0">
+									<location>0.03921254626102123 -0.029171680259436776 -0.014198786698791252</location>
+									<body>shoulder</body>
+								</PathPoint>
+								<PathPoint name="muscle1_node4">
+									<location>0.03156186754289752 -0.033894934986047856 -0.06803709868164248</location>
+									<body>lowerArm</body>
+								</PathPoint>
+							</objects>
+						</PathPointSet>
+						<PathWrapSet>
+							<objects/>
+						</PathWrapSet>
+					</GeometryPath>
+					<max_isometric_force>546.0</max_isometric_force>
+					<optimal_fiber_length>0.0535</optimal_fiber_length>
+					<tendon_slack_length>0.078</tendon_slack_length>
+					<pennation_angle>0.0</pennation_angle>
+					<activation_time_constant>0.01</activation_time_constant>
+					<deactivation_time_constant>0.04</deactivation_time_constant>
+					<Vmax>10.0</Vmax>
+					<Vmax0>5.0</Vmax0>
+					<FmaxTendonStrain>0.033</FmaxTendonStrain>
+					<FmaxMuscleStrain>0.6</FmaxMuscleStrain>
+					<KshapeActive>0.5</KshapeActive>
+					<KshapePassive>4.0</KshapePassive>
+					<damping>0.05</damping>
+					<Af>0.3</Af>
+					<Flen>1.8</Flen>
+				</Thelen2003Muscle>
+				<Thelen2003Muscle name="muscle2">
+					<GeometryPath>
+						<PathPointSet>
+							<objects>
+								<PathPoint name="muscle2_node0">
+									<location>-0.04148440045331865 0.025828319740562974 -0.014198786698791252</location>
+									<body>shoulder</body>
+								</PathPoint>
+								<PathPoint name="muscle2_node4">
+									<location>-0.03089965302471628 -0.003894934986048 -0.07803709868164241</location>
+									<body>lowerArm</body>
+								</PathPoint>
+							</objects>
+						</PathPointSet>
+						<PathWrapSet>
+							<objects/>
+						</PathWrapSet>
+					</GeometryPath>
+					<max_isometric_force>546.0</max_isometric_force>
+					<optimal_fiber_length>0.0535</optimal_fiber_length>
+					<tendon_slack_length>0.078</tendon_slack_length>
+					<pennation_angle>0.0</pennation_angle>
+					<activation_time_constant>0.01</activation_time_constant>
+					<deactivation_time_constant>0.04</deactivation_time_constant>
+					<Vmax>10.0</Vmax>
+					<Vmax0>5.0</Vmax0>
+					<FmaxTendonStrain>0.033</FmaxTendonStrain>
+					<FmaxMuscleStrain>0.6</FmaxMuscleStrain>
+					<KshapeActive>0.5</KshapeActive>
+					<KshapePassive>4.0</KshapePassive>
+					<damping>0.05</damping>
+					<Af>0.3</Af>
+					<Flen>1.8</Flen>
+				</Thelen2003Muscle>
+				<Thelen2003Muscle name="muscle3">
+					<GeometryPath>
+						<PathPointSet>
+							<objects>
+								<PathPoint name="muscle3_node0">
+									<location>-0.039210964651060096 -0.02917168025943674 -0.014198786698791252</location>
+									<body>shoulder</body>
+								</PathPoint>
+								<PathPoint name="muscle3_node4">
+									<location>-0.0315607457750088 -0.033894934986047856 -0.06803709868164255</location>
+									<body>lowerArm</body>
+								</PathPoint>
+							</objects>
+						</PathPointSet>
+						<PathWrapSet>
+							<objects/>
+						</PathWrapSet>
+					</GeometryPath>
+					<max_isometric_force>546.0</max_isometric_force>
+					<optimal_fiber_length>0.0535</optimal_fiber_length>
+					<tendon_slack_length>0.078</tendon_slack_length>
+					<pennation_angle>0.0</pennation_angle>
+					<activation_time_constant>0.01</activation_time_constant>
+					<deactivation_time_constant>0.04</deactivation_time_constant>
+					<Vmax>10.0</Vmax>
+					<Vmax0>5.0</Vmax0>
+					<FmaxTendonStrain>0.033</FmaxTendonStrain>
+					<FmaxMuscleStrain>0.6</FmaxMuscleStrain>
+					<KshapeActive>0.5</KshapeActive>
+					<KshapePassive>4.0</KshapePassive>
+					<damping>0.05</damping>
+					<Af>0.3</Af>
+					<Flen>1.8</Flen>
+				</Thelen2003Muscle>
+			</objects>
+		</ForceSet>
+		<BodySet name="">
+			<objects/>
+		</BodySet>
+	</Model>
+</OpenSimDocument>
