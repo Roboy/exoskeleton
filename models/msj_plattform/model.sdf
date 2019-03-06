@@ -97,6 +97,10 @@
 				</geometry>
 			</visual>
 		</link>
+		<joint name="offset" type="fixed">
+			<parent>world</parent>
+			<child>base</child>
+		</joint>
 		<joint name="sphere_axis0" type="revolute">
 			<parent>base</parent>
 			<child>sphere_link1</child>

@@ -73,6 +73,10 @@
 				</geometry>
 			</visual>
 		</link>
+		<joint name="offset" type="fixed">
+			<parent>world</parent>
+			<child>shoulder</child>
+		</joint>
 		<plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
 		<muscles>model://ExoSuitNoJoints/muscles.osim</muscles>
 	</model>

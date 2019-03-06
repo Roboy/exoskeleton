@@ -73,13 +73,17 @@
 				</geometry>
 			</visual>
 		</link>
+		<joint name="offset" type="fixed">
+		  <parent>world</parent>
+		  <child>chest</child>
+		</joint>
 		<joint name="shoulder" type="revolute">
 			<parent>chest</parent>
 			<child>upperArm</child>
 			<pose frame="">-2.049888398039709e-18 -0.03198932824736016 0.14526514112107833 0 0 0</pose>
 			<axis>
 				<xyz>0.0 -1.0 0.0</xyz>
-				<limit>
+			d	<limit>
 					<lower>0.0</lower>
 					<upper>0.0</upper>
 				</limit>
