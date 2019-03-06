@@ -11,6 +11,18 @@
 									<location>0.041485982063279775 0.025828319740562974 -0.014198786698791252</location>
 									<body>shoulder</body>
 								</PathPoint>
+								<PathPoint name="muscle0_node1">
+									<location>0.025437990652192655 0.011700513187176985 0.083532394111745</location>
+									<body>upperArm</body>
+								</PathPoint>
+								<PathPoint name="muscle0_node2">
+									<location>0.02543799065219265 0.011700513187176985 -0.07846760830224313</location>
+									<body>upperArm</body>
+								</PathPoint>
+								<PathPoint name="muscle0_node3">
+									<location>0.03226624887089829 0.031210011893863694 0.06408505773715888</location>
+									<body>lowerArm</body>
+								</PathPoint>
 								<PathPoint name="muscle0_node4">
 									<location>0.030900774792604998 -0.0038949349860479643 -0.07803709868164255</location>
 									<body>lowerArm</body>
@@ -44,6 +56,18 @@
 								<PathPoint name="muscle1_node0">
 									<location>0.03921254626102123 -0.029171680259436776 -0.014198786698791252</location>
 									<body>shoulder</body>
+								</PathPoint>
+								<PathPoint name="muscle1_node1">
+									<location>0.024073537997267205 -0.014299487200253225 0.083532394111745</location>
+									<body>upperArm</body>
+								</PathPoint>
+								<PathPoint name="muscle1_node2">
+									<location>0.024073537997267202 -0.014299487200253225 -0.07846760830224313</location>
+									<body>upperArm</body>
+								</PathPoint>
+								<PathPoint name="muscle1_node3">
+									<location>0.028924163475420928 -0.000863691036905081 0.07293138206919267</location>
+									<body>lowerArm</body>
 								</PathPoint>
 								<PathPoint name="muscle1_node4">
 									<location>0.03156186754289752 -0.033894934986047856 -0.06803709868164248</location>
@@ -79,6 +103,18 @@
 									<location>-0.04148440045331865 0.025828319740562974 -0.014198786698791252</location>
 									<body>shoulder</body>
 								</PathPoint>
+								<PathPoint name="muscle2_node1">
+									<location>-0.025437945832658692 0.011700513187176985 0.08353239411174514</location>
+									<body>upperArm</body>
+								</PathPoint>
+								<PathPoint name="muscle2_node2">
+									<location>-0.025437945832658706 0.011700513187176966 -0.07846760830224313</location>
+									<body>upperArm</body>
+								</PathPoint>
+								<PathPoint name="muscle2_node3">
+									<location>-0.03226512710300957 0.031210011893863694 0.06408505773715888</location>
+									<body>lowerArm</body>
+								</PathPoint>
 								<PathPoint name="muscle2_node4">
 									<location>-0.03089965302471628 -0.003894934986048 -0.07803709868164241</location>
 									<body>lowerArm</body>
@@ -112,6 +148,18 @@
 								<PathPoint name="muscle3_node0">
 									<location>-0.039210964651060096 -0.02917168025943674 -0.014198786698791252</location>
 									<body>shoulder</body>
+								</PathPoint>
+								<PathPoint name="muscle3_node1">
+									<location>-0.024073493177733246 -0.01429948720025326 0.083532394111745</location>
+									<body>upperArm</body>
+								</PathPoint>
+								<PathPoint name="muscle3_node2">
+									<location>-0.024073493177733246 -0.014299487200253225 -0.07846760830224313</location>
+									<body>upperArm</body>
+								</PathPoint>
+								<PathPoint name="muscle3_node3">
+									<location>-0.02892304170753221 -0.000863691036905081 0.07293138206919267</location>
+									<body>lowerArm</body>
 								</PathPoint>
 								<PathPoint name="muscle3_node4">
 									<location>-0.0315607457750088 -0.033894934986047856 -0.06803709868164255</location>

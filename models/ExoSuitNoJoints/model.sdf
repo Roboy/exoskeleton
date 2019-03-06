@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
-	<model name="ExoSuit">
+	<model name="ExoSuitNoJoints">
 		<link name="upperArm">
 			<self_collide>false</self_collide>
 			<pose frame="">-2.2409766979267137e-08 -0.1657005154670546 0.8534292924848815 0.0 -0.0 0.0</pose>
@@ -19,7 +19,7 @@
 			<visual name="upperArm_visual">
 				<geometry>
 					<mesh>
-						<uri>model://ExoSuit/meshes/CAD/upperArm.stl</uri>
+						<uri>model://ExoSuitNoJoints/meshes/CAD/upperArm.stl</uri>
 						<scale>0.001 0.001 0.001</scale>
 					</mesh>
 				</geometry>
@@ -43,7 +43,7 @@
 			<visual name="lowerArm_visual">
 				<geometry>
 					<mesh>
-						<uri>model://ExoSuit/meshes/CAD/lowerArm.stl</uri>
+						<uri>model://ExoSuitNoJoints/meshes/CAD/lowerArm.stl</uri>
 						<scale>0.001 0.001 0.001</scale>
 					</mesh>
 				</geometry>
@@ -67,13 +67,13 @@
 			<visual name="shoulder_visual">
 				<geometry>
 					<mesh>
-						<uri>model://ExoSuit/meshes/CAD/shoulder.stl</uri>
+						<uri>model://ExoSuitNoJoints/meshes/CAD/shoulder.stl</uri>
 						<scale>0.001 0.001 0.001</scale>
 					</mesh>
 				</geometry>
 			</visual>
 		</link>
 		<plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
-		<muscles>model://ExoSuit/muscles.osim</muscles>
+		<muscles>model://ExoSuitNoJoints/muscles.osim</muscles>
 	</model>
 </sdf>
