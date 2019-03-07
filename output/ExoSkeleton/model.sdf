@@ -1,0 +1,1527 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+    <model name="ExoSkeleton">
+        <model name="ExoSuit">
+
+
+            <link name="upperArm">
+
+
+                <self_collide>false</self_collide>
+
+
+                <pose frame="">-2.2409766979267137e-08 -0.1657005154670546 0.8534292924848815 0.0 -0.0 0.0</pose>
+
+
+                <inertial>
+
+
+                    <pose frame="">0.0 0.0 0.0 0 0 0</pose>
+
+
+                    <mass>0.035365042126382314</mass>
+
+
+                    <inertia>
+
+
+                        <ixx>0.026848668803308773</ixx>
+
+
+                        <ixy>-1.3187678727932806e-10</ixy>
+
+
+                        <ixz>5.0011004972102685e-05</ixz>
+
+
+                        <iyy>0.025877650145656617</iyy>
+
+
+                        <iyz>6.783687854117204e-10</iyz>
+
+
+                        <izz>0.0009968080150968607</izz>
+
+
+                    </inertia>
+
+
+                </inertial>
+
+
+                <visual name="upperArm_visual">
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://ExoSuit/meshes/CAD/upperArm.stl</uri>
+
+
+                            <scale>0.001 0.001 0.001</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+            </link>
+
+
+            <link name="lowerArm">
+
+
+                <self_collide>false</self_collide>
+
+
+                <pose frame="">-5.60883944359284e-07 -0.19643676538168076 0.5886500860733177 0.0 -0.0 0.0</pose>
+
+
+                <inertial>
+
+
+                    <pose frame="">0.0 0.0 0.0 0 0 0</pose>
+
+
+                    <mass>0.039028201646434786</mass>
+
+
+                    <inertia>
+
+
+                        <ixx>0.015146765092907442</ixx>
+
+
+                        <ixy>-4.303699452046228e-09</ixy>
+
+
+                        <ixz>4.495256601356099e-05</ixz>
+
+
+                        <iyy>0.013636010932526574</iyy>
+
+
+                        <iyz>1.1960276033873285e-08</iyz>
+
+
+                        <izz>0.0015571994124995439</izz>
+
+
+                    </inertia>
+
+
+                </inertial>
+
+
+                <visual name="lowerArm_visual">
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://ExoSuit/meshes/CAD/lowerArm.stl</uri>
+
+
+                            <scale>0.001 0.001 0.001</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+            </link>
+
+
+            <link name="shoulder">
+
+
+                <self_collide>false</self_collide>
+
+
+                <pose frame="">-7.908049805587664e-07 -0.16397633036233888 1.0812802560574826 0.0 -0.0 0.0</pose>
+
+
+                <inertial>
+
+
+                    <pose frame="">0.0 0.0 0.0 0 0 0</pose>
+
+
+                    <mass>0.01630269246947046</mass>
+
+
+                    <inertia>
+
+
+                        <ixx>0.019515568502845942</ixx>
+
+
+                        <ixy>-1.9966507921631573e-09</ixy>
+
+
+                        <ixz>2.8905394265479922e-05</ixz>
+
+
+                        <iyy>0.019077204732443745</iyy>
+
+
+                        <iyz>1.3722221878786912e-08</iyz>
+
+
+                        <izz>0.00046497426005389167</izz>
+
+
+                    </inertia>
+
+
+                </inertial>
+
+
+                <visual name="shoulder_visual">
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://ExoSuit/meshes/CAD/shoulder.stl</uri>
+
+
+                            <scale>0.001 0.001 0.001</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+            </link>
+
+
+            <joint name="offset" type="fixed">
+
+
+                <parent>world</parent>
+
+
+                <child>shoulder</child>
+
+
+            </joint>
+
+
+            <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
+
+
+            <muscles>model://ExoSuit/muscles.osim</muscles>
+
+
+            <pose frame="">-0.007648 -0.001248 -0.100006 0 -0 0</pose>
+        </model>
+
+
+        <model name="arm26">
+
+
+            <muscles>model://arm26/muscles.osim</muscles>
+
+
+            <link name="base">
+
+
+                <pose frame="">0.0 0.0 0.8 1.5708 0.0 0.0</pose>
+
+
+                <inertial>
+
+
+                    <mass>0.0001</mass>
+
+
+                    <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+                    <inertia>
+
+
+                        <ixx>0</ixx>
+
+
+                        <ixy>0</ixy>
+
+
+                        <ixz>0</ixz>
+
+
+                        <iyy>0</iyy>
+
+
+                        <iyz>0</iyz>
+
+
+                        <izz>0</izz>
+
+
+                    </inertia>
+
+
+                </inertial>
+
+
+                <visual name="ground_ribs">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/ground_ribs.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="ground_spine">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/ground_spine.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="ground_skull">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/ground_skull.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="ground_jaw">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/ground_jaw.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="ground_r_clavicle">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/ground_r_clavicle.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="ground_r_scapula">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/ground_r_scapula.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+            </link>
+
+
+            <link name="r_humerus">
+
+
+                <pose frame="">-0.017545 -0.17 0.793 1.5708 0.0 0.0</pose>
+
+
+                <inertial>
+
+
+                    <mass>1.864572</mass>
+
+
+                    <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+                    <inertia>
+
+
+                        <ixx>0.01481</ixx>
+
+
+                        <ixy>0</ixy>
+
+
+                        <ixz>0</ixz>
+
+
+                        <iyy>0.004551</iyy>
+
+
+                        <iyz>0</iyz>
+
+
+                        <izz>0.013193</izz>
+
+
+                    </inertia>
+
+
+                </inertial>
+
+
+                <visual name="arm_r_humerus">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_humerus.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+            </link>
+
+
+            <link name="r_ulna_radius_hand">
+
+
+                <pose frame="">-0.011445 -0.1577 0.5026 1.5708 0.0 0.0</pose>
+
+
+                <inertial>
+
+
+                    <mass>1.534315</mass>
+
+
+                    <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+
+
+                    <inertia>
+
+
+                        <ixx>0.019281</ixx>
+
+
+                        <ixy>0</ixy>
+
+
+                        <ixz>0</ixz>
+
+
+                        <iyy>0.001571</iyy>
+
+
+                        <iyz>0</iyz>
+
+
+                        <izz>0.020062</izz>
+
+
+                    </inertia>
+
+
+                </inertial>
+
+
+                <visual name="arm_r_ulna">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_ulna.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_radius">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_radius.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_lunate">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_lunate.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_scaphoid">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_scaphoid.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_pisiform">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_pisiform.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_triquetrum">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_triquetrum.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_capitate">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_capitate.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_trapezium">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_trapezium.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_trapezoid">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_trapezoid.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_hamate">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_hamate.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_1mc">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_1mc.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_2mc">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_2mc.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_3mc">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_3mc.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_4mc">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_4mc.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_5mc">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_5mc.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_thumbprox">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_thumbprox.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_thumbdist">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_thumbdist.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_2proxph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_2proxph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_2midph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_2midph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_2distph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_2distph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_3proxph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_3proxph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_3midph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_3midph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_3distph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_3distph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_4proxph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_4proxph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_4midph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_4midph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_4distph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_4distph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_5proxph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_5proxph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_5midph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_5midph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+                <visual name="arm_r_5distph">
+
+
+                    <pose>-0 0 -0 0 0 0</pose>
+
+
+                    <geometry>
+
+
+                        <mesh>
+
+
+                            <uri>model://arm26/meshes/visuals/arm_r_5distph.dae</uri>
+
+
+                            <scale>1 1 1</scale>
+
+
+                        </mesh>
+
+
+                    </geometry>
+
+
+                </visual>
+
+
+            </link>
+
+
+            <joint name="offset" type="fixed">
+
+
+                <parent>world</parent>
+
+
+                <child>base</child>
+
+
+            </joint>
+
+
+            <joint name="r_shoulder" type="revolute">
+
+
+                <parent>base</parent>
+
+
+                <child>r_humerus</child>
+
+
+                <axis>
+
+
+                    <xyz>0 0 1</xyz>
+
+
+                    <dynamics>
+
+
+                        <damping>1.e-6</damping>
+
+
+                    </dynamics>
+
+
+                    <limit>
+
+
+                        <lower>-1.57079633</lower>
+
+
+                        <upper>3.14159265</upper>
+
+
+                        <stiffness>100</stiffness>
+
+
+                        <dissipation>1.e-2</dissipation>
+
+
+                    </limit>
+
+
+                </axis>
+
+
+            </joint>
+
+
+            <joint name="r_elbow" type="revolute">
+
+
+                <parent>r_humerus</parent>
+
+
+                <child>r_ulna_radius_hand</child>
+
+
+                <axis>
+
+
+                    <xyz>0 0 1</xyz>
+
+
+                    <dynamics>
+
+
+                        <damping>1.e-6</damping>
+
+
+                    </dynamics>
+
+
+                    <limit>
+
+
+                        <lower>0</lower>
+
+
+                        <upper>2.26892803</upper>
+
+
+                        <stiffness>100</stiffness>
+
+
+                        <dissipation>1.e-2</dissipation>
+
+
+                    </limit>
+
+
+                </axis>
+
+
+            </joint>
+
+
+            <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
+
+
+            <pose frame="">0.007648 0.001248 0.100007 0 -0 0</pose>
+        </model>
+
+
+        <joint name="base_JOINT_3" type="fixed">
+            <parent>arm26::base</parent>
+            <child>ExoSuitNoJoints::shoulder</child>
+            <pose frame="">0 0 0 0 -0 0</pose>
+            <physics>
+                <ode>
+                    <limit>
+                        <cfm>0</cfm>
+                        <erp>0.2</erp>
+                    </limit>
+                    <suspension>
+                        <cfm>0</cfm>
+                        <erp>0.2</erp>
+                    </suspension>
+                </ode>
+            </physics>
+        </joint>
+        <joint name="r_humerus_JOINT_4" type="fixed">
+            <parent>arm26::r_humerus</parent>
+            <child>ExoSuitNoJoints::upperArm</child>
+            <pose frame="">0 0 0 0 -0 0</pose>
+            <physics>
+                <ode>
+                    <limit>
+                        <cfm>0</cfm>
+                        <erp>0.2</erp>
+                    </limit>
+                    <suspension>
+                        <cfm>0</cfm>
+                        <erp>0.2</erp>
+                    </suspension>
+                </ode>
+            </physics>
+        </joint>
+        <joint name="r_ulna_radius_hand_JOINT_5" type="fixed">
+            <parent>arm26::r_ulna_radius_hand</parent>
+            <child>ExoSuitNoJoints::lowerArm</child>
+            <pose frame="">0 0 0 0 -0 0</pose>
+            <physics>
+                <ode>
+                    <limit>
+                        <cfm>0</cfm>
+                        <erp>0.2</erp>
+                    </limit>
+                    <suspension>
+                        <cfm>0</cfm>
+                        <erp>0.2</erp>
+                    </suspension>
+                </ode>
+            </physics>
+        </joint>
+        <static>0</static>
+        <allow_auto_disable>1</allow_auto_disable>
+    </model>
+</sdf>
