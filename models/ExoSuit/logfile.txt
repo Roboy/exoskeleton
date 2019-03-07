@@ -7,11 +7,3 @@ exporting stl of lowerArm
 Body: shoulder
 COM: shoulder -7.908049805587665e-05 -16.397633036233888 108.12802560574825
 exporting stl of shoulder
-Joint: EXPORT_shoulderJoint
-	parent: shoulder
-	child: upperArm
-	pos: 0.0	1.0	0.0
-Joint: EXPORT_elbow
-	parent: upperArm
-	child: lowerArm
-	pos: -2.064988378536746e-17	1.0	-2.0822111621573517e-18

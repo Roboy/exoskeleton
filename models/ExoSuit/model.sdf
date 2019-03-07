@@ -77,32 +77,6 @@
 			<parent>world</parent>
 			<child>shoulder</child>
 		</joint>
-		<joint name="shoulderJoint" type="revolute">
-			<parent>shoulder</parent>
-			<child>upperArm</child>
-			<pose frame="">0.0 0.01 0.0 0 0 0</pose>
-			<axis>
-				<xyz>0.0 1.0 0.0</xyz>
-				<limit>
-					<lower>-3.141592653589793</lower>
-					<upper>1.5707963267948966</upper>
-				</limit>
-				<use_parent_model_frame>0</use_parent_model_frame>
-			</axis>
-		</joint>
-		<joint name="elbow" type="revolute">
-			<parent>upperArm</parent>
-			<child>lowerArm</child>
-			<pose frame="">-2.064988378536746e-19 0.01 -2.0822111621573518e-20 0 0 0</pose>
-			<axis>
-				<xyz>-2.064988378536746e-17 1.0 -2.0822111621573517e-18</xyz>
-				<limit>
-					<lower>-2.2689280275926285</lower>
-					<upper>0.0</upper>
-				</limit>
-				<use_parent_model_frame>0</use_parent_model_frame>
-			</axis>
-		</joint>
 		<plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
 		<muscles>model://ExoSuit/muscles.osim</muscles>
 	</model>
