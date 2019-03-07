@@ -31,10 +31,10 @@ def join_models(base_model_file_path, attached_model_file_path):
     root_model.append(base_model)
 
     # add the joints that link the two models
-    append_fixed_joint(root_model, "base_JOINT_3", "arm26::base", "ExoSuitNoJoints::shoulder")
-    append_fixed_joint(root_model, "r_humerus_JOINT_4", "arm26::r_humerus", "ExoSuitNoJoints::upperArm")
+    append_fixed_joint(root_model, "base_JOINT_3", "arm26::base", "ExoSuit::shoulder")
+    append_fixed_joint(root_model, "r_humerus_JOINT_4", "arm26::r_humerus", "ExoSuit::upperArm")
     append_fixed_joint(root_model, "r_ulna_radius_hand_JOINT_5", "arm26::r_ulna_radius_hand",
-                       "ExoSuitNoJoints::lowerArm")
+                       "ExoSuit::lowerArm")
 
     # add the remaining to tags
     static = ET.SubElement(root_model, "static")
