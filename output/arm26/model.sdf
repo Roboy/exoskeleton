@@ -408,5 +408,6 @@
       </axis>
     </joint>
     <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
+    <plugin filename="libexo_motion.so" name="exo_motion"/>
   </model>
 </sdf>

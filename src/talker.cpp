@@ -25,6 +25,9 @@
 
 #include <SimTKcommon.h>
 
+#include <gazebo/physics/World.hh>
+
+
 const bool OUTPUT_FILES = true;
 
 using namespace OpenSim;
