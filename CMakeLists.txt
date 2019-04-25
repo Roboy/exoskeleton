@@ -48,8 +48,8 @@ find_package(OpenSim REQUIRED)
 if (OPENSIM_FOUND)
     include_directories(${OPENSIM_INCLUDE_DIRS})
     link_directories(${OPENSIM_LIB_DIR})
-    add_executable(talker src/talker.cpp)
-    target_link_libraries(talker ${catkin_LIBRARIES}
+    add_executable(metabolic_test src/metabolic_test.cpp)
+    target_link_libraries(metabolic_test ${catkin_LIBRARIES}
             ${OPENSIMSIMBODY_LIBRARIES}
             ${OPENSIM_LIBRARIES}
             ${GAZEBO_LIBRARIES})
