@@ -15,7 +15,7 @@ find_package(OGRE)
 
 catkin_package(
         #  INCLUDE_DIRS include
-        LIBRARIES exo_motion_plugin
+        LIBRARIES exo_motion_plugin metabolic_plugin
         #  CATKIN_DEPENDS roscpp std_msgs
         #  DEPENDS system_lib
 )
@@ -62,5 +62,15 @@ target_link_libraries(exo_motion_plugin
         ${Boost_LIBRARIES})
 
 install(TARGETS exo_motion_plugin
+        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+        )
+
+add_library(metabolic_plugin src/metabolic_plugin.cc)
+target_link_libraries(metabolic_plugin
+        ${catkin_LIBRARIES}
+        ${GAZEBO_LIBRARIES}
+        ${Boost_LIBRARIES})
+
+install(TARGETS metabolic_plugin
         LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
         )
