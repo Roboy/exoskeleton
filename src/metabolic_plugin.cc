@@ -9,6 +9,7 @@
 #include <gazebo/physics/World.hh>
 
 #include <gazebo/physics/opensim/OpensimPhysics.hh>
+#include <gazebo/physics/opensim/OpensimPhysicsPrivate.hh>
 #include <gazebo/physics/opensim/OpensimModel.hh>
 #include <gazebo/physics/opensim/OpensimMuscle.hh>
 
@@ -94,10 +95,11 @@ namespace gazebo {
                 //--------------------------------------------------------------------------
                 // Build the arm26 OpenSim Model
                 //--------------------------------------------------------------------------
-                OpenSim::Model model(
-                        "/home/parallels/Documents/NRP/GazeboRosPackages/src/exoskeleton/input/leg6dof9musc.osim");
-                o_model = model;
-                o_model.setName("testModel_metabolics");
+//                OpenSim::Model model(
+//                        "/home/parallels/Documents/NRP/GazeboRosPackages/src/exoskeleton/input/arm26.osim");
+//                o_model = model;
+//                o_model.setName("testModel_metabolics");
+                o_model = g_model->getPriv()->osimModel;
 
                 ROS_INFO("Loaded model");
 
