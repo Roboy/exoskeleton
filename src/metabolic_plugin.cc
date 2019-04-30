@@ -99,11 +99,11 @@ namespace gazebo {
 //                        "/home/parallels/Documents/NRP/GazeboRosPackages/src/exoskeleton/input/arm26.osim");
 //                o_model = model;
 //                o_model.setName("testModel_metabolics");
-                o_model = g_model->getPriv()->osimModel;
+                o_model = &g_model->getPriv()->osimModel;
 
                 ROS_INFO("Loaded model");
 
-                OpenSim::Body &ground = o_model.getGroundBody();
+                OpenSim::Body &ground = o_model->getGroundBody();
 
 
                 double desiredActivation = 1.0;
@@ -111,8 +111,8 @@ namespace gazebo {
                 // Attach muscle controller.
                 controller =
                         new ConstantExcitationMuscleController(desiredActivation);
-                controller->setActuators(o_model.updActuators());
-                o_model.addController(controller);
+                controller->setActuators(o_model->updActuators());
+                //o_model->addController(controller);
                 ROS_INFO("Added muscle controller");
 
                 //--------------------------------------------------------------------------
@@ -123,7 +123,7 @@ namespace gazebo {
                 // probeCounter + extraColumns.
                 const int w = 4;
 
-                auto muscles = o_model.getMuscles();
+                auto muscles = o_model->getMuscles();
                 std::stringstream ss;
                 ss << "num muscles: " << muscles.getSize() << std::endl;
                 ROS_INFO("%s", ss.str().c_str());
@@ -135,7 +135,7 @@ namespace gazebo {
                     for (int i = 0; i < muscles.getSize(); i++) {
                         umbergerActMaint_rate[i] = new
                                 OpenSim::Umberger2010MuscleMetabolicsProbe(true, false, false, false);
-                        o_model.addProbe(umbergerActMaint_rate[i]);
+                        o_model->addProbe(umbergerActMaint_rate[i]);
                         std::stringstream name;
                         name << "umbergerActMaint_rate_m" << i;
                         umbergerActMaint_rate[i]->setName(name.str());
@@ -156,7 +156,7 @@ namespace gazebo {
                     for (int i = 0; i < muscles.getSize(); i++) {
                         umbergerShorten_rate[i] = new
                                 OpenSim::Umberger2010MuscleMetabolicsProbe(false, true, false, false);
-                        o_model.addProbe(umbergerShorten_rate[i]);
+                        o_model->addProbe(umbergerShorten_rate[i]);
                         std::stringstream name;
                         name << "umbergerShorten_rate_m" << i;
                         umbergerShorten_rate[i]->setName(name.str());
@@ -178,7 +178,7 @@ namespace gazebo {
                     for (int i = 0; i < muscles.getSize(); i++) {
                         umbergerBasal_rate[i] = new
                                 OpenSim::Umberger2010MuscleMetabolicsProbe(false, false, true, false);
-                        o_model.addProbe(umbergerBasal_rate[i]);
+                        o_model->addProbe(umbergerBasal_rate[i]);
                         std::stringstream name;
                         name << "umbergerBasal_rate_m" << i;
                         umbergerBasal_rate[i]->setName(name.str());
@@ -199,7 +199,7 @@ namespace gazebo {
                     for (int i = 0; i < muscles.getSize(); i++) {
                         umbergerMechWork_rate[i] = new
                                 OpenSim::Umberger2010MuscleMetabolicsProbe(false, false, false, true);
-                        o_model.addProbe(umbergerMechWork_rate[i]);
+                        o_model->addProbe(umbergerMechWork_rate[i]);
                         std::stringstream name;
                         name << "umbergerMechWork_rate_m" << i;
                         umbergerMechWork_rate[i]->setName(name.str());
@@ -222,7 +222,7 @@ namespace gazebo {
                     for (int i = 0; i < muscles.getSize(); i++) {
                         umbergerTotal_rate[i] = new
                                 OpenSim::Umberger2010MuscleMetabolicsProbe(true, true, true, true);
-                        o_model.addProbe(umbergerTotal_rate[i]);
+                        o_model->addProbe(umbergerTotal_rate[i]);
                         std::stringstream name;
                         name << "umbergerTotal_rate_m" << i;
                         umbergerTotal_rate[i]->setName(name.str());
@@ -246,7 +246,7 @@ namespace gazebo {
                     for (int i = 0; i < muscles.getSize(); i++) {
                         umbergerTotal[i] = new
                                 OpenSim::Umberger2010MuscleMetabolicsProbe(true, true, true, true);
-                        o_model.addProbe(umbergerTotal[i]);
+                        o_model->addProbe(umbergerTotal[i]);
                         std::stringstream name;
                         name << "umbergerTotal_m" << i;
                         umbergerTotal[i]->setName(name.str());
@@ -266,18 +266,28 @@ namespace gazebo {
                 extraColumns += 3;
 
                 // Attach reporters.
-                probeReporter = new OpenSim::ProbeReporter(&o_model);
-                o_model.addAnalysis(probeReporter);
-                muscleAnalysis = new OpenSim::MuscleAnalysis(&o_model);
-                o_model.addAnalysis(muscleAnalysis);
+                probeReporter = new OpenSim::ProbeReporter(o_model);
+                o_model->addAnalysis(probeReporter);
+                muscleAnalysis = new OpenSim::MuscleAnalysis(o_model);
+                o_model->addAnalysis(muscleAnalysis);
 
                 // Print the model.
                 printf("\n");
-                o_model.printBasicInfo(std::cout);
+                o_model->printBasicInfo(std::cout);
                 printf("\n");
                 const std::string baseFilename = "testMuscleMetabolicsProbes";
 
-                manager.setModel(o_model);
+                manager.setModel(*o_model);
+
+                // Initialize model and state.
+                ss.str("");
+                ss << "- initializing" << std::endl;
+                ROS_DEBUG("%s", ss.str().c_str());
+                SimTK::State &state = o_model->initSystem();
+                for (int i = 0; i < o_model->getMuscles().getSize(); ++i)
+                    o_model->getMuscles().get(i).setIgnoreActivationDynamics(state, true);
+                o_model->getMultibodySystem().realize(state, SimTK::Stage::Dynamics);
+                o_model->equilibrateMuscles(state);
 
 
                 ROS_INFO("Finished test");
@@ -299,19 +309,20 @@ namespace gazebo {
             // Run simulation.
             //--------------------------------------------------------------------------
             try {
-                // Initialize model and state.
+                
+
+                // pub muscle activation
                 std::stringstream ss;
-                ss << "- initializing" << std::endl;
+
+                for(int i = 0; i < o_model->getMuscles().getSize(); i++) {
+                    ss << o_model->getMuscles().get(i).getName() << " - activation : " <<
+                       o_model->getMuscles().get(i).getActivation(o_model->getWorkingState()) << std::endl;
+                }
                 ROS_DEBUG("%s", ss.str().c_str());
-                SimTK::State &state = o_model.initSystem();
-                for (int i = 0; i < o_model.getMuscles().getSize(); ++i)
-                    o_model.getMuscles().get(i).setIgnoreActivationDynamics(state, true);
-                o_model.getMultibodySystem().realize(state, SimTK::Stage::Dynamics);
-                o_model.equilibrateMuscles(state);
 
                 // Prepare integrator.
                 const double integrationAccuracy = 1.0e-8;
-                SimTK::RungeKuttaMersonIntegrator integrator(o_model.getMultibodySystem());
+                SimTK::RungeKuttaMersonIntegrator integrator(o_model->getMultibodySystem());
                 integrator.setAccuracy(integrationAccuracy);
                 manager.setIntegrator(&integrator);
                 manager.setInitialTime(simTime0);
@@ -322,6 +333,7 @@ namespace gazebo {
                 ss.str("");
                 ss << "- integrating from " << simTime0 << " to " << simTime1 << "s" << std::endl;
                 ROS_DEBUG("%s", ss.str().c_str());
+                SimTK::State state = o_model->getWorkingState();
                 manager.integrate(state, 1.0e-3);
                 ss.str("");
                 ss << "- simulation complete (" << (double) (clock() - tStart) / CLOCKS_PER_SEC
@@ -361,7 +373,7 @@ namespace gazebo {
                     for (int i = 0; i < numProbeOutputs; i++) {
                         ss << probeStorage.getColumnLabels().get(i) << " - " << probeData[i] << std::endl;
                     }
-                    ROS_DEBUG("%s", ss.str().c_str());
+                    ROS_INFO("%s", ss.str().c_str());
                 } catch (std::exception &e) {
                     ROS_ERROR("Excpetion while accessing and printing the data : %s", e.what());
                     throw e;
@@ -399,7 +411,7 @@ namespace gazebo {
         physics::OpensimModelPtr g_model;
         physics::OpensimPhysicsPtr engine;
 
-        OpenSim::Model o_model;
+        OpenSim::Model *o_model;
         ConstantExcitationMuscleController *controller;
         OpenSim::Manager manager;
         OpenSim::ProbeReporter *probeReporter;
