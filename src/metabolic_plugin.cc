@@ -96,10 +96,6 @@ namespace gazebo {
                 //--------------------------------------------------------------------------
                 // Build the arm26 OpenSim Model
                 //--------------------------------------------------------------------------
-//                OpenSim::Model model(
-//                        "/home/parallels/Documents/NRP/GazeboRosPackages/src/exoskeleton/input/arm26.osim");
-//                o_model = model;
-//                o_model.setName("testModel_metabolics");
                 o_model = &g_model->getPriv()->osimModel;
 
                 ROS_INFO("Loaded model");
@@ -363,7 +359,7 @@ namespace gazebo {
 
                 try {
                     roboy_simulation_msgs::MetabolicCost msg;
-
+                    msg.simTimestamp = simTime0;
                     OpenSim::Array<double> probeData;
                     probeData.setSize(numProbeOutputs);
                     probeStorage.getDataAtTime(simTime0, numProbeOutputs, probeData);
