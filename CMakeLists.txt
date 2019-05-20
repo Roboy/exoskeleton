@@ -8,15 +8,26 @@ find_package(catkin REQUIRED COMPONENTS
         roscpp
         std_msgs
         cmake_modules
+        roboy_simulation_msgs
         )
 
 find_package(gazebo REQUIRED)
 find_package(OGRE)
 
+#add_message_files(
+#        FILES
+#        MetabolicCost.msg
+#)
+
+generate_messages(
+        DEPENDENCIES
+        std_msgs
+)
+
 catkin_package(
         #  INCLUDE_DIRS include
         LIBRARIES exo_motion_plugin metabolic_plugin
-        #  CATKIN_DEPENDS roscpp std_msgs
+        CATKIN_DEPENDS roscpp std_msgs roboy_simulation_msgs
         #  DEPENDS system_lib
 )
 
@@ -66,6 +77,7 @@ install(TARGETS exo_motion_plugin
         )
 
 add_library(metabolic_plugin src/metabolic_plugin.cc)
+add_dependencies(metabolic_plugin roboy_simulation_msgs_gencpp)
 target_link_libraries(metabolic_plugin
         ${catkin_LIBRARIES}
         ${GAZEBO_LIBRARIES}

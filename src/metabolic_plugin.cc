@@ -47,6 +47,7 @@
 #include <mutex>
 #include <sstream>
 
+#include <roboy_simulation_msgs/MetabolicCost.h>
 
 //==============================================================================
 //                    CONSTANT-EXCITATION MUSCLE CONTROLLER
@@ -296,6 +297,9 @@ namespace gazebo {
                 ROS_ERROR("Caught an exception while doing the metabolic shit: %s", e.what());
                 throw e;
             }
+
+            // ---- ros stuff ----
+            metabolic_pub = rosNode->advertise<roboy_simulation_msgs::MetabolicCost>("metabolic_cost", 1000);
         }
 
         // Called by the world update start event
@@ -358,22 +362,31 @@ namespace gazebo {
                 const int numProbeOutputs = probeStorage.getColumnLabels().getSize();
 
                 try {
-                    std::map<std::string, int> probeCol;
-                    std::stringstream ss;
-                    ss << "size columns labels: " << probeStorage.getColumnLabels().getSize() << std::endl;
-                    ROS_DEBUG("%s", ss.str().c_str());
+                    roboy_simulation_msgs::MetabolicCost msg;
 
                     OpenSim::Array<double> probeData;
                     probeData.setSize(numProbeOutputs);
                     probeStorage.getDataAtTime(simTime0, numProbeOutputs, probeData);
 
-
-                    ss.str("");
-                    ss << "DATA: " << std::endl;
-                    for (int i = 0; i < numProbeOutputs; i++) {
-                        ss << probeStorage.getColumnLabels().get(i) << " - " << probeData[i] << std::endl;
+                    for (int i = 0; i < numProbeOutputs - 1; i++) {
+                        const auto currLabel = probeStorage.getColumnLabels().get(i + 1);
+                        if(currLabel.find("umbergerActMaint") != std::string::npos) {
+                            msg.umbergerActMaint_rate.push_back(probeData[i]);
+                        } else if(currLabel.find("umbergerShorten_rate") != std::string::npos) {
+                            msg.umbergerShorten_rate.push_back(probeData[i]);
+                        } else if(currLabel.find("umbergerBasal_rate") != std::string::npos) {
+                            msg.umbergerBasal_rate.push_back(probeData[i]);
+                        } else if(currLabel.find("umbergerMechWork_rate") != std::string::npos) {
+                            msg.umbergerMechWork_rate.push_back(probeData[i]);
+                        } else if(currLabel.find("umbergerTotal_rate") != std::string::npos) {
+                            msg.umbergerTotal_rate.push_back(probeData[i]);
+                        } else if(currLabel.find("umbergerTotal") != std::string::npos) {
+                            msg.umbergerTotal.push_back(probeData[i]);
+                        } else {
+                            ROS_ERROR("No matching array for %s", currLabel.c_str());
+                        }
                     }
-                    ROS_INFO("%s", ss.str().c_str());
+                    metabolic_pub.publish(msg);
                 } catch (std::exception &e) {
                     ROS_ERROR("Excpetion while accessing and printing the data : %s", e.what());
                     throw e;
@@ -384,7 +397,7 @@ namespace gazebo {
             if (!ros::isInitialized()) {
                 int argc = 0;
                 char **argv = NULL;
-                ros::init(argc, argv, "ForceCompensatingHalterung",
+                ros::init(argc, argv, "MetabolicCostAnalysis",
                           ros::init_options::NoSigintHandler | ros::init_options::AnonymousName);
             }
 
@@ -424,7 +437,7 @@ namespace gazebo {
 
         std::unique_ptr<ros::NodeHandle> rosNode;
 
-        ros::Publisher total_pub;
+        ros::Publisher metabolic_pub;
     };
 
 // Register this plugin with the simulator
