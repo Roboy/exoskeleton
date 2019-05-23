@@ -299,7 +299,7 @@ namespace gazebo {
         }
 
         // Called by the world update start event
-        void OnUpdate(const common::UpdateInfo & _info) {
+        void OnUpdate(const common::UpdateInfo &_info) {
             // Apply a small linear velocity to the model.
             //this->model->SetLinearVel(math::Vector3(.03, 0, 0));
             double simTime1 = _info.simTime.Double();
@@ -309,12 +309,12 @@ namespace gazebo {
             // Run simulation.
             //--------------------------------------------------------------------------
             try {
-                
+
 
                 // pub muscle activation
                 std::stringstream ss;
 
-                for(int i = 0; i < o_model->getMuscles().getSize(); i++) {
+                for (int i = 0; i < o_model->getMuscles().getSize(); i++) {
                     ss << o_model->getMuscles().get(i).getName() << " - activation : " <<
                        o_model->getMuscles().get(i).getActivation(o_model->getWorkingState()) << std::endl;
                 }
@@ -353,40 +353,40 @@ namespace gazebo {
         }
 
         void OnUpdateEnd(/*const common::UpdateInfo & _info*/) {
-                // Store column indices.
-                const OpenSim::Storage &probeStorage = probeReporter->getProbeStorage();
-                const int numProbeOutputs = probeStorage.getColumnLabels().getSize();
+            // Store column indices.
+            const OpenSim::Storage &probeStorage = probeReporter->getProbeStorage();
+            const int numProbeOutputs = probeStorage.getColumnLabels().getSize();
 
-                try {
-                    roboy_simulation_msgs::MetabolicCost msg;
-                    msg.simTimestamp = simTime0;
-                    OpenSim::Array<double> probeData;
-                    probeData.setSize(numProbeOutputs);
-                    probeStorage.getDataAtTime(simTime0, numProbeOutputs, probeData);
+            try {
+                roboy_simulation_msgs::MetabolicCost msg;
+                msg.simTimestamp = simTime0;
+                OpenSim::Array<double> probeData;
+                probeData.setSize(numProbeOutputs);
+                probeStorage.getDataAtTime(simTime0, numProbeOutputs, probeData);
 
-                    for (int i = 0; i < numProbeOutputs - 1; i++) {
-                        const auto currLabel = probeStorage.getColumnLabels().get(i + 1);
-                        if(currLabel.find("umbergerActMaint") != std::string::npos) {
-                            msg.umbergerActMaint_rate.push_back(probeData[i]);
-                        } else if(currLabel.find("umbergerShorten_rate") != std::string::npos) {
-                            msg.umbergerShorten_rate.push_back(probeData[i]);
-                        } else if(currLabel.find("umbergerBasal_rate") != std::string::npos) {
-                            msg.umbergerBasal_rate.push_back(probeData[i]);
-                        } else if(currLabel.find("umbergerMechWork_rate") != std::string::npos) {
-                            msg.umbergerMechWork_rate.push_back(probeData[i]);
-                        } else if(currLabel.find("umbergerTotal_rate") != std::string::npos) {
-                            msg.umbergerTotal_rate.push_back(probeData[i]);
-                        } else if(currLabel.find("umbergerTotal") != std::string::npos) {
-                            msg.umbergerTotal.push_back(probeData[i]);
-                        } else {
-                            ROS_ERROR("No matching array for %s", currLabel.c_str());
-                        }
+                for (int i = 0; i < numProbeOutputs - 1; i++) {
+                    const auto currLabel = probeStorage.getColumnLabels().get(i + 1);
+                    if (currLabel.find("umbergerActMaint") != std::string::npos) {
+                        msg.umbergerActMaint_rate.push_back(probeData[i]);
+                    } else if (currLabel.find("umbergerShorten_rate") != std::string::npos) {
+                        msg.umbergerShorten_rate.push_back(probeData[i]);
+                    } else if (currLabel.find("umbergerBasal_rate") != std::string::npos) {
+                        msg.umbergerBasal_rate.push_back(probeData[i]);
+                    } else if (currLabel.find("umbergerMechWork_rate") != std::string::npos) {
+                        msg.umbergerMechWork_rate.push_back(probeData[i]);
+                    } else if (currLabel.find("umbergerTotal_rate") != std::string::npos) {
+                        msg.umbergerTotal_rate.push_back(probeData[i]);
+                    } else if (currLabel.find("umbergerTotal") != std::string::npos) {
+                        msg.umbergerTotal.push_back(probeData[i]);
+                    } else {
+                        ROS_ERROR("No matching array for %s", currLabel.c_str());
                     }
-                    metabolic_pub.publish(msg);
-                } catch (std::exception &e) {
-                    ROS_ERROR("Excpetion while accessing and printing the data : %s", e.what());
-                    throw e;
                 }
+                metabolic_pub.publish(msg);
+            } catch (std::exception &e) {
+                ROS_ERROR("Excpetion while accessing and printing the data : %s", e.what());
+                throw e;
+            }
         }
 
         MetabolicPlugin() {
@@ -415,8 +415,8 @@ namespace gazebo {
 
 
 
-        // Pointer to the model
     private:
+        // Pointer to the model
         physics::OpensimModelPtr g_model;
         physics::OpensimPhysicsPtr engine;
 

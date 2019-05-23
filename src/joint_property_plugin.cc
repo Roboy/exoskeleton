@@ -55,7 +55,7 @@ namespace gazebo {
             // ---- Joint and ros related stuff ----
             auto joints = this->g_model->GetJoints();
 
-            for(auto & joint : joints) {
+            for (auto &joint : joints) {
 
                 std::stringstream ss;
                 ss << g_model->GetName() << "/" << joint->GetName() << "/" << "angles";
@@ -75,9 +75,9 @@ namespace gazebo {
         }
 
         // Called by the world update start event
-        void OnUpdate(const common::UpdateInfo & _info) {
+        void OnUpdate(const common::UpdateInfo &_info) {
             auto joints = g_model->GetJoints();
-            for(int i = 0; i < joints.size(); i++) {
+            for (int i = 0; i < joints.size(); i++) {
                 // create the data vector
                 std::vector<double> angle = {joints.at(i)->GetAngle(0).Degree(),
                                              joints.at(i)->GetAngle(1).Degree(),
@@ -149,11 +149,8 @@ namespace gazebo {
             if (!g_model || !engine) return;
         }
 
-
-
-
-        // Pointer to the model
     private:
+        // Pointer to the model
         physics::OpensimModelPtr g_model;
         physics::OpensimPhysicsPtr engine;
 
