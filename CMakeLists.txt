@@ -26,7 +26,7 @@ generate_messages(
 
 catkin_package(
         #  INCLUDE_DIRS include
-        LIBRARIES exo_motion_plugin metabolic_plugin
+        LIBRARIES exo_motion_plugin metabolic_plugin joint_property_plugin
         CATKIN_DEPENDS roscpp std_msgs roboy_simulation_msgs
         #  DEPENDS system_lib
 )
@@ -84,5 +84,15 @@ target_link_libraries(metabolic_plugin
         ${Boost_LIBRARIES})
 
 install(TARGETS metabolic_plugin
+        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+        )
+
+add_library(joint_property_plugin src/joint_property_plugin.cc)
+target_link_libraries(joint_property_plugin
+        ${catkin_LIBRARIES}
+        ${GAZEBO_LIBRARIES}
+        ${Boost_LIBRARIES})
+
+install(TARGETS joint_property_plugin
         LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
         )

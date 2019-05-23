@@ -140,7 +140,7 @@ namespace gazebo {
                         umbergerActMaint_rate[i]->addMuscle(muscles[i].getName(), 0.5);
                         ss.str("");
                         ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "activation and maintenance heat rate (" << muscles[i].getName() << ")" << std::endl;
+                           << "activation and maintenance heat rate (" << muscles[i].getName() << ")";
                         ROS_INFO("%s", ss.str().c_str());
                     }
                 } catch (std::exception &e) {
@@ -161,7 +161,7 @@ namespace gazebo {
                         umbergerShorten_rate[i]->addMuscle(muscles[i].getName(), 0.5);
                         ss.str("");
                         ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "shortening and lengthening heat rate (" << muscles[i].getName() << ")" << std::endl;
+                           << "shortening and lengthening heat rate (" << muscles[i].getName() << ")";
                         ROS_DEBUG("%s", ss.str().c_str());
                     }
                 } catch (std::exception &e) {
@@ -183,7 +183,7 @@ namespace gazebo {
                         umbergerBasal_rate[i]->addMuscle(muscles[i].getName(), 0.5);
                         ss.str("");
                         ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "basal heat rate (" << muscles[i].getName() << ")" << std::endl;
+                           << "basal heat rate (" << muscles[i].getName() << ")";
                         ROS_DEBUG("%s", ss.str().c_str());
                     }
                 } catch (std::exception &e) {
@@ -204,7 +204,7 @@ namespace gazebo {
                         umbergerMechWork_rate[i]->addMuscle(muscles[i].getName(), 0.5);
                         ss.str("");
                         ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "mechanical power (" << muscles[i].getName() << ")" << std::endl;
+                           << "mechanical power (" << muscles[i].getName() << ")";
                         ROS_DEBUG("%s", ss.str().c_str());
                     }
                 } catch (std::exception &e) {
@@ -227,7 +227,7 @@ namespace gazebo {
                         umbergerTotal_rate[i]->addMuscle(muscles[i].getName(), 0.5);
                         ss.str("");
                         ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "total rate of energy liberation (" << muscles[i].getName() << ")" << std::endl;
+                           << "total rate of energy liberation (" << muscles[i].getName() << ")";
                         ROS_DEBUG("%s", ss.str().c_str());
                     }
                 } catch (std::exception &e) {
@@ -252,7 +252,7 @@ namespace gazebo {
                         umbergerTotal[i]->addMuscle(muscles[i].getName(), 0.5);
                         ss.str("");
                         ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "total energy liberation (" << muscles[i].getName() << ")" << std::endl;
+                           << "total energy liberation (" << muscles[i].getName() << ")";
                         ROS_DEBUG("%s", ss.str().c_str());
                     }
                 } catch (std::exception &e) {
