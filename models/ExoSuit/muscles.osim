@@ -114,8 +114,8 @@
 						</PathWrapSet>
 					</GeometryPath>
 					<max_isometric_force>1000.0</max_isometric_force>
-					<optimal_fiber_length>0.5</optimal_fiber_length>
-					<tendon_slack_length>0.5</tendon_slack_length>
+					<optimal_fiber_length>0.15</optimal_fiber_length>
+					<tendon_slack_length>0.2</tendon_slack_length>
 				</Thelen2003Muscle>
 				<Thelen2003Muscle name="muscle5">
 					<GeometryPath>
@@ -140,8 +140,8 @@
 						</PathWrapSet>
 					</GeometryPath>
 					<max_isometric_force>1000.0</max_isometric_force>
-					<optimal_fiber_length>0.5</optimal_fiber_length>
-					<tendon_slack_length>0.5</tendon_slack_length>
+					<optimal_fiber_length>0.15</optimal_fiber_length>
+					<tendon_slack_length>0.2</tendon_slack_length>
 				</Thelen2003Muscle>
 				<Thelen2003Muscle name="muscle6">
 					<GeometryPath>
@@ -166,8 +166,8 @@
 						</PathWrapSet>
 					</GeometryPath>
 					<max_isometric_force>1000.0</max_isometric_force>
-					<optimal_fiber_length>0.5</optimal_fiber_length>
-					<tendon_slack_length>0.5</tendon_slack_length>
+					<optimal_fiber_length>0.25</optimal_fiber_length>
+					<tendon_slack_length>0.25</tendon_slack_length>
 				</Thelen2003Muscle>
 				<Thelen2003Muscle name="muscle7">
 					<GeometryPath>
@@ -192,8 +192,8 @@
 						</PathWrapSet>
 					</GeometryPath>
 					<max_isometric_force>1000.0</max_isometric_force>
-					<optimal_fiber_length>0.5</optimal_fiber_length>
-					<tendon_slack_length>0.5</tendon_slack_length>
+					<optimal_fiber_length>0.25</optimal_fiber_length>
+					<tendon_slack_length>0.25</tendon_slack_length>
 				</Thelen2003Muscle>
 			</objects>
 		</ForceSet>

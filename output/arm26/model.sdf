@@ -2,7 +2,7 @@
 <sdf version="1.5">
   <model name="arm26">
     <muscles>model://arm26/muscles.osim</muscles>
-    <link name="base">
+    <link name="base">m
       <pose frame="">0.0 0.0 0.8 1.5708 0.0 0.0</pose>
       <inertial>
         <mass>0.0001</mass>
@@ -408,5 +408,6 @@
       </axis>
     </joint>
     <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
+    <plugin filename="libmetabolic_plugin.so" name="metabolic_plugin"/>
   </model>
 </sdf>
