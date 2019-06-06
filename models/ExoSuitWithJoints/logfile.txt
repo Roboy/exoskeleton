@@ -1,0 +1,17 @@
+Body: upperArm
+COM: upperArm -2.240976671144455e-06 -16.567986682428277 85.33731150531449
+exporting stl of upperArm
+Body: lowerArm
+COM: lowerArm -5.6088394755962865e-05 -16.567841251836697 58.75119916651316
+exporting stl of lowerArm
+Body: shoulder
+COM: shoulder -7.908049805587665e-05 -16.397633036233888 108.12802560574825
+exporting stl of shoulder
+Joint: EXPORT_shoulder_joint
+	parent: shoulder
+	child: upperArm
+	pos: 2.240976671144455e-06	0.16996682733554636	20.31406216700492
+Joint: EXPORT_elbow
+	parent: upperArm
+	child: lowerArm
+	pos: 5.6088394755966375e-05	-0.00017860325603535898	18.20017450580356
