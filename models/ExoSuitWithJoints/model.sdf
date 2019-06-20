@@ -97,10 +97,6 @@
 				</geometry>
 			</visual>
 		</link>
-		<joint name="offset" type="fixed">
-			<parent>world</parent>
-			<child>shoulder</child>
-		</joint>
 		<joint name="shoulder_joint" type="revolute">
 			<parent>shoulder</parent>
 			<child>upperArm</child>
