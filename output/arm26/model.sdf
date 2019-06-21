@@ -409,5 +409,6 @@
     </joint>
     <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
     <plugin filename="libmetabolic_plugin.so" name="metabolic_plugin"/>
+    <plugin filename="libjoint_property_plugin.so" name="joint_property_plugin"/>
   </model>
 </sdf>
