@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<robot name="ExoSuitWithJoints">
+  <joint name="shoulder_joint" type="fixed">
+    <parent link="shoulder"/>
+    <child link="upperArm"/>
+    <origin rpy="0  0  0" xyz="0      -0.16398  1.05651"/>
+    <axis xyz="0  1  0"/>
+    <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
+  </joint>
+  <joint name="elbow" type="fixed">
+    <parent link="upperArm"/>
+    <child link="lowerArm"/>
+    <origin rpy="0  0  0" xyz="0      -0.0017  -0.28699"/>
+    <axis xyz="0 -1  0"/>
+    <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
+  </joint>
+  <link name="upperArm">
+    <inertial>
+      <mass value="0.03536504212638252"/>
+      <origin rpy="0  0  0" xyz="0      -0.0017  -0.20314"/>
+      <inertia ixx="0.026845035882294668" ixy="-1.318604248345956e-10" ixz="6.783242760377562e-12" iyy="0.025874259211893173" iyz="0.00500014812985268" izz="0.0009965660278462003"/>
+    </inertial>
+    <collision name="upperArm_collision">
+      <origin rpy="0  0  0" xyz="0      -0.0017  -0.20314"/>
+      <geometry>
+        <mesh filename="package://exoskeleton/models/ExoSuitWithJoints/meshes/CAD/upperArm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="upperArm_visual">
+      <origin rpy="0  0  0" xyz="0      -0.0017  -0.20314"/>
+      <geometry>
+        <mesh filename="package://exoskeleton/models/ExoSuitWithJoints/meshes/CAD/upperArm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="lowerArm">
+    <inertial>
+      <mass value="0.03902820164643488"/>
+      <origin rpy="0  0  0" xyz="0     0    -0.182"/>
+      <inertia ixx="0.014659823884627322" ixy="-3.390743006237429e-09" ixz="1.1965954207271423e-10" iyy="0.013588505917734103" iyz="0.0037989213066962047" izz="0.0011177632190118936"/>
+    </inertial>
+    <collision name="lowerArm_collision">
+      <origin rpy="0  0  0" xyz="0     0    -0.182"/>
+      <geometry>
+        <mesh filename="package://exoskeleton/models/ExoSuitWithJoints/meshes/CAD/lowerArm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="lowerArm_visual">
+      <origin rpy="0  0  0" xyz="0     0    -0.182"/>
+      <geometry>
+        <mesh filename="package://exoskeleton/models/ExoSuitWithJoints/meshes/CAD/lowerArm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="shoulder">
+    <inertial>
+      <mass value="0.01630269246947046"/>
+      <origin rpy="0  0  0" xyz="0      -0.16397  1.08128"/>
+      <inertia ixx="0.01951556850284794" ixy="-1.996650781488363e-09" ixz="1.372222180480165e-10" iyy="0.0190772047324457" iyz="0.0028905394265482656" izz="0.000464974260053929"/>
+    </inertial>
+    <collision name="shoulder_collision">
+      <origin rpy="0  0  0" xyz="0      -0.16397  1.08128"/>
+      <geometry>
+        <mesh filename="package://exoskeleton/models/ExoSuitWithJoints/meshes/CAD/shoulder.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="shoulder_visual">
+      <origin rpy="0  0  0" xyz="0      -0.16397  1.08128"/>
+      <geometry>
+        <mesh filename="package://exoskeleton/models/ExoSuitWithJoints/meshes/CAD/shoulder.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>
