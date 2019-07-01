@@ -230,14 +230,9 @@
         
 		
       </joint>
-      
-		
-      <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
-      
-		
+
+      <plugin filename="libcardsflow_gazebo_plugin.so" name="cardsflow_gazebo_plugin"/>
       <muscles>model://ExoSuit/muscles.osim</muscles>
-      
-	
       <pose frame="">-0.007648 -0.001248 -0.100006 0 -0 0</pose>
     </model>
     
