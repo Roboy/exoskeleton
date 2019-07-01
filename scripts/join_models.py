@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import os
 from osim_converter import prettify
+import sys
 
 
 def join_models(base_model_file_path, attached_model_file_path):
@@ -128,11 +129,11 @@ def create_model(model_name, base_sdf,
         # it just says that the path already exists
         print model_name + " already exists"
 
-    create_sdf(path_to_repo + model_name + "/model.sdf",
+    create_sdf(path_to_repo + "/exoskeleton/output/" + model_name + "/model.sdf",
                join_models(base_sdf,
                            attached_sdf)
                )
-    create_config(path_to_repo + model_name + "/model.config",
+    create_config(path_to_repo + "/exoskeleton/output/" + model_name + "/model.config",
                   model_name)
 
 
