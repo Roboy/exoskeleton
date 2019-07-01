@@ -120,21 +120,28 @@ def create_config(file_path, model_name):
 
 
 def create_model(model_name, base_sdf,
-                 attached_sdf):
+                 attached_sdf, path_to_repo):
+
     try:
-        os.makedirs("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name)
+        os.makedirs(path_to_repo + "/exoskeleton/output/" + model_name)
     except OSError:
         # it just says that the path already exists
         print model_name + " already exists"
 
-    create_sdf("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name + "/model.sdf",
+    create_sdf(path_to_repo + model_name + "/model.sdf",
                join_models(base_sdf,
                            attached_sdf)
                )
-    create_config("/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/" + model_name + "/model.config",
+    create_config(path_to_repo + model_name + "/model.config",
                   model_name)
 
 
 if __name__ == "__main__":
-    create_model("ExoSkeleton", "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/output/arm26/model.sdf",
-                 "/Users/Kevin/Documents/Uni/RCI/Roboy/git_repos/exoskeleton/models/ExoSuit/model.sdf")
+    if len(sys.argv) < 2:
+        print "too less arguments"
+        print "usage: "
+        print "python join_models.py [path_to_exoskeleton_repo]"
+    path_to_repo = sys.argv[1]
+    create_model("CARDSFlowExo", "%s/exoskeleton/output/arm26/model.sdf" % path_to_repo,
+                 "%s/exoskeleton/models/ExoSuitWithJoints/model.sdf" % path_to_repo,
+                 "%s" % path_to_repo)
