@@ -1501,7 +1501,7 @@
     
       </joint>
       
-    
+    <!--
       <joint name="r_shoulder" type="revolute">
         
       
@@ -1597,7 +1597,7 @@
     
       </joint>
       
-    
+    -->
       <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
       
     

@@ -77,7 +77,7 @@
 			<parent>world</parent>
 			<child>shoulder</child>
 		</joint>
-		<plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
+		<plugin filename="libcardsflow_gazebo_plugin.so" name="cardsflow_gazebo_plugin"/>
 		<muscles>model://ExoSuit/muscles.osim</muscles>
 	</model>
 </sdf>
