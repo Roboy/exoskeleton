@@ -5,14 +5,14 @@
     <child link="upperArm"/>
     <origin rpy="0  0  0" xyz="0      -0.16398  1.05651"/>
     <axis xyz="0  1  0"/>
-    <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
+    <limit effort="0.0" lower="-3.14159265359" upper="3.14159265359" velocity="0.0"/>
   </joint>
   <joint name="elbow" type="fixed">
     <parent link="upperArm"/>
     <child link="lowerArm"/>
     <origin rpy="0  0  0" xyz="0      -0.0017  -0.28699"/>
     <axis xyz="0 -1  0"/>
-    <limit effort="0.0" lower="0.0" upper="0.0" velocity="0.0"/>
+    <limit effort="0.0" lower="-3.14159265359" upper="3.14159265359" velocity="0.0"/>
   </joint>
   <link name="upperArm">
     <inertial>

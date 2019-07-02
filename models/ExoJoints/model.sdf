@@ -16,6 +16,14 @@
 					<izz>0.000976730459058234</izz>
 				</inertia>
 			</inertial>
+<!--			<collision name="upperArm_collision">-->
+<!--				<geometry>-->
+<!--					<mesh>-->
+<!--						<uri>model://ExoJoints/meshes/CAD/upperArm.stl</uri>-->
+<!--						<scale>0.001 0.001 0.001</scale>-->
+<!--					</mesh>-->
+<!--				</geometry>-->
+<!--			</collision>-->
 			<visual name="upperArm_visual">
 				<geometry>
 					<mesh>
@@ -40,6 +48,14 @@
 					<izz>0.0010955000169609532</izz>
 				</inertia>
 			</inertial>
+<!--			<collision name="lowerArm_collision">-->
+<!--				<geometry>-->
+<!--					<mesh>-->
+<!--						<uri>model://ExoJoints/meshes/CAD/lowerArm.stl</uri>-->
+<!--						<scale>0.001 0.001 0.001</scale>-->
+<!--					</mesh>-->
+<!--				</geometry>-->
+<!--			</collision>-->
 			<visual name="lowerArm_visual">
 				<geometry>
 					<mesh>
@@ -64,6 +80,14 @@
 					<izz>0.0004650260272225621</izz>
 				</inertia>
 			</inertial>
+<!--			<collision name="shoulder_collision">-->
+<!--				<geometry>-->
+<!--					<mesh>-->
+<!--						<uri>model://ExoSuitWithJoints/meshes/CAD/shoulder.stl</uri>-->
+<!--						<scale>0.001 0.001 0.001</scale>-->
+<!--					</mesh>-->
+<!--				</geometry>-->
+<!--			</collision>-->
 			<visual name="shoulder_visual">
 				<geometry>
 					<mesh>
@@ -73,20 +97,20 @@
 				</geometry>
 			</visual>
 		</link>
-		<joint name="offset" type="fixed">
-			<parent>world</parent>
-			<child>shoulder</child>
-		</joint>
+<!--		<joint name="offset" type="fixed">-->
+<!--			<parent>world</parent>-->
+<!--			<child>shoulder</child>-->
+<!--		</joint>-->
 		<joint name="shoulder_joint" type="revolute">
 			<parent>shoulder</parent>
 			<child>upperArm</child>
 			<pose frame="">3.3562522522442266e-08 2.4291284717037343e-09 0.20314385644926333 0 0 0</pose>
 			<axis>
 				<xyz>0.0 1.0 0.0</xyz>
-				<limit>
-					<lower>0.0</lower>
-					<upper>0.0</upper>
-				</limit>
+<!--				<limit>-->
+<!--					<lower>0.0</lower>-->
+<!--					<upper>0.0</upper>-->
+<!--				</limit>-->
 				<use_parent_model_frame>0</use_parent_model_frame>
 			</axis>
 		</joint>
@@ -96,14 +120,13 @@
 			<pose frame="">7.634278855779988e-06 2.862927997639986e-06 0.1819874583044738 0 0 0</pose>
 			<axis>
 				<xyz>2.064988378536746e-17 -1.0 -7.16436763573328e-33</xyz>
-				<limit>
-					<lower>0.0</lower>
-					<upper>0.0</upper>
-				</limit>
+<!--				<limit>-->
+<!--					<lower>0.0</lower>-->
+<!--					<upper>0.0</upper>-->
+<!--				</limit>-->
 				<use_parent_model_frame>0</use_parent_model_frame>
 			</axis>
 		</joint>
-		<plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
-		<muscles>model://ExoJoints/muscles.osim</muscles>
+		<plugin filename="libcardsflow_gazebo_plugin.so" name="cardsflow_gazebo_plugin"/>
 	</model>
 </sdf>

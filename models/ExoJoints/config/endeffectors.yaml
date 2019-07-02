@@ -1,0 +1,5 @@
+joint_names: ['shoulder_joint', 'elbow_joint']
+endeffectors: ['top']
+top:
+  base_link: 'shoulder'
+  joints: ['shoulder_joint', 'elbow_joint']
