@@ -144,5 +144,5 @@ if __name__ == "__main__":
         print "python join_models.py [path_to_exoskeleton_repo]"
     path_to_repo = sys.argv[1]
     create_model("CARDSFlowExo", "%s/exoskeleton/output/arm26/model.sdf" % path_to_repo,
-                 "%s/exoskeleton/models/ExoSuitWithJoints/model.sdf" % path_to_repo,
+                 "%s/exoskeleton/models/ExoCARDSFlow/model.sdf" % path_to_repo,
                  "%s" % path_to_repo)

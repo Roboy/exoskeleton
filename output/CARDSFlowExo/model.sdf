@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <model name="ExoSkeleton">
-    <model name="ExoSuitWithJoints">
+    <model name="ExoCARDSFlow">
       
 		
       <link name="upperArm">
@@ -10,7 +10,7 @@
         <self_collide>false</self_collide>
         
 			
-        <pose frame="">-2.240976671144455e-08 -0.16567986682428276 0.853373115053145 0.0 -0.0 0.0</pose>
+        <pose frame="">-3.356252247633137e-08 -0.16570084962282935 0.8534260577055737 0.0 -0.0 0.0</pose>
         
 			
         <inertial>
@@ -19,58 +19,34 @@
           <pose frame="">0.0 0.0 0.0 0 0 0</pose>
           
 				
-          <mass>0.03536504212638252</mass>
+          <mass>0.03536431430099476</mass>
           
 				
           <inertia>
             
 					
-            <ixx>0.026845035882294668</ixx>
+            <ixx>0.02684792567676507</ixx>
             
 					
-            <ixy>-1.318604248345956e-10</ixy>
+            <ixy>-1.9745297900053417e-10</ixy>
             
 					
-            <ixz>6.783242760377562e-12</ixz>
+            <ixz>1.0202369723710803e-11</ixz>
             
 					
-            <iyy>0.025874259211893173</iyy>
+            <iyy>0.025876924468843335</iyy>
             
 					
-            <iyz>0.00500014812985268</iyz>
+            <iyz>0.005000988732648084</iyz>
             
 					
-            <izz>0.0009965660278462003</izz>
+            <izz>0.000996791405731468</izz>
             
 				
           </inertia>
           
 			
         </inertial>
-        
-			
-        <collision name="upperArm_collision">
-          
-				
-          <geometry>
-            
-					
-            <mesh>
-              
-						
-              <uri>model://ExoSuitWithJoints/meshes/CAD/upperArm.stl</uri>
-              
-						
-              <scale>0.001 0.001 0.001</scale>
-              
-					
-            </mesh>
-            
-				
-          </geometry>
-          
-			
-        </collision>
         
 			
         <visual name="upperArm_visual">
@@ -82,7 +58,7 @@
             <mesh>
               
 						
-              <uri>model://ExoSuitWithJoints/meshes/CAD/upperArm.stl</uri>
+              <uri>model://ExoCARDSFlow/meshes/CAD/upperArm.stl</uri>
               
 						
               <scale>0.001 0.001 0.001</scale>
@@ -106,7 +82,7 @@
         <self_collide>false</self_collide>
         
 			
-        <pose frame="">-5.608839475596286e-07 -0.16567841251836699 0.5875119916651316 0.0 -0.0 0.0</pose>
+        <pose frame="">-7.634278854513504e-06 -0.19643755824883652 0.5886650892570865 0.0 -0.0 0.0</pose>
         
 			
         <inertial>
@@ -115,58 +91,34 @@
           <pose frame="">0.0 0.0 0.0 0 0 0</pose>
           
 				
-          <mass>0.03902820164643488</mass>
+          <mass>0.03901180069511051</mass>
           
 				
           <inertia>
             
 					
-            <ixx>0.014659823884627322</ixx>
+            <ixx>0.01514110708448775</ixx>
             
 					
-            <ixy>-3.390743006237429e-09</ixy>
+            <ixy>-6.145827691147466e-08</ixy>
             
 					
-            <ixz>1.1965954207271423e-10</ixz>
+            <ixz>1.6503103260046003e-09</ixz>
             
 					
-            <iyy>0.013588505917734103</iyy>
+            <iyy>0.013630981967834549</iyy>
             
 					
-            <iyz>0.0037989213066962047</iyz>
+            <iyz>0.004493507997496178</iyz>
             
 					
-            <izz>0.0011177632190118936</izz>
+            <izz>0.0015565630117726085</izz>
             
 				
           </inertia>
           
 			
         </inertial>
-        
-			
-        <collision name="lowerArm_collision">
-          
-				
-          <geometry>
-            
-					
-            <mesh>
-              
-						
-              <uri>model://ExoSuitWithJoints/meshes/CAD/lowerArm.stl</uri>
-              
-						
-              <scale>0.001 0.001 0.001</scale>
-              
-					
-            </mesh>
-            
-				
-          </geometry>
-          
-			
-        </collision>
         
 			
         <visual name="lowerArm_visual">
@@ -178,7 +130,7 @@
             <mesh>
               
 						
-              <uri>model://ExoSuitWithJoints/meshes/CAD/lowerArm.stl</uri>
+              <uri>model://ExoCARDSFlow/meshes/CAD/lowerArm.stl</uri>
               
 						
               <scale>0.001 0.001 0.001</scale>
@@ -202,7 +154,7 @@
         <self_collide>false</self_collide>
         
 			
-        <pose frame="">-7.908049805587664e-07 -0.16397633036233888 1.0812802560574826 0.0 -0.0 0.0</pose>
+        <pose frame="">1.316289929129686e-07 -0.1639802475924226 1.0812798666063754 0.0 -0.0 0.0</pose>
         
 			
         <inertial>
@@ -211,58 +163,34 @@
           <pose frame="">0.0 0.0 0.0 0 0 0</pose>
           
 				
-          <mass>0.01630269246947046</mass>
+          <mass>0.01630377495379141</mass>
           
 				
           <inertia>
             
 					
-            <ixx>0.01951556850284794</ixx>
+            <ixx>0.019516873558131056</ixx>
             
 					
-            <ixy>-1.996650781488363e-09</ixy>
+            <ixy>3.414451968386523e-10</ixy>
             
 					
-            <ixz>1.372222180480165e-10</ixz>
+            <ixz>-2.2937835697955935e-11</ixz>
             
 					
-            <iyy>0.0190772047324457</iyy>
+            <iyy>0.019078455358144043</iyy>
             
 					
-            <iyz>0.0028905394265482656</iyz>
+            <iyz>0.002890798511049296</iyz>
             
 					
-            <izz>0.000464974260053929</izz>
+            <izz>0.0004650260272225621</izz>
             
 				
           </inertia>
           
 			
         </inertial>
-        
-			
-        <collision name="shoulder_collision">
-          
-				
-          <geometry>
-            
-					
-            <mesh>
-              
-						
-              <uri>model://ExoSuitWithJoints/meshes/CAD/shoulder.stl</uri>
-              
-						
-              <scale>0.001 0.001 0.001</scale>
-              
-					
-            </mesh>
-            
-				
-          </geometry>
-          
-			
-        </collision>
         
 			
         <visual name="shoulder_visual">
@@ -274,7 +202,7 @@
             <mesh>
               
 						
-              <uri>model://ExoSuitWithJoints/meshes/CAD/shoulder.stl</uri>
+              <uri>model://ExoCARDSFlow/meshes/CAD/shoulder.stl</uri>
               
 						
               <scale>0.001 0.001 0.001</scale>
@@ -292,85 +220,22 @@
       </link>
       
 		
-      <joint name="shoulder_joint" type="revolute">
+      <joint name="offset" type="fixed">
         
 			
-        <parent>shoulder</parent>
+        <parent>world</parent>
         
 			
-        <child>upperArm</child>
-        
-			
-        <pose frame="">2.240976671144455e-08 0.0016996682733554636 0.2031406216700492 0 0 0</pose>
-        
-			
-        <axis>
-          
-				
-          <xyz>0.0 1.0 0.0</xyz>
-          
-				
-          <limit>
-            
-					
-            <lower>0.0</lower>
-            
-					
-            <upper>0.0</upper>
-            
-				
-          </limit>
-          
-				
-          <use_parent_model_frame>0</use_parent_model_frame>
-          
-			
-        </axis>
+        <child>shoulder</child>
         
 		
       </joint>
       
 		
-      <joint name="elbow" type="revolute">
-        
-			
-        <parent>upperArm</parent>
-        
-			
-        <child>lowerArm</child>
-        
-			
-        <pose frame="">5.608839475596638e-07 -1.7860325603535898e-06 0.1820017450580356 0 0 0</pose>
-        
-			
-        <axis>
-          
-				
-          <xyz>2.064988378536746e-17 -1.0 -7.16436763573328e-33</xyz>
-          
-				
-          <limit>
-            
-					
-            <lower>0.0</lower>
-            
-					
-            <upper>0.0</upper>
-            
-				
-          </limit>
-          
-				
-          <use_parent_model_frame>0</use_parent_model_frame>
-          
-			
-        </axis>
-        
-		
-      </joint>
+      <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
       
 		
-      <plugin filename="libcardsflow_gazebo_plugin.so" name="cardsflow_gazebo_plugin"/>
+      <muscles>model://ExoCARDSFlow/muscles.osim</muscles>
       
 	
       <pose frame="">-0.007648 -0.001248 -0.100006 0 -0 0</pose>
@@ -1501,7 +1366,7 @@
     
       </joint>
       
-    <!--
+    
       <joint name="r_shoulder" type="revolute">
         
       
@@ -1597,7 +1462,7 @@
     
       </joint>
       
-    -->
+    
       <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
       
     
