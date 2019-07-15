@@ -1,0 +1,5 @@
+joint_names: ['r_shoulder', 'r_elbow']
+endeffectors: ['r_ulna_radius_hand']
+r_ulna_radius_hand:
+  base_link: 'base'
+  joints: ['r_shoulder', 'r_elbow']

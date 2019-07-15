@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <model name="CARDSFlowExo">
-      <muscles>model://CARDSFlowExo/muscles.osim</muscles> -->
+      <!-- <muscles>model://CARDSFlowExo/muscles.osim</muscles> -->
       <link name="base">
         <pose frame="">0.0 0.0 0.8 1.5708 0.0 0.0</pose>
         <inertial>
@@ -20,7 +20,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/ground_ribs.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/ground_ribs.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -29,7 +29,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/ground_spine.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/ground_spine.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -38,7 +38,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/ground_skull.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/ground_skull.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -47,7 +47,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/ground_jaw.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/ground_jaw.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -56,7 +56,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/ground_r_clavicle.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/ground_r_clavicle.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -65,7 +65,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/ground_r_scapula.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/ground_r_scapula.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -89,7 +89,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_humerus.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_humerus.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -113,7 +113,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_ulna.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_ulna.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -122,7 +122,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_radius.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_radius.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -131,7 +131,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_lunate.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_lunate.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -140,7 +140,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_scaphoid.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_scaphoid.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -149,7 +149,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_pisiform.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_pisiform.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -158,7 +158,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_triquetrum.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_triquetrum.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -167,7 +167,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_capitate.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_capitate.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -176,7 +176,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_trapezium.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_trapezium.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -185,7 +185,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_trapezoid.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_trapezoid.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -194,7 +194,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_hamate.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_hamate.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -203,7 +203,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_1mc.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_1mc.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -212,7 +212,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_2mc.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_2mc.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -221,7 +221,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_3mc.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_3mc.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -230,7 +230,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_4mc.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_4mc.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -239,7 +239,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_5mc.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_5mc.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -248,7 +248,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_thumbprox.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_thumbprox.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -257,7 +257,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_thumbdist.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_thumbdist.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -266,7 +266,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_2proxph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_2proxph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -275,7 +275,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_2midph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_2midph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -284,7 +284,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_2distph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_2distph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -293,7 +293,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_3proxph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_3proxph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -302,7 +302,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_3midph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_3midph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -311,7 +311,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_3distph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_3distph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -320,7 +320,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_4proxph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_4proxph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -329,7 +329,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_4midph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_4midph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -338,7 +338,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_4distph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_4distph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -347,7 +347,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_5proxph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_5proxph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -356,7 +356,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_5midph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_5midph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -365,7 +365,7 @@
           <pose> -0 0 -0 0 0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://arm26/meshes/visuals/arm_r_5distph.dae</uri>
+              <uri>model://CARDSFlowExo/meshes/visuals/arm_r_5distph.dae</uri>
               <scale> 1 1 1</scale>
             </mesh>
           </geometry>
@@ -375,6 +375,78 @@
         <parent>world</parent>
         <child>base</child>
       </joint>
+      <link name="upperArm">
+        <self_collide>false</self_collide>
+        <pose frame="">-3.356252247633137e-08 -0.16570084962282935 0.6534260577055737 0.0 -0.0 0.0</pose>
+        <inertial>
+          <pose frame="">0.0 0.0 0.0 0 0 0</pose>
+          <mass>0.03536431430099476</mass>
+          <inertia>
+            <ixx>0.02684792567676507</ixx>
+            <ixy>-1.9745297900053417e-10</ixy>
+            <ixz>1.0202369723710803e-11</ixz>
+            <iyy>0.025876924468843335</iyy>
+            <iyz>0.005000988732648084</iyz>
+            <izz>0.000996791405731468</izz>
+          </inertia>
+        </inertial>
+        <visual name="upperArm_visual">
+          <geometry>
+            <mesh>
+              <uri>model://CARDSFlowExo/meshes/CAD/upperArm.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <link name="lowerArm">
+        <self_collide>false</self_collide>
+        <pose frame="">-7.634278854513504e-06 -0.19643755824883652 0.3886650892570865 0.0 -0.0 0.0</pose>
+        <inertial>
+          <pose frame="">0.0 0.0 0.0 0 0 0</pose>
+          <mass>0.03901180069511051</mass>
+          <inertia>
+            <ixx>0.01514110708448775</ixx>
+            <ixy>-6.145827691147466e-08</ixy>
+            <ixz>1.6503103260046003e-09</ixz>
+            <iyy>0.013630981967834549</iyy>
+            <iyz>0.004493507997496178</iyz>
+            <izz>0.0015565630117726085</izz>
+          </inertia>
+        </inertial>
+        <visual name="lowerArm_visual">
+          <geometry>
+            <mesh>
+              <uri>model://CARDSFlowExo/meshes/CAD/lowerArm.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <link name="shoulder">
+        <self_collide>false</self_collide>
+        <pose frame="">1.316289929129686e-07 -0.1639802475924226 0.8812798666063754 0.0 -0.0 0.0</pose>
+        <inertial>
+          <pose frame="">0.0 0.0 0.0 0 0 0</pose>
+          <mass>0.01630377495379141</mass>
+          <inertia>
+            <ixx>0.019516873558131056</ixx>
+            <ixy>3.414451968386523e-10</ixy>
+            <ixz>-2.2937835697955935e-11</ixz>
+            <iyy>0.019078455358144043</iyy>
+            <iyz>0.002890798511049296</iyz>
+            <izz>0.0004650260272225621</izz>
+          </inertia>
+        </inertial>
+        <visual name="shoulder_visual">
+          <geometry>
+            <mesh>
+              <uri>model://CARDSFlowExo/meshes/CAD/shoulder.stl</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
       <joint name="r_shoulder" type="revolute">
         <parent>base</parent>
         <child>r_humerus</child>
@@ -407,78 +479,6 @@
           </limit>
         </axis>
       </joint>
-      <link name="upperArm">
-        <self_collide>false</self_collide>
-        <pose frame="">-3.356252247633137e-08 -0.16570084962282935 0.6534260577055737 0.0 -0.0 0.0</pose>
-        <inertial>
-          <pose frame="">0.0 0.0 0.0 0 0 0</pose>
-          <mass>0.03536431430099476</mass>
-          <inertia>
-            <ixx>0.02684792567676507</ixx>
-            <ixy>-1.9745297900053417e-10</ixy>
-            <ixz>1.0202369723710803e-11</ixz>
-            <iyy>0.025876924468843335</iyy>
-            <iyz>0.005000988732648084</iyz>
-            <izz>0.000996791405731468</izz>
-          </inertia>
-        </inertial>
-        <visual name="upperArm_visual">
-          <geometry>
-            <mesh>
-              <uri>model://ExoCARDSFlow/meshes/CAD/upperArm.stl</uri>
-              <scale>0.001 0.001 0.001</scale>
-            </mesh>
-          </geometry>
-        </visual>
-      </link>
-      <link name="lowerArm">
-        <self_collide>false</self_collide>
-        <pose frame="">-7.634278854513504e-06 -0.19643755824883652 0.3886650892570865 0.0 -0.0 0.0</pose>
-        <inertial>
-          <pose frame="">0.0 0.0 0.0 0 0 0</pose>
-          <mass>0.03901180069511051</mass>
-          <inertia>
-            <ixx>0.01514110708448775</ixx>
-            <ixy>-6.145827691147466e-08</ixy>
-            <ixz>1.6503103260046003e-09</ixz>
-            <iyy>0.013630981967834549</iyy>
-            <iyz>0.004493507997496178</iyz>
-            <izz>0.0015565630117726085</izz>
-          </inertia>
-        </inertial>
-        <visual name="lowerArm_visual">
-          <geometry>
-            <mesh>
-              <uri>model://ExoCARDSFlow/meshes/CAD/lowerArm.stl</uri>
-              <scale>0.001 0.001 0.001</scale>
-            </mesh>
-          </geometry>
-        </visual>
-      </link>
-      <link name="shoulder">
-        <self_collide>false</self_collide>
-        <pose frame="">1.316289929129686e-07 -0.1639802475924226 0.8812798666063754 0.0 -0.0 0.0</pose>
-        <inertial>
-          <pose frame="">0.0 0.0 0.0 0 0 0</pose>
-          <mass>0.01630377495379141</mass>
-          <inertia>
-            <ixx>0.019516873558131056</ixx>
-            <ixy>3.414451968386523e-10</ixy>
-            <ixz>-2.2937835697955935e-11</ixz>
-            <iyy>0.019078455358144043</iyy>
-            <iyz>0.002890798511049296</iyz>
-            <izz>0.0004650260272225621</izz>
-          </inertia>
-        </inertial>
-        <visual name="shoulder_visual">
-          <geometry>
-            <mesh>
-              <uri>model://ExoCARDSFlow/meshes/CAD/shoulder.stl</uri>
-              <scale>0.001 0.001 0.001</scale>
-            </mesh>
-          </geometry>
-        </visual>
-      </link>
       <joint name="base_shoulder" type="fixed">
         <parent>base</parent>
         <child>shoulder</child>
@@ -530,7 +530,8 @@
           </ode>
         </physics>
       </joint>
-      <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
+      <!-- <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/> -->
+      <plugin filename="libcardsflow_gazebo_plugin.so" name="cardsflow_gazebo_plugin"/>
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
   </model>

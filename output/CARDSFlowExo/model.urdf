@@ -1,0 +1,314 @@
+<?xml version="1.0" ?>
+<robot name="CARDSFlowExo">
+  <joint name="r_shoulder" type="revolute">
+    <parent link="base"/>
+    <child link="r_humerus"/>
+    <origin rpy="1.5708  0      0" xyz="-0.01754 -0.17     0.793"/>
+    <axis xyz="0  0  1"/>
+    <limit effort="0.0" lower="-1.57079633" upper="3.14159265" velocity="0.0"/>
+  </joint>
+  <joint name="r_elbow" type="revolute">
+    <parent link="r_humerus"/>
+    <child link="r_ulna_radius_hand"/>
+    <origin rpy="0  0  0" xyz="0.0061  -0.2904  -0.01229"/>
+    <axis xyz="0  0  1"/>
+    <limit effort="0.0" lower="0.0" upper="2.26892803" velocity="0.0"/>
+  </joint>
+  <joint name="base_shoulder" type="fixed">
+    <parent link="base"/>
+    <child link="shoulder"/>
+    <origin rpy="0  0  0" xyz="0      -0.16398  0.88128"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="r_humerus_upperArm" type="fixed">
+    <parent link="r_humerus"/>
+    <child link="upperArm"/>
+    <origin rpy="-1.5708  0      0" xyz="0.01754 -0.13957 -0.00429"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <joint name="r_ulna_radius_hand_lowerArm" type="fixed">
+    <parent link="r_ulna_radius_hand"/>
+    <child link="lowerArm"/>
+    <origin rpy="-1.5708  0      0" xyz="0.01143 -0.11393  0.03873"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="0" lower="0" upper="0" velocity="0"/>
+  </joint>
+  <link name="base">
+    <inertial>
+      <mass value="0.0001"/>
+      <origin rpy="1.5708  0      0" xyz="0   0   0.8"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <visual name="ground_ribs">
+      <origin rpy="1.5708  0      0" xyz="0   0   0.8"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/ground_ribs.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="ground_spine">
+      <origin rpy="1.5708  0      0" xyz="0   0   0.8"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/ground_spine.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="ground_skull">
+      <origin rpy="1.5708  0      0" xyz="0   0   0.8"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/ground_skull.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="ground_jaw">
+      <origin rpy="1.5708  0      0" xyz="0   0   0.8"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/ground_jaw.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="ground_r_clavicle">
+      <origin rpy="1.5708  0      0" xyz="0   0   0.8"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/ground_r_clavicle.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="ground_r_scapula">
+      <origin rpy="1.5708  0      0" xyz="0   0   0.8"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/ground_r_scapula.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="r_humerus">
+    <inertial>
+      <mass value="1.864572"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.01481" ixy="0" ixz="0" iyy="0.004551" iyz="0" izz="0.013193"/>
+    </inertial>
+    <visual name="arm_r_humerus">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_humerus.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="r_ulna_radius_hand">
+    <inertial>
+      <mass value="1.534315"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.019281" ixy="0" ixz="0" iyy="0.001571" iyz="0" izz="0.020062"/>
+    </inertial>
+    <visual name="arm_r_ulna">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_ulna.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_radius">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_radius.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_lunate">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_lunate.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_scaphoid">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_scaphoid.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_pisiform">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_pisiform.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_triquetrum">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_triquetrum.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_capitate">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_capitate.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_trapezium">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_trapezium.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_trapezoid">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_trapezoid.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_hamate">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_hamate.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_1mc">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_1mc.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_2mc">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_2mc.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_3mc">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_3mc.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_4mc">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_4mc.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_5mc">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_5mc.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_thumbprox">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_thumbprox.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_thumbdist">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_thumbdist.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_2proxph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_2proxph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_2midph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_2midph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_2distph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_2distph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_3proxph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_3proxph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_3midph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_3midph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_3distph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_3distph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_4proxph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_4proxph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_4midph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_4midph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_4distph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_4distph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_5proxph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_5proxph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_5midph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_5midph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="arm_r_5distph">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/visuals/arm_r_5distph.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="upperArm">
+    <inertial>
+      <mass value="0.03536431430099476"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.02684792567676507" ixy="-1.9745297900053417e-10" ixz="1.0202369723710803e-11" iyy="0.025876924468843335" iyz="0.005000988732648084" izz="0.000996791405731468"/>
+    </inertial>
+    <visual name="upperArm_visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/CAD/upperArm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="lowerArm">
+    <inertial>
+      <mass value="0.03901180069511051"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.01514110708448775" ixy="-6.145827691147466e-08" ixz="1.6503103260046003e-09" iyy="0.013630981967834549" iyz="0.004493507997496178" izz="0.0015565630117726085"/>
+    </inertial>
+    <visual name="lowerArm_visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/CAD/lowerArm.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="shoulder">
+    <inertial>
+      <mass value="0.01630377495379141"/>
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <inertia ixx="0.019516873558131056" ixy="3.414451968386523e-10" ixz="-2.2937835697955935e-11" iyy="0.019078455358144043" iyz="0.002890798511049296" izz="0.0004650260272225621"/>
+    </inertial>
+    <visual name="shoulder_visual">
+      <origin rpy="0  0  0" xyz="0  0  0"/>
+      <geometry>
+        <mesh filename="package://robots/CARDSFlowExo/meshes/CAD/shoulder.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>
