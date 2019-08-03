@@ -125,115 +125,115 @@ namespace gazebo {
                 ss << "num muscles: " << muscles.getSize() << std::endl;
                 ROS_INFO("%s", ss.str().c_str());
 
-                // Attach Umberger2010 probes to record individual heat rate and mechanical
-                // power components at each point in time for muscle1.
-                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerActMaint_rate[muscles.getSize()];
-                try {
-                    for (int i = 0; i < muscles.getSize(); i++) {
-                        umbergerActMaint_rate[i] = new
-                                OpenSim::Umberger2010MuscleMetabolicsProbe(true, false, false, false);
-                        o_model->addProbe(umbergerActMaint_rate[i]);
-                        std::stringstream name;
-                        name << "umbergerActMaint_rate_m" << i;
-                        umbergerActMaint_rate[i]->setName(name.str());
-                        umbergerActMaint_rate[i]->setOperation("value");
-                        umbergerActMaint_rate[i]->addMuscle(muscles[i].getName(), 0.5);
-                        ss.str("");
-                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "activation and maintenance heat rate (" << muscles[i].getName() << ")";
-                        ROS_INFO("%s", ss.str().c_str());
-                    }
-                } catch (std::exception &e) {
-                    ROS_ERROR("Excpetion while attaching Activation and maintenance heat reate : %s", e.what());
-                    throw e;
-                }
-
-                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerShorten_rate[muscles.getSize()];
-                try {
-                    for (int i = 0; i < muscles.getSize(); i++) {
-                        umbergerShorten_rate[i] = new
-                                OpenSim::Umberger2010MuscleMetabolicsProbe(false, true, false, false);
-                        o_model->addProbe(umbergerShorten_rate[i]);
-                        std::stringstream name;
-                        name << "umbergerShorten_rate_m" << i;
-                        umbergerShorten_rate[i]->setName(name.str());
-                        umbergerShorten_rate[i]->setOperation("value");
-                        umbergerShorten_rate[i]->addMuscle(muscles[i].getName(), 0.5);
-                        ss.str("");
-                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "shortening and lengthening heat rate (" << muscles[i].getName() << ")";
-                        ROS_DEBUG("%s", ss.str().c_str());
-                    }
-                } catch (std::exception &e) {
-                    ROS_ERROR("Excpetion while attaching shortening and lengthening heat rate : %s", e.what());
-                    throw e;
-                }
-
-
-                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerBasal_rate[muscles.getSize()];
-                try {
-                    for (int i = 0; i < muscles.getSize(); i++) {
-                        umbergerBasal_rate[i] = new
-                                OpenSim::Umberger2010MuscleMetabolicsProbe(false, false, true, false);
-                        o_model->addProbe(umbergerBasal_rate[i]);
-                        std::stringstream name;
-                        name << "umbergerBasal_rate_m" << i;
-                        umbergerBasal_rate[i]->setName(name.str());
-                        umbergerBasal_rate[i]->setOperation("value");
-                        umbergerBasal_rate[i]->addMuscle(muscles[i].getName(), 0.5);
-                        ss.str("");
-                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "basal heat rate (" << muscles[i].getName() << ")";
-                        ROS_DEBUG("%s", ss.str().c_str());
-                    }
-                } catch (std::exception &e) {
-                    ROS_ERROR("Excpetion while attaching basal heat rate : %s", e.what());
-                    throw e;
-                }
-
-                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerMechWork_rate[muscles.getSize()];
-                try {
-                    for (int i = 0; i < muscles.getSize(); i++) {
-                        umbergerMechWork_rate[i] = new
-                                OpenSim::Umberger2010MuscleMetabolicsProbe(false, false, false, true);
-                        o_model->addProbe(umbergerMechWork_rate[i]);
-                        std::stringstream name;
-                        name << "umbergerMechWork_rate_m" << i;
-                        umbergerMechWork_rate[i]->setName(name.str());
-                        umbergerMechWork_rate[i]->setOperation("value");
-                        umbergerMechWork_rate[i]->addMuscle(muscles[i].getName(), 0.5);
-                        ss.str("");
-                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "mechanical power (" << muscles[i].getName() << ")";
-                        ROS_DEBUG("%s", ss.str().c_str());
-                    }
-                } catch (std::exception &e) {
-                    ROS_ERROR("Excpetion while attaching mechanical power : %s", e.what());
-                    throw e;
-                }
-
-                // Attach Umberger2010 probe to record total rate of energy liberation at
-                // each point in time for muscle1.
-                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerTotal_rate[muscles.getSize()];
-                try {
-                    for (int i = 0; i < muscles.getSize(); i++) {
-                        umbergerTotal_rate[i] = new
-                                OpenSim::Umberger2010MuscleMetabolicsProbe(true, true, true, true);
-                        o_model->addProbe(umbergerTotal_rate[i]);
-                        std::stringstream name;
-                        name << "umbergerTotal_rate_m" << i;
-                        umbergerTotal_rate[i]->setName(name.str());
-                        umbergerTotal_rate[i]->setOperation("value");
-                        umbergerTotal_rate[i]->addMuscle(muscles[i].getName(), 0.5);
-                        ss.str("");
-                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
-                           << "total rate of energy liberation (" << muscles[i].getName() << ")";
-                        ROS_DEBUG("%s", ss.str().c_str());
-                    }
-                } catch (std::exception &e) {
-                    ROS_ERROR("Excpetion while attaching total rate of energy liberation : %s", e.what());
-                    throw e;
-                }
+//                // Attach Umberger2010 probes to record individual heat rate and mechanical
+//                // power components at each point in time for muscle1.
+//                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerActMaint_rate[muscles.getSize()];
+//                try {
+//                    for (int i = 0; i < muscles.getSize(); i++) {
+//                        umbergerActMaint_rate[i] = new
+//                                OpenSim::Umberger2010MuscleMetabolicsProbe(true, false, false, false);
+//                        o_model->addProbe(umbergerActMaint_rate[i]);
+//                        std::stringstream name;
+//                        name << "umbergerActMaint_rate_m" << i;
+//                        umbergerActMaint_rate[i]->setName(name.str());
+//                        umbergerActMaint_rate[i]->setOperation("value");
+//                        umbergerActMaint_rate[i]->addMuscle(muscles[i].getName(), 0.5);
+//                        ss.str("");
+//                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
+//                           << "activation and maintenance heat rate (" << muscles[i].getName() << ")";
+//                        ROS_INFO("%s", ss.str().c_str());
+//                    }
+//                } catch (std::exception &e) {
+//                    ROS_ERROR("Excpetion while attaching Activation and maintenance heat reate : %s", e.what());
+//                    throw e;
+//                }
+//
+//                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerShorten_rate[muscles.getSize()];
+//                try {
+//                    for (int i = 0; i < muscles.getSize(); i++) {
+//                        umbergerShorten_rate[i] = new
+//                                OpenSim::Umberger2010MuscleMetabolicsProbe(false, true, false, false);
+//                        o_model->addProbe(umbergerShorten_rate[i]);
+//                        std::stringstream name;
+//                        name << "umbergerShorten_rate_m" << i;
+//                        umbergerShorten_rate[i]->setName(name.str());
+//                        umbergerShorten_rate[i]->setOperation("value");
+//                        umbergerShorten_rate[i]->addMuscle(muscles[i].getName(), 0.5);
+//                        ss.str("");
+//                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
+//                           << "shortening and lengthening heat rate (" << muscles[i].getName() << ")";
+//                        ROS_DEBUG("%s", ss.str().c_str());
+//                    }
+//                } catch (std::exception &e) {
+//                    ROS_ERROR("Excpetion while attaching shortening and lengthening heat rate : %s", e.what());
+//                    throw e;
+//                }
+//
+//
+//                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerBasal_rate[muscles.getSize()];
+//                try {
+//                    for (int i = 0; i < muscles.getSize(); i++) {
+//                        umbergerBasal_rate[i] = new
+//                                OpenSim::Umberger2010MuscleMetabolicsProbe(false, false, true, false);
+//                        o_model->addProbe(umbergerBasal_rate[i]);
+//                        std::stringstream name;
+//                        name << "umbergerBasal_rate_m" << i;
+//                        umbergerBasal_rate[i]->setName(name.str());
+//                        umbergerBasal_rate[i]->setOperation("value");
+//                        umbergerBasal_rate[i]->addMuscle(muscles[i].getName(), 0.5);
+//                        ss.str("");
+//                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
+//                           << "basal heat rate (" << muscles[i].getName() << ")";
+//                        ROS_DEBUG("%s", ss.str().c_str());
+//                    }
+//                } catch (std::exception &e) {
+//                    ROS_ERROR("Excpetion while attaching basal heat rate : %s", e.what());
+//                    throw e;
+//                }
+//
+//                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerMechWork_rate[muscles.getSize()];
+//                try {
+//                    for (int i = 0; i < muscles.getSize(); i++) {
+//                        umbergerMechWork_rate[i] = new
+//                                OpenSim::Umberger2010MuscleMetabolicsProbe(false, false, false, true);
+//                        o_model->addProbe(umbergerMechWork_rate[i]);
+//                        std::stringstream name;
+//                        name << "umbergerMechWork_rate_m" << i;
+//                        umbergerMechWork_rate[i]->setName(name.str());
+//                        umbergerMechWork_rate[i]->setOperation("value");
+//                        umbergerMechWork_rate[i]->addMuscle(muscles[i].getName(), 0.5);
+//                        ss.str("");
+//                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
+//                           << "mechanical power (" << muscles[i].getName() << ")";
+//                        ROS_DEBUG("%s", ss.str().c_str());
+//                    }
+//                } catch (std::exception &e) {
+//                    ROS_ERROR("Excpetion while attaching mechanical power : %s", e.what());
+//                    throw e;
+//                }
+//
+//                // Attach Umberger2010 probe to record total rate of energy liberation at
+//                // each point in time for muscle1.
+//                OpenSim::Umberger2010MuscleMetabolicsProbe *umbergerTotal_rate[muscles.getSize()];
+//                try {
+//                    for (int i = 0; i < muscles.getSize(); i++) {
+//                        umbergerTotal_rate[i] = new
+//                                OpenSim::Umberger2010MuscleMetabolicsProbe(true, true, true, true);
+//                        o_model->addProbe(umbergerTotal_rate[i]);
+//                        std::stringstream name;
+//                        name << "umbergerTotal_rate_m" << i;
+//                        umbergerTotal_rate[i]->setName(name.str());
+//                        umbergerTotal_rate[i]->setOperation("value");
+//                        umbergerTotal_rate[i]->addMuscle(muscles[i].getName(), 0.5);
+//                        ss.str("");
+//                        ss << std::setw(w) << ++probeCounter << ") Added Umberger2010 probe: "
+//                           << "total rate of energy liberation (" << muscles[i].getName() << ")";
+//                        ROS_DEBUG("%s", ss.str().c_str());
+//                    }
+//                } catch (std::exception &e) {
+//                    ROS_ERROR("Excpetion while attaching total rate of energy liberation : %s", e.what());
+//                    throw e;
+//                }
 
                 // Attach Umberger2010 probes to record total energy liberation over the
                 // entire simulation for (a) muscle1, (b) muscle2, (c) total for both

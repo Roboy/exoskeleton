@@ -7,7 +7,7 @@ from gazebo_msgs.srv import GetWorldProperties
 from std_msgs.msg import Float64
 
 
-def main():
+def main(mult_rate=1):
     control_data = []
     with open("../resource/raw_arm26_controls.csv") as control_csv:
         control_line = csv.DictReader(control_csv, delimiter="\t")
@@ -49,12 +49,15 @@ def main():
                 rate.sleep()
 
         print "publishing data for ", data["time"]
-        pub_BIClong.publish(float(data["BIClong"]))
-        pub_BICshort.publish(float(data["BICshort"]))
-        pub_BRA.publish(float(data["BRA"]))
-        pub_TRIlat.publish(float(data["TRIlat"]))
-        pub_TRIlong.publish(float(data["TRIlong"]))
-        pub_TRImed.publish(float(data["TRImed"]))
+        pub_BIClong.publish(float(data["BIClong"]) * mult_rate)
+        pub_BICshort.publish(float(data["BICshort"]) * mult_rate)
+        pub_BRA.publish(float(data["BRA"]) * mult_rate)
+        pub_TRIlat.publish(float(data["TRIlat"]) * mult_rate)
+        pub_TRIlong.publish(float(data["TRIlong"]) * mult_rate)
+        pub_TRImed.publish(float(data["TRImed"]) * mult_rate)
+
+    print "finished the set"
+
 
 
 if __name__ == "__main__":
