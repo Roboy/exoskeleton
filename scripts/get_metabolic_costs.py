@@ -1,22 +1,21 @@
 #!/usr/bin/env python
 
-from roboy_simulation_msgs.srv import GetMetabCsv
-import rospy
 from os import listdir
 import random
 
 
-def get_metab_csv(req):
-    possible_files = listdir("../data")
-    return possible_files[random.randint(0, len(possible_files))]
+def get_random_metab_csv_from_dir(metab_dir):
+    possible_files = listdir(metab_dir)
+    randint = random.randint(0, len(possible_files) - 1)
+    try:
+        files = possible_files[randint]
+    except IndexError as ex:
+        print "Caught IndexError while get file"
+        print "len(possible_files): ", len(possible_files)
+        print "randint: ", randint
+        exit(1)
+    return files
 
 
-def get_metab_server():
-    rospy.init_node('get_metab_csv_server')
-    s = rospy.Service('get_metab_csv', GetMetabCsv, get_metab_csv)
-    print "Ready to return file paths."
-    rospy.spin()
-
-
-if __name__ == "__main__":
-    get_metab_server()
+def get_random_metab_csv():
+    return "../data/" + get_random_metab_csv_from_dir("../data")

@@ -73,12 +73,12 @@ def get_metab_data(file_name):
 
 def get_fitness(file_name):
     """
-    calculating the mean of all time series means of one time series file
+    calculating the mean and the max of all time series means of one time series file
     :param file_name: the file
-    :return: the mean of all means
+    :return: a tuple of mean and max
     """
     sim_timestamp, data = get_metab_data(file_name)
-    return np.mean(np.mean(data))
+    return np.mean(np.mean(data)), np.max(np.max(data))
 
 
 if __name__ == "__main__":
