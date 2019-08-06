@@ -4,6 +4,12 @@ from metab_cost_to_fitness import get_fitness
 from get_metabolic_costs import get_random_metab_csv
 import numpy as np
 import matplotlib.pyplot as plt
+from metab_to_csv import file_name
+import rospy
+from roboy_simulation_msgs.srv import FloatToMetab, TestStatus
+
+set_test = None
+running_test = None
 
 
 def evaluate(individual):
@@ -13,7 +19,18 @@ def evaluate(individual):
     :param individual: a list of floats
     :return: a tuple containing the mean and the max value of the given metabolic costs
     """
-    return get_fitness(get_random_metab_csv())
+    global set_test
+    global running_test
+    rospy.loginfo("sent test instructions")
+    set_test(individual)
+    rospy.sleep(1)
+    test_flag = running_test()
+    while test_flag.running_test:
+        rospy.sleep(1)
+        test_flag = running_test()
+        rospy.loginfo("test not finished yet, test_flag: %s", test_flag)
+    rospy.loginfo("test finished, grab fitness now")
+    return get_fitness(file_name)
 
 
 def check_bounds(min, max):
@@ -23,6 +40,7 @@ def check_bounds(min, max):
     :param max: upper bound
     :return: the decorator that is carrying about this task
     """
+
     def decorator(func):
         def wrapper(*args, **kargs):
             offspring = func(*args, **kargs)
@@ -45,14 +63,14 @@ def struct_opt():
     :return:
     """
     # number of floats in one individual
-    IND_SIZE = 20
+    IND_SIZE = 12  # 20
     # bounds of the uniform distribution creating the float values for the individuals
-    START = -0.025
-    STOP = 0.025
+    START = 0.0  # -0.025
+    STOP = 1.0  # 0.025
     # number of generations that should be created
-    NGEN = 50
+    NGEN = 1
     # CXPB  is the probability with which two individuals are crossed
-    CXPB  = 0.5
+    CXPB = 0.5
     # MUTPB is the probability for mutating an individual
     MUTPB = 0.2
 
@@ -92,11 +110,11 @@ def struct_opt():
     stats.register("max", np.max, axis=0)
 
     # an initial population is defined
-    pop = toolbox.population(n=20)
+    pop = toolbox.population(n=2)
 
     # and finally a simple ea is used to find the best individual
     pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
-                        verbose=False)
+                                       verbose=False)
 
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
     gen = logbook.select("gen")
@@ -129,4 +147,7 @@ def struct_opt():
 
 
 if __name__ == "__main__":
+    rospy.init_node("structure_optimization")
+    set_test = rospy.ServiceProxy("sim_control/set_test", FloatToMetab)
+    running_test = rospy.ServiceProxy("sim_control/running_test", TestStatus)
     struct_opt()

@@ -1,0 +1,3 @@
+<launch>
+	<node name="metab_recorder" pkg="exoskeleton" type="metab_to_csv.py" output="screen" />
+</launch>
