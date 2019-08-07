@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from metab_to_csv import file_name
 import rospy
 from roboy_simulation_msgs.srv import FloatToMetab, TestStatus
+import pickle
 
 set_test = None
 running_test = None
@@ -68,7 +69,7 @@ def struct_opt():
     START = 0.0  # -0.025
     STOP = 1.0  # 0.025
     # number of generations that should be created
-    NGEN = 1
+    NGEN = 30
     # CXPB  is the probability with which two individuals are crossed
     CXPB = 0.5
     # MUTPB is the probability for mutating an individual
@@ -94,7 +95,7 @@ def struct_opt():
     # the mutate operation is defined as a gaussian mutation
     toolbox.register("mutate", tools.mutGaussian, mu=0, sigma=1, indpb=0.2)
     # the select operation is a selection tournamend with 3 individuals participating in each tournament
-    toolbox.register("select", tools.selTournament, tournsize=10)
+    toolbox.register("select", tools.selTournament, tournsize=3)
     # the evaluate functions gets registered
     toolbox.register("evaluate", evaluate)
 
@@ -110,13 +111,17 @@ def struct_opt():
     stats.register("max", np.max, axis=0)
 
     # an initial population is defined
-    pop = toolbox.population(n=2)
+    pop = toolbox.population(n=5)
 
     # and finally a simple ea is used to find the best individual
     pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
                                        verbose=False)
-
+    with open("/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
+        pickle.dump(logbook, lb_file)
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
+    #print_result(logbook)
+
+def print_result(logbook):
     gen = logbook.select("gen")
     fit_maxs = logbook.select("max")
     fit_avgs = logbook.select("avg")

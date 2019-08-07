@@ -68,7 +68,7 @@ def get_metab_server():
     uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
     roslaunch.configure_logging(uuid)
     launch = roslaunch.parent.ROSLaunchParent(uuid, [
-        "/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"])
+        "/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"])
     r = rospy.Rate(5)
     print "straight into while loop"
     activation_duration = 1
@@ -84,7 +84,7 @@ def get_metab_server():
             stop_record = False
             launch.shutdown()
             launch = roslaunch.parent.ROSLaunchParent(uuid, [
-                "/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"])
+                "/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"])
             rospy.loginfo("stoped recording")
 
         if start_test:
@@ -116,7 +116,7 @@ def get_metab_server():
                     rospy.loginfo("set unactuated")
                     launch.shutdown()
                     launch = roslaunch.parent.ROSLaunchParent(uuid, [
-                        "/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"])
+                        "/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"])
                     rospy.loginfo("stoped recording")
                     running_test = False
                     test_stage = 0
