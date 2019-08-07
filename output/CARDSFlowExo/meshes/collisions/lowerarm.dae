@@ -3,10 +3,10 @@
   <asset>
     <contributor>
       <author>Blender User</author>
-      <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9</authoring_tool>
+      <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9d68b</authoring_tool>
     </contributor>
-    <created>2019-01-28T16:58:13</created>
-    <modified>2019-01-28T16:58:13</modified>
+    <created>2019-08-07T23:47:40</created>
+    <modified>2019-08-07T23:47:40</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -106,7 +106,7 @@
     <geometry id="Mesh_002-mesh" name="Mesh.002">
       <mesh>
         <source id="Mesh_002-mesh-positions">
-          <float_array id="Mesh_002-mesh-positions-array" count="24">0.012187 0.07863396 -0.05299395 0.012187 0.07863396 0.05389398 0.012187 0.164631 0.05389398 0.012187 0.164631 -0.05299395 0.08706796 0.07863396 -0.05299395 0.08706796 0.07863396 0.05389398 0.08706796 0.164631 0.05389398 0.08706796 0.164631 -0.05299395</float_array>
+          <float_array id="Mesh_002-mesh-positions-array" count="24">-35.07195 -55.8075 -91.17522 -35.07195 -55.8075 91.14951 -35.07195 55.80654 91.14951 -35.07195 55.80654 -91.17522 34.97988 -55.8075 -91.17522 34.97988 -55.8075 91.14951 34.97988 55.80654 91.14951 34.97988 55.80654 -91.17522</float_array>
           <technique_common>
             <accessor source="#Mesh_002-mesh-positions-array" count="8" stride="3">
               <param name="X" type="float"/>
