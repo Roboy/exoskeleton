@@ -44,6 +44,8 @@ def plot_costs(file_name, fig_cnt):
     plt.plot(sim_timestamp, umberger_total[3])
     plt.plot(sim_timestamp, umberger_total[4])
     plt.plot(sim_timestamp, umberger_total[5])
+    plt.xlabel("time (s)")
+    plt.ylabel("muscle metabolc power (J)")
 
 
 def get_metab_data(file_name):
@@ -82,10 +84,11 @@ def get_fitness(file_name):
 
 
 if __name__ == "__main__":
-    print "absolute mean"
-    print "act_3: ", get_fitness("../data/act_3.csv")
-    print "act_7: ", get_fitness("../data/act_7.csv")
-    print "act_10: ", get_fitness("../data/act_10.csv")
+    # print "absolute mean"
+    # print "act_3: ", get_fitness("../data/act_3.csv")
+    # print "act_7: ", get_fitness("../data/act_7.csv")
+    # print "act_10: ", get_fitness("../data/act_10.csv")
+    plot_costs("../data/act_10.csv", 1)
 
-    #plt.show()
+    plt.show()
 

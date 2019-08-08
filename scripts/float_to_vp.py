@@ -68,6 +68,17 @@ def vp_position(distance, radius, height, back=False):
     return y, x, z
 
 
+def lower_arm_vp(distance, radius, back=False, pos=1):
+    x = radius - distance
+    y = y_from_d(distance, radius)
+    p = np.matrix([x, y, 0, 1])
+    T_l = np.matrix([[1, np.sin(np.radians(pos * 15)), 0, 0], [0, np.cos(np.radians(pos * 15)), 0, 0], [0, np.sin(np.radians(pos * 15)), np.cos(np.radians(pos * 15)), 0.075], [0, 0, 0, 1]])
+    p_vp = T_l * p.transpose()
+    if back:
+        p_vp[1] = -p_vp[1]
+    return p_vp.item(1), p_vp.item(0), p_vp.item(2)
+
+
 def vps_to_xml(motor_vp):
     cardsflow_xml = ET.Element("cardsflow")
     for i in range(0, 8):
@@ -120,10 +131,10 @@ def distances_to_xml(distances):
     motor_vp[6].append(vp_position(distances[10], upper_arm_radius, upper_arm_sec_height, True))
     motor_vp[7].append(vp_position(distances[11], upper_arm_radius, upper_arm_sec_height, True))
 
-    motor_vp[4].append(vp_position(distances[12], lower_arm_radius, lower_arm_first_height))
-    motor_vp[5].append(vp_position(distances[13], lower_arm_radius, lower_arm_first_height))
-    motor_vp[6].append(vp_position(distances[14], lower_arm_radius, lower_arm_first_height, True))
-    motor_vp[7].append(vp_position(distances[15], lower_arm_radius, lower_arm_first_height, True))
+    motor_vp[4].append(lower_arm_vp(distances[12], lower_arm_radius, pos=-1))
+    motor_vp[5].append(lower_arm_vp(distances[13], lower_arm_radius))
+    motor_vp[6].append(lower_arm_vp(distances[14], lower_arm_radius, True, -1))
+    motor_vp[7].append(lower_arm_vp(distances[15], lower_arm_radius, True))
 
     vps_to_xml(motor_vp)
 

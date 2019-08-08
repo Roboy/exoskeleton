@@ -100,7 +100,7 @@ def muscle_activation_opt():
     # the evaluate functions gets registered
     toolbox.register("evaluate", evaluate_activation)
 
-    # the genetic operations are "decaroated" with a function keeping the float values of the individuals in the defined
+    # the genetic operations are "decorated" with a function keeping the float values of the individuals in the defined
     # bounds
     toolbox.decorate("mate", check_bounds(START, STOP))
     toolbox.decorate("mutate", check_bounds(START, STOP))
@@ -120,7 +120,8 @@ def muscle_activation_opt():
     with open("/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
         pickle.dump(logbook, lb_file)
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
-    #print_result(logbook)
+    # print_result(logbook)
+
 
 
 def print_result(logbook):
