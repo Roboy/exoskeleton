@@ -93,8 +93,6 @@ def vps_to_xml(motor_vp):
             lower_arm.set("name", "lowerArm")
             l_vp_1 = ET.SubElement(lower_arm, "viaPoint", {"type": "FIXPOINT"})
             l_vp_1.text = str(motor_vp[i][1][0]) + " " + str(motor_vp[i][1][1]) + " " + str(motor_vp[i][1][2])
-            l_vp_1 = ET.SubElement(lower_arm, "viaPoint", {"type": "FIXPOINT"})
-            l_vp_1.text = str(motor_vp[i][2][0]) + " " + str(motor_vp[i][2][1]) + " " + str(motor_vp[i][2][2])
 
     pretty_string = prettify(cardsflow_xml)
     with open("test_cardsflow.xml", "w") as output_file:
@@ -126,11 +124,6 @@ def distances_to_xml(distances):
     motor_vp[5].append(vp_position(distances[13], lower_arm_radius, lower_arm_first_height))
     motor_vp[6].append(vp_position(distances[14], lower_arm_radius, lower_arm_first_height, True))
     motor_vp[7].append(vp_position(distances[15], lower_arm_radius, lower_arm_first_height, True))
-
-    motor_vp[4].append(vp_position(distances[16], lower_arm_radius, lower_arm_sec_height))
-    motor_vp[5].append(vp_position(distances[17], lower_arm_radius, lower_arm_sec_height))
-    motor_vp[6].append(vp_position(distances[18], lower_arm_radius, lower_arm_sec_height, True))
-    motor_vp[7].append(vp_position(distances[19], lower_arm_radius, lower_arm_sec_height, True))
 
     vps_to_xml(motor_vp)
 

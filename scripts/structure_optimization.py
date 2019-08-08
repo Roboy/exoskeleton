@@ -8,12 +8,13 @@ from metab_to_csv import file_name
 import rospy
 from roboy_simulation_msgs.srv import FloatToMetab, TestStatus
 import pickle
+from float_to_vp import distances_to_xml
 
 set_test = None
 running_test = None
 
 
-def evaluate(individual):
+def evaluate_activation(individual):
     """
     Takes an individual and returns its fitness. Currently the according metabolic cost file is picked random, so the
     fitness value is random too.
@@ -58,9 +59,9 @@ def check_bounds(min, max):
     return decorator
 
 
-def struct_opt():
+def muscle_activation_opt():
     """
-    The structure optimization using a simple evolutionary algorithm from the DEAP framework.
+    The muscle activation optimization using a simple evolutionary algorithm from the DEAP framework.
     :return:
     """
     # number of floats in one individual
@@ -97,7 +98,7 @@ def struct_opt():
     # the select operation is a selection tournamend with 3 individuals participating in each tournament
     toolbox.register("select", tools.selTournament, tournsize=3)
     # the evaluate functions gets registered
-    toolbox.register("evaluate", evaluate)
+    toolbox.register("evaluate", evaluate_activation)
 
     # the genetic operations are "decaroated" with a function keeping the float values of the individuals in the defined
     # bounds
@@ -120,6 +121,7 @@ def struct_opt():
         pickle.dump(logbook, lb_file)
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
     #print_result(logbook)
+
 
 def print_result(logbook):
     gen = logbook.select("gen")
@@ -151,8 +153,84 @@ def print_result(logbook):
     plt.show()
 
 
+def evaluate_structure(individual):
+    """
+    Takes an individual and returns its fitness. Currently the according metabolic cost file is picked random, so the
+    fitness value is random too.
+    :param individual: a list of floats
+    :return: a tuple containing the mean and the max value of the given metabolic costs
+    """
+    # generate cardsflow
+    distances_to_xml(individual)
+    return 0
+
+
+def structure_optimization():
+    """
+    The muscle activation optimization using a simple evolutionary algorithm from the DEAP framework.
+    :return:
+    """
+    # number of floats in one individual
+    IND_SIZE = 16
+    # bounds of the uniform distribution creating the float values for the individuals
+    START = -0.025
+    STOP = 0.025
+    # number of generations that should be created
+    NGEN = 30
+    # CXPB  is the probability with which two individuals are crossed
+    CXPB = 0.5
+    # MUTPB is the probability for mutating an individual
+    MUTPB = 0.2
+
+    # first define the problem and the individuals
+    # we want to minimize the fitness values
+    creator.create("FitnessMin", base.Fitness, weights=(-1.0, -1.0))
+    # the individuals consist of a list of floats and we give it the above defined minimizer
+    creator.create("Individual", list, fitness=creator.FitnessMin)
+
+    # second a toolbox is created that describes the necessary steps of the ea algorithm
+    toolbox = base.Toolbox()
+    # the attributes of the individuals( a list) are floats and are created by a uniform distribution
+    toolbox.register("attr_float", random.uniform, START, STOP)
+    # the individual gets defined by adding the float attribute and the number of floats(IND_SIZE)
+    toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_float, n=IND_SIZE)
+    # the populations gets defined as a list of individuals
+    toolbox.register("population", tools.initRepeat, list, toolbox.individual)
+
+    # the mate operation is relized by the cxTwoPoint ooperation
+    toolbox.register("mate", tools.cxTwoPoint)
+    # the mutate operation is defined as a gaussian mutation
+    toolbox.register("mutate", tools.mutGaussian, mu=0, sigma=1, indpb=0.2)
+    # the select operation is a selection tournamend with 3 individuals participating in each tournament
+    toolbox.register("select", tools.selTournament, tournsize=3)
+    # the evaluate functions gets registered
+    toolbox.register("evaluate", evaluate_structure)
+
+    # the genetic operations are "decaroated" with a function keeping the float values of the individuals in the defined
+    # bounds
+    toolbox.decorate("mate", check_bounds(START, STOP))
+    toolbox.decorate("mutate", check_bounds(START, STOP))
+
+    # third, statistics get defined that will be used to evaluate the whole algorithm afterwards
+    stats = tools.Statistics(key=lambda ind: ind.fitness.values)
+    # since our fitness consists out of the mean and the max value, exactly those are the ones we are looking for
+    stats.register("avg", np.mean, axis=0)
+    stats.register("max", np.max, axis=0)
+
+    # an initial population is defined
+    pop = toolbox.population(n=5)
+
+    # and finally a simple ea is used to find the best individual
+    pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
+                                       verbose=False)
+    with open("/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
+        pickle.dump(logbook, lb_file)
+    # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
+    #print_result(logbook)
+
+
 if __name__ == "__main__":
     rospy.init_node("structure_optimization")
     set_test = rospy.ServiceProxy("sim_control/set_test", FloatToMetab)
     running_test = rospy.ServiceProxy("sim_control/running_test", TestStatus)
-    struct_opt()
+    muscle_activation_opt()
