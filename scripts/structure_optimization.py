@@ -10,9 +10,12 @@ from roboy_simulation_msgs.srv import FloatToMetab, TestStatus
 import pickle
 from float_to_vp import distances_to_xml
 from print_logbook import print_result
+from std_srvs.srv import Trigger
+from float_to_osim import update_osim, floats_to_path_points
 
 set_test = None
 running_test = None
+start_pure_osim_test = None
 
 
 def evaluate_activation(individual):
@@ -207,15 +210,16 @@ def evaluate_path_points(individual):
     :param individual: a list of floats
     :return: a tuple containing the mean and the max value of the given metabolic costs
     """
-    global set_test
+    global start_pure_osim_test
     global running_test
-    rospy.loginfo("sent test instructions")
-    # todo: change set_test
-    set_test(individual)
-    rospy.sleep(1)
+    update_osim("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/output/CARDSFlowExo/muscles.osim",
+                floats_to_path_points(individual))
+    start_pure_osim_test()
+    rospy.loginfo("started test")
+    rospy.sleep(1.0)
     test_flag = running_test()
     while test_flag.running_test:
-        rospy.sleep(1)
+        rospy.sleep(0.1)
         test_flag = running_test()
         rospy.loginfo("test not finished yet, test_flag: %s", test_flag)
     rospy.loginfo("test finished, grab fitness now")
@@ -272,7 +276,7 @@ def osim_path_point_opt():
     arm_min = 0.0
     arm_max = 0.05
     # number of generations that should be created
-    NGEN = 30
+    NGEN = 1
     # CXPB  is the probability with which two individuals are crossed
     CXPB = 0.5
     # MUTPB is the probability for mutating an individual
@@ -297,7 +301,7 @@ def osim_path_point_opt():
     # the mutate operation is defined as a gaussian mutation
     toolbox.register("mutate", tools.mutGaussian, mu=0, sigma=1, indpb=0.2)
     # the select operation is a selection tournamend with 3 individuals participating in each tournament
-    toolbox.register("select", tools.selTournament, tournsize=3)
+    toolbox.register("select", tools.selTournament, tournsize=2)
     # the evaluate functions gets registered
     toolbox.register("evaluate", evaluate_path_points)
 
@@ -313,7 +317,7 @@ def osim_path_point_opt():
     stats.register("max", np.max, axis=0)
 
     # an initial population is defined
-    pop = toolbox.population(n=5)
+    pop = toolbox.population(n=2)
 
     # and finally a simple ea is used to find the best individual
     pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
@@ -327,5 +331,6 @@ def osim_path_point_opt():
 if __name__ == "__main__":
     rospy.init_node("structure_optimization")
     set_test = rospy.ServiceProxy("sim_control/set_test", FloatToMetab)
+    start_pure_osim_test = rospy.ServiceProxy("sim_control/start_pure_osim_test", Trigger)
     running_test = rospy.ServiceProxy("sim_control/running_test", TestStatus)
-    muscle_activation_opt()
+    osim_path_point_opt()

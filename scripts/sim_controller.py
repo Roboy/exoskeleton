@@ -5,8 +5,10 @@ import rospy
 from get_metabolic_costs import get_random_metab_csv_from_dir
 import roslaunch
 from metab_to_csv import file_name
-from std_srvs.srv import Trigger
+from std_srvs.srv import Trigger, Empty
 from gazebo_ros_muscle_interface.srv import SetMuscleActivations
+from gazebo_msgs.srv import SpawnEntity, DeleteModel, GetJointProperties
+from geometry_msgs.msg import Pose
 
 start_record = False
 stop_record = False
@@ -62,6 +64,22 @@ def test_still_running(req):
     return running_test
 
 
+def spawn_model(spawn_model_prox):
+    initial_pose = Pose()
+    initial_pose.position.x = 0
+    initial_pose.position.y = 0
+    initial_pose.position.z = 0
+
+    f = open('/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/output/CARDSFlowExo/model.sdf', 'r')
+    sdff = f.read()
+
+    spawn_model_prox("CARDSFlowExo", sdff, "robotos_name_space", initial_pose, "world")
+
+
+def delete_model(delete_model_prox):
+    delete_model_prox("CARDSFlowExo")
+
+
 def get_metab_server():
     global start_record
     global stop_record
@@ -76,21 +94,25 @@ def get_metab_server():
     rospy.Service("sim_control/stop_recording", Trigger, stop_recording)
     rospy.Service("sim_control/running_test", TestStatus, test_still_running)
     rospy.Service("sim_control/set_test", FloatToMetab, set_test)
-    set_activation = rospy.ServiceProxy("/gazebo_muscle_interface/arm26/set_activations", SetMuscleActivations)
-    # todo: find right service type
-    get_joint_properties = rospy.ServiceProxy("/gazebo/get_joint_properties", WhateverSrv)
-    # todo: find right final angle value
-    neat_value = 0.5
-
+    rospy.Service("sim_control/start_pure_osim_test", Trigger, start_pure_osim_test)
+    set_activation = rospy.ServiceProxy("/gazebo_muscle_interface/CARDSFlowExo/set_activations", SetMuscleActivations)
+    spawn_model_prox = rospy.ServiceProxy('/gazebo/spawn_sdf_entity', SpawnEntity)
+    delete_model_prox = rospy.ServiceProxy('/gazebo/delete_model', DeleteModel)
+    get_joint_properties = rospy.ServiceProxy("/gazebo/get_joint_properties", GetJointProperties)
+    unpause_physics = rospy.ServiceProxy('/gazebo/unpause_physics', DeleteModel)
+    pause_physics = rospy.ServiceProxy('/gazebo/pause_physics', DeleteModel)
+    launch_file_path = "/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"
     uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
     roslaunch.configure_logging(uuid)
     launch = roslaunch.parent.ROSLaunchParent(uuid, [
-        "/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"])
+        launch_file_path])
     r = rospy.Rate(5)
     print "straight into while loop"
     activation_duration = 1
+    increase_timeout = 0.2
     test_stage = 0
     test_timestamp = rospy.get_time()
+    act = 0.0
     while not rospy.is_shutdown():
         if start_record:
             start_record = False
@@ -101,10 +123,15 @@ def get_metab_server():
             stop_record = False
             launch.shutdown()
             launch = roslaunch.parent.ROSLaunchParent(uuid, [
-                "/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"])
+                launch_file_path])
             rospy.loginfo("stoped recording")
 
         if start_test:
+            if test_config == "pure_osim":
+                spawn_model(spawn_model_prox)
+                unpause_physics()
+                rospy.loginfo("unpaused physics")
+                rospy.sleep(1.0)
             test_stage, test_timestamp = start_metab_recorder(launch)
 
         if running_test:
@@ -126,21 +153,25 @@ def get_metab_server():
                         continue
 
             if test_config == "pure_osim":
-                if test_stage == 1:
-                    if rospy.get_time() - test_timestamp > activation_duration:
-                        # todo: find right activation list
-                        neat_activation = []
-                        set_activation(neat_activation)
-                        test_stage = 2
-                        continue
-                if test_stage == 2:
-                    # todo: right variable usage of property
-                    if get_joint_properties("r_shoulder") >= neat_value:
+                if rospy.get_time() - test_timestamp > increase_timeout:
+                    position = get_joint_properties("r_shoulder").position[0]
+                    print "pos: ", position, "| act: ", act
+                    if position <= -1.0 or act >= 1.0:
                         set_activation([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-                        stop_record = True
                         test_config = None
                         running_test = False
-                        test_stage = 0
+                        pause_physics()
+                        rospy.loginfo("paused physics")
+                        launch.shutdown()
+                        launch = roslaunch.parent.ROSLaunchParent(uuid, [
+                            launch_file_path])
+                        rospy.loginfo("stoped recording")
+                        delete_model(delete_model_prox)
+                    else:
+                        set_activation([act, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, act, act])
+                        act += 0.1
+                        test_timestamp = rospy.get_time()
+                    continue
 
         r.sleep()
 
@@ -151,7 +182,7 @@ def activation_test_termination(launch, set_activation, uuid):
     rospy.loginfo("set unactuated")
     launch.shutdown()
     launch = roslaunch.parent.ROSLaunchParent(uuid, [
-        "/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"])
+        launch_file_path])
     rospy.loginfo("stoped recording")
     running_test = False
     test_stage = 0
