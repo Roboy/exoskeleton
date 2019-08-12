@@ -83,6 +83,16 @@ def get_fitness(file_name):
     return np.mean(np.mean(data)), np.max(np.max(data))
 
 
+def get_fitness_mean(file_name):
+    """
+    calculating the mean and the max of all time series means of one time series file
+    :param file_name: the file
+    :return: a tuple of mean and max
+    """
+    sim_timestamp, data = get_metab_data(file_name)
+    return np.mean(np.mean(data)),
+
+
 if __name__ == "__main__":
     # print "absolute mean"
     # print "act_3: ", get_fitness("../data/act_3.csv")

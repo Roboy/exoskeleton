@@ -20,13 +20,7 @@ def vtp_to_dae(vtp_dir, dae_output_dir):
         print stl_dir + " already exists"
 
     # first, convert all vtps to stls
-    for dirpath, dirnames, filenames in os.walk(vtp_dir):
-        for filename in [f for f in filenames if f.endswith(".vtp")]:
-            # call the convert script
-
-            vtp_to_stl(os.path.join(dirpath, filename),
-                       stl_dir + "/" +
-                       filename.split(".")[0] + ".stl")
+    vtp_dir_to_stl_dir(stl_dir, vtp_dir)
 
     # second, convert all stls to daes
     os.system('/Applications/Blender/blender.app/Contents/MacOS/blender --background --python '
@@ -38,6 +32,16 @@ def vtp_to_dae(vtp_dir, dae_output_dir):
 
     # in the end, clean up after ourselfs and remove the intermediate stl folder
     rmtree(stl_dir)
+
+
+def vtp_dir_to_stl_dir(stl_dir, vtp_dir):
+    for dirpath, dirnames, filenames in os.walk(vtp_dir):
+        for filename in [f for f in filenames if f.endswith(".vtp")]:
+            # call the convert script
+
+            vtp_to_stl(os.path.join(dirpath, filename),
+                       stl_dir + "/" +
+                       filename.split(".")[0] + ".stl")
 
 
 def vtp_to_stl(vtp_file, stl_file):
