@@ -4,7 +4,9 @@ from std_msgs.msg import String
 from roboy_simulation_msgs.msg import MetabolicCost
 import sys
 
-file_name = "/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/data/temp.csv"
+DOCUMENT_PATH = "roboy/Documents"
+
+file_name = "/home/%s/NRP/GazeboRosPackages/src/exoskeleton/data/temp.csv" % DOCUMENT_PATH
 
 def callback(data):
     #rospy.loginfo(rospy.get_caller_id() + " recording entry")

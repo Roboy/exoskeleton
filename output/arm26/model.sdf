@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
   <model name="arm26">
-    <muscles>model://arm26/muscles.osim</muscles>
+    <!-- <muscles>model://arm26/muscles.osim</muscles> -->
     <link name="base">m
       <pose frame="">0.0 0.0 0.8 1.5708 0.0 0.0</pose>
       <inertial>
@@ -382,6 +382,7 @@
         <xyz>0 0 1</xyz>
         <dynamics>
           <damping>1.e-6</damping>
+          <!-- <friction>100</friction> -->
         </dynamics>
         <limit>
           <lower>-1.57079633</lower>
@@ -398,6 +399,7 @@
         <xyz>0 0 1</xyz>
         <dynamics>
           <damping>1.e-6</damping>
+<!--          <friction>100</friction>-->
         </dynamics>
         <limit>
           <lower>0</lower>
@@ -407,8 +409,9 @@
         </limit>
       </axis>
     </joint>
-    <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
-    <plugin filename="libmetabolic_plugin.so" name="metabolic_plugin"/>
+    <!-- <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/> -->
+    <!-- <plugin filename="libmetabolic_plugin.so" name="metabolic_plugin"/> -->
     <!--<plugin filename="libjoint_property_plugin.so" name="joint_property_plugin"/> -->
+    <plugin filename="libcardsflow_gazebo_plugin.so" name="cardsflow_gazebo_plugin"/>
   </model>
 </sdf>

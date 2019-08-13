@@ -2,6 +2,7 @@ import rospy
 from gazebo_msgs.srv import SpawnEntity, DeleteModel
 from geometry_msgs.msg import Pose
 
+DOCUMENT_PATH = "roboy/Documents"
 
 rospy.init_node('insert_object', log_level=rospy.INFO)
 
@@ -10,7 +11,7 @@ initial_pose.position.x = 0
 initial_pose.position.y = 0
 initial_pose.position.z = 0
 
-f = open('/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/output/CARDSFlowExo/model.sdf', 'r')
+f = open('/home/%s/NRP/GazeboRosPackages/src/exoskeleton/output/CARDSFlowExo/model.sdf' % DOCUMENT_PATH, 'r')
 sdff = f.read()
 
 rospy.wait_for_service('gazebo/spawn_sdf_entity')

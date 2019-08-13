@@ -13,6 +13,8 @@ from print_logbook import print_result
 from std_srvs.srv import Trigger
 from float_to_osim import update_osim, floats_to_path_points
 
+DOCUMENT_PATH = "roboy/Documents"
+
 set_test = None
 running_test = None
 start_pure_osim_test = None
@@ -121,7 +123,7 @@ def muscle_activation_opt():
     # and finally a simple ea is used to find the best individual
     pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
                                        verbose=False)
-    with open("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
+    with open("/home/%s/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result" % DOCUMENT_PATH, "w") as lb_file:
         pickle.dump(logbook, lb_file)
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
     # print_result(logbook)
@@ -197,7 +199,7 @@ def structure_optimization():
     # and finally a simple ea is used to find the best individual
     pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
                                        verbose=False)
-    with open("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
+    with open("/home/%s/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result" % DOCUMENT_PATH, "w") as lb_file:
         pickle.dump(logbook, lb_file)
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
     # print_result(logbook)
@@ -212,18 +214,17 @@ def evaluate_path_points(individual):
     """
     global start_pure_osim_test
     global running_test
-    update_osim("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/output/CARDSFlowExo/muscles.osim",
+    update_osim("/home/%s/NRP/GazeboRosPackages/src/exoskeleton/output/CARDSFlowExo/muscles.osim" % DOCUMENT_PATH,
                 floats_to_path_points(individual))
     start_pure_osim_test()
-    rospy.loginfo("started test")
-    rospy.sleep(1.0)
+    rospy.loginfo("started test, wait a second for the running test flag")
+    #rospy.sleep(0.5)
     test_flag = running_test()
     while test_flag.running_test:
         rospy.sleep(0.1)
         test_flag = running_test()
-        rospy.loginfo("test not finished yet, test_flag: %s", test_flag)
-    rospy.loginfo("test finished, wait until sim_control is finished")
-    rospy.sleep(0.5)
+        #rospy.loginfo("test not finished yet, test_flag: %s", test_flag)
+    rospy.loginfo("test finished")
     rospy.loginfo("grab fitness now")
     return get_fitness_mean(file_name)
 
@@ -278,11 +279,11 @@ def osim_path_point_opt():
     arm_min = 0.0
     arm_max = 0.05
     # number of generations that should be created
-    NGEN = 1
+    NGEN = 5
     # CXPB  is the probability with which two individuals are crossed
-    CXPB = 0.5
+    CXPB = 0.7 #0.5
     # MUTPB is the probability for mutating an individual
-    MUTPB = 0.2
+    MUTPB = 0.5  # 0.2
 
     # first define the problem and the individuals
     # we want to minimize the fitness values
@@ -303,7 +304,7 @@ def osim_path_point_opt():
     # the mutate operation is defined as a gaussian mutation
     toolbox.register("mutate", tools.mutGaussian, mu=0, sigma=1, indpb=0.2)
     # the select operation is a selection tournamend with 3 individuals participating in each tournament
-    toolbox.register("select", tools.selTournament, tournsize=2)
+    toolbox.register("select", tools.selTournament, tournsize=3)
     # the evaluate functions gets registered
     toolbox.register("evaluate", evaluate_path_points)
 
@@ -317,16 +318,17 @@ def osim_path_point_opt():
     # since our fitness consists out of the mean and the max value, exactly those are the ones we are looking for
     stats.register("avg", np.mean, axis=0)
     stats.register("max", np.max, axis=0)
+    stats.register("min", np.min, axis=0)
 
     # an initial population is defined
-    pop = toolbox.population(n=2)
+    pop = toolbox.population(n=5)
 
     # and finally a simple ea is used to find the best individual
     pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
-                                       verbose=False)
-    with open("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
+                                       verbose=True)
+    with open("/home/%s/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result" % DOCUMENT_PATH, "w") as lb_file:
         pickle.dump(logbook, lb_file)
-    with open("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/data/win_pop", "w") as pop_file:
+    with open("/home/%s/NRP/GazeboRosPackages/src/exoskeleton/data/win_pop" % DOCUMENT_PATH, "w") as pop_file:
         pickle.dump(pop, pop_file)
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
     # print_result(logbook)

@@ -2,13 +2,13 @@
 
 from roboy_simulation_msgs.srv import FloatToMetab, TestStatus
 import rospy
-from get_metabolic_costs import get_random_metab_csv_from_dir
 import roslaunch
-from metab_to_csv import file_name
 from std_srvs.srv import Trigger, Empty
 from gazebo_ros_muscle_interface.srv import SetMuscleActivations
 from gazebo_msgs.srv import SpawnEntity, DeleteModel, GetJointProperties
 from geometry_msgs.msg import Pose
+
+DOCUMENT_PATH = "roboy/Documents"
 
 start_record = False
 stop_record = False
@@ -61,7 +61,8 @@ def start_pure_osim_test(req):
 
 def test_still_running(req):
     global running_test
-    return running_test
+    global start_test
+    return running_test or start_test
 
 
 def spawn_model(spawn_model_prox):
@@ -70,7 +71,7 @@ def spawn_model(spawn_model_prox):
     initial_pose.position.y = 0
     initial_pose.position.z = 0
 
-    f = open('/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/output/CARDSFlowExo/model.sdf', 'r')
+    f = open('/home/%s/NRP/GazeboRosPackages/src/exoskeleton/output/CARDSFlowExo/model.sdf' % DOCUMENT_PATH, 'r')
     sdff = f.read()
 
     spawn_model_prox("CARDSFlowExo", sdff, "robotos_name_space", initial_pose, "world")
@@ -101,7 +102,7 @@ def get_metab_server():
     get_joint_properties = rospy.ServiceProxy("/gazebo/get_joint_properties", GetJointProperties)
     unpause_physics = rospy.ServiceProxy('/gazebo/unpause_physics', Empty)
     pause_physics = rospy.ServiceProxy('/gazebo/pause_physics', Empty)
-    launch_file_path = "/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"
+    launch_file_path = "/home/%s/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch" % DOCUMENT_PATH
     uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
     roslaunch.configure_logging(uuid)
     launch = roslaunch.parent.ROSLaunchParent(uuid, [
@@ -130,8 +131,8 @@ def get_metab_server():
             if test_config == "pure_osim":
                 spawn_model(spawn_model_prox)
                 # unpause_physics()
-                rospy.loginfo("unpaused physics")
-                rospy.sleep(1.0)
+                rospy.loginfo("spawned model")
+                #rospy.sleep(1.0)
             test_stage, test_timestamp = start_metab_recorder(launch)
 
         if running_test:
@@ -156,13 +157,13 @@ def get_metab_server():
                 if rospy.get_time() - test_timestamp > increase_timeout:
                     position = get_joint_properties("r_shoulder").position[0]
                     print "pos: ", position, "| act: ", act
-                    if position <= -1.0 or act >= 1.0:
+                    if position <= -1.5 or act >= 1.0:
                         act = 0.0
                         set_activation([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
                         test_config = None
                         running_test = False
                         # pause_physics()
-                        rospy.loginfo("paused physics")
+                        rospy.loginfo("reached goal")
                         launch.shutdown()
                         launch = roslaunch.parent.ROSLaunchParent(uuid, [
                             launch_file_path])
