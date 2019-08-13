@@ -121,7 +121,7 @@ def muscle_activation_opt():
     # and finally a simple ea is used to find the best individual
     pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
                                        verbose=False)
-    with open("/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
+    with open("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
         pickle.dump(logbook, lb_file)
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
     # print_result(logbook)
@@ -197,7 +197,7 @@ def structure_optimization():
     # and finally a simple ea is used to find the best individual
     pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
                                        verbose=False)
-    with open("/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
+    with open("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
         pickle.dump(logbook, lb_file)
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
     # print_result(logbook)
@@ -222,7 +222,9 @@ def evaluate_path_points(individual):
         rospy.sleep(0.1)
         test_flag = running_test()
         rospy.loginfo("test not finished yet, test_flag: %s", test_flag)
-    rospy.loginfo("test finished, grab fitness now")
+    rospy.loginfo("test finished, wait until sim_control is finished")
+    rospy.sleep(0.5)
+    rospy.loginfo("grab fitness now")
     return get_fitness_mean(file_name)
 
 
@@ -322,8 +324,10 @@ def osim_path_point_opt():
     # and finally a simple ea is used to find the best individual
     pop, logbook = algorithms.eaSimple(pop, toolbox, cxpb=CXPB, mutpb=MUTPB, ngen=NGEN, stats=stats,
                                        verbose=False)
-    with open("/home/roboy/Documents/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
+    with open("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/data/ea_result", "w") as lb_file:
         pickle.dump(logbook, lb_file)
+    with open("/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/data/win_pop", "w") as pop_file:
+        pickle.dump(pop, pop_file)
     # Afterwards we wanna plot the statistics, so we get the necessary data out of the logbook
     # print_result(logbook)
 

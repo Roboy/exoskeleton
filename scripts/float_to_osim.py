@@ -43,7 +43,7 @@ def update_osim(old_osim_path, via_points):
                 location.text = str(via_points[3][1][0]) + " " + str(via_points[3][1][1]) + " " + str(
                     via_points[3][1][2])
 
-    with open("temp.osim", "w") as temp_file:
+    with open(old_osim_path, "w") as temp_file:
         temp_file.write(minidom.parseString(ET.tostring(osim_root)).toxml())
 
 

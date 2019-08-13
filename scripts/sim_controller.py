@@ -99,8 +99,8 @@ def get_metab_server():
     spawn_model_prox = rospy.ServiceProxy('/gazebo/spawn_sdf_entity', SpawnEntity)
     delete_model_prox = rospy.ServiceProxy('/gazebo/delete_model', DeleteModel)
     get_joint_properties = rospy.ServiceProxy("/gazebo/get_joint_properties", GetJointProperties)
-    unpause_physics = rospy.ServiceProxy('/gazebo/unpause_physics', DeleteModel)
-    pause_physics = rospy.ServiceProxy('/gazebo/pause_physics', DeleteModel)
+    unpause_physics = rospy.ServiceProxy('/gazebo/unpause_physics', Empty)
+    pause_physics = rospy.ServiceProxy('/gazebo/pause_physics', Empty)
     launch_file_path = "/home/kevin/Dokumente/NRP/GazeboRosPackages/src/exoskeleton/launch/record_metab_cost.launch"
     uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)
     roslaunch.configure_logging(uuid)
@@ -129,7 +129,7 @@ def get_metab_server():
         if start_test:
             if test_config == "pure_osim":
                 spawn_model(spawn_model_prox)
-                unpause_physics()
+                # unpause_physics()
                 rospy.loginfo("unpaused physics")
                 rospy.sleep(1.0)
             test_stage, test_timestamp = start_metab_recorder(launch)
@@ -157,10 +157,11 @@ def get_metab_server():
                     position = get_joint_properties("r_shoulder").position[0]
                     print "pos: ", position, "| act: ", act
                     if position <= -1.0 or act >= 1.0:
+                        act = 0.0
                         set_activation([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
                         test_config = None
                         running_test = False
-                        pause_physics()
+                        # pause_physics()
                         rospy.loginfo("paused physics")
                         launch.shutdown()
                         launch = roslaunch.parent.ROSLaunchParent(uuid, [

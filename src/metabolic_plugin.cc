@@ -86,6 +86,8 @@ namespace gazebo {
                 updateConnectionEnd = event::Events::ConnectWorldUpdateEnd(
                         boost::bind(&MetabolicPlugin::OnUpdateEnd, this));
                 simTime0 = 0.0;
+                update_counter = 0;
+                metab_flag = false;
             } catch (const std::exception &e) {
                 ROS_ERROR("Caught an while model cast and event connection : %s", e.what());
                 throw e;
@@ -308,84 +310,87 @@ namespace gazebo {
             //--------------------------------------------------------------------------
             // Run simulation.
             //--------------------------------------------------------------------------
-            try {
+            if(update_counter++ >= 100){
+                update_counter = 0;
+                metab_flag = true;
+                try {
+                    // pub muscle activation
+                    std::stringstream ss;
 
+                    for (int i = 0; i < o_model->getMuscles().getSize(); i++) {
+                        ss << o_model->getMuscles().get(i).getName() << " - activation : " <<
+                           o_model->getMuscles().get(i).getActivation(o_model->getWorkingState()) << std::endl;
+                    }
+                    ROS_DEBUG("%s", ss.str().c_str());
 
-                // pub muscle activation
-                std::stringstream ss;
+                    // Prepare integrator.
+                    const double integrationAccuracy = 1.0e-8;
+                    SimTK::RungeKuttaMersonIntegrator integrator(o_model->getMultibodySystem());
+                    integrator.setAccuracy(integrationAccuracy);
+                    manager.setIntegrator(&integrator);
+                    manager.setInitialTime(simTime0);
+                    manager.setFinalTime(simTime1);
 
-                for (int i = 0; i < o_model->getMuscles().getSize(); i++) {
-                    ss << o_model->getMuscles().get(i).getName() << " - activation : " <<
-                       o_model->getMuscles().get(i).getActivation(o_model->getWorkingState()) << std::endl;
+                    // Simulate.
+                    const clock_t tStart = clock();
+                    ss.str("");
+                    ss << "- integrating from " << simTime0 << " to " << simTime1 << "s" << std::endl;
+                    ROS_DEBUG("%s", ss.str().c_str());
+                    SimTK::State state = o_model->getWorkingState();
+                    manager.integrate(state, 1.0e-3);
+                    ss.str("");
+                    ss << "- simulation complete (" << (double) (clock() - tStart) / CLOCKS_PER_SEC
+                       << " seconds elapsed)" << std::endl;
+                    ROS_DEBUG("%s", ss.str().c_str());
+
+                    // Release integrator from manager.
+                    manager.setIntegrator(0);
+                } catch (std::exception &e) {
+                    ROS_ERROR("Excpetion while simulating : %s", e.what());
+                    throw e;
                 }
-                ROS_DEBUG("%s", ss.str().c_str());
-
-                // Prepare integrator.
-                const double integrationAccuracy = 1.0e-8;
-                SimTK::RungeKuttaMersonIntegrator integrator(o_model->getMultibodySystem());
-                integrator.setAccuracy(integrationAccuracy);
-                manager.setIntegrator(&integrator);
-                manager.setInitialTime(simTime0);
-                manager.setFinalTime(simTime1);
-
-                // Simulate.
-                const clock_t tStart = clock();
-                ss.str("");
-                ss << "- integrating from " << simTime0 << " to " << simTime1 << "s" << std::endl;
-                ROS_DEBUG("%s", ss.str().c_str());
-                SimTK::State state = o_model->getWorkingState();
-                manager.integrate(state, 1.0e-3);
-                ss.str("");
-                ss << "- simulation complete (" << (double) (clock() - tStart) / CLOCKS_PER_SEC
-                   << " seconds elapsed)" << std::endl;
-                ROS_DEBUG("%s", ss.str().c_str());
-
-                // Release integrator from manager.
-                manager.setIntegrator(0);
-            } catch (std::exception &e) {
-                ROS_ERROR("Excpetion while simulating : %s", e.what());
-                throw e;
             }
-
             simTime0 = simTime1;
-
 
         }
 
         void OnUpdateEnd(/*const common::UpdateInfo & _info*/) {
-            // Store column indices.
-            const OpenSim::Storage &probeStorage = probeReporter->getProbeStorage();
-            const int numProbeOutputs = probeStorage.getColumnLabels().getSize();
+            if(metab_flag){
+                metab_flag = false;
+                // Store column indices.
+                const OpenSim::Storage &probeStorage = probeReporter->getProbeStorage();
+                const int numProbeOutputs = probeStorage.getColumnLabels().getSize();
 
-            try {
-                roboy_simulation_msgs::MetabolicCost msg;
-                msg.simTimestamp = simTime0;
-                OpenSim::Array<double> probeData;
-                probeData.setSize(numProbeOutputs);
-                probeStorage.getDataAtTime(simTime0, numProbeOutputs, probeData);
+                try {
+                    roboy_simulation_msgs::MetabolicCost msg;
+                    msg.simTimestamp = simTime0;
+                    OpenSim::Array<double> probeData;
+                    probeData.setSize(numProbeOutputs);
+                    probeStorage.getDataAtTime(simTime0, numProbeOutputs, probeData);
 
-                for (int i = 0; i < numProbeOutputs - 1; i++) {
-                    const auto currLabel = probeStorage.getColumnLabels().get(i + 1);
-                    if (currLabel.find("umbergerActMaint") != std::string::npos) {
-                        msg.umbergerActMaint_rate.push_back(probeData[i]);
-                    } else if (currLabel.find("umbergerShorten_rate") != std::string::npos) {
-                        msg.umbergerShorten_rate.push_back(probeData[i]);
-                    } else if (currLabel.find("umbergerBasal_rate") != std::string::npos) {
-                        msg.umbergerBasal_rate.push_back(probeData[i]);
-                    } else if (currLabel.find("umbergerMechWork_rate") != std::string::npos) {
-                        msg.umbergerMechWork_rate.push_back(probeData[i]);
-                    } else if (currLabel.find("umbergerTotal_rate") != std::string::npos) {
-                        msg.umbergerTotal_rate.push_back(probeData[i]);
-                    } else if (currLabel.find("umbergerTotal") != std::string::npos) {
-                        msg.umbergerTotal.push_back(probeData[i]);
-                    } else {
-                        ROS_ERROR("No matching array for %s", currLabel.c_str());
+                    for (int i = 0; i < numProbeOutputs - 1; i++) {
+                        const auto currLabel = probeStorage.getColumnLabels().get(i + 1);
+                        if (currLabel.find("umbergerActMaint") != std::string::npos) {
+                            msg.umbergerActMaint_rate.push_back(probeData[i]);
+                        } else if (currLabel.find("umbergerShorten_rate") != std::string::npos) {
+                            msg.umbergerShorten_rate.push_back(probeData[i]);
+                        } else if (currLabel.find("umbergerBasal_rate") != std::string::npos) {
+                            msg.umbergerBasal_rate.push_back(probeData[i]);
+                        } else if (currLabel.find("umbergerMechWork_rate") != std::string::npos) {
+                            msg.umbergerMechWork_rate.push_back(probeData[i]);
+                        } else if (currLabel.find("umbergerTotal_rate") != std::string::npos) {
+                            msg.umbergerTotal_rate.push_back(probeData[i]);
+                        } else if (currLabel.find("umbergerTotal") != std::string::npos) {
+                            msg.umbergerTotal.push_back(probeData[i]);
+                        } else {
+                            ROS_ERROR("No matching array for %s", currLabel.c_str());
+                        }
                     }
+                    metabolic_pub.publish(msg);
+                } catch (std::exception &e) {
+                    ROS_ERROR("Excpetion while accessing and printing the data : %s", e.what());
+                    throw e;
                 }
-                metabolic_pub.publish(msg);
-            } catch (std::exception &e) {
-                ROS_ERROR("Excpetion while accessing and printing the data : %s", e.what());
-                throw e;
             }
         }
 
@@ -426,6 +431,8 @@ namespace gazebo {
         OpenSim::ProbeReporter *probeReporter;
         OpenSim::MuscleAnalysis *muscleAnalysis;
         double simTime0;
+        int update_counter;
+        bool metab_flag;
 
         // Pointer to the update event connection
         event::ConnectionPtr updateConnection;
