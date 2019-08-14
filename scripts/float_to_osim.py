@@ -65,9 +65,25 @@ def floats_to_path_points(float_list):
     return path_points
 
 
-if __name__ == "__main__":
-    path_points = floats_to_path_points(
-        [m0_0_default_distance, m1_0_default_distance, m2_0_default_distance, m3_0_default_distance,
-         m0_1_default_distance, m1_1_default_distance, m2_1_default_distance, m3_1_default_distance])
+def example_configs():
+    conf1 = [0.07882976299096481, 7.820130104650324e-05, 0.04890860256159443, 0.07859097368946778,
+             0.025256012091517704, 0.0, 0.05, 0.011086323083631978]
 
-    update_osim("temp.osim", path_points)
+    conf2 = [0.06597964420974449, 0.0, 0.030712750991801645, 0.030104221627535167,
+             0.0, 0.009317183639798872, 0.05, 0.0]
+
+    conf3 = [0.015676854380600423, 0.07937531989063341, 0.03702056018072002, 0.0,
+             0.05, 0.05, 0.005817550382948489, 0.009275617256883124]
+
+    update_osim("conf1.osim", floats_to_path_points(conf1))
+    update_osim("conf2.osim", floats_to_path_points(conf2))
+    update_osim("conf3.osim", floats_to_path_points(conf3))
+
+
+if __name__ == "__main__":
+    #path_points = floats_to_path_points(
+    #    [m0_0_default_distance, m1_0_default_distance, m2_0_default_distance, m3_0_default_distance,
+    #     m0_1_default_distance, m1_1_default_distance, m2_1_default_distance, m3_1_default_distance])
+
+    #update_osim("temp.osim", path_points)
+    example_configs()

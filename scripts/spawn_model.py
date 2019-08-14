@@ -2,7 +2,7 @@ import rospy
 from gazebo_msgs.srv import SpawnEntity, DeleteModel
 from geometry_msgs.msg import Pose
 
-DOCUMENT_PATH = "roboy/Documents"
+DOCUMENT_PATH = "kevin/Dokumente"
 
 rospy.init_node('insert_object', log_level=rospy.INFO)
 

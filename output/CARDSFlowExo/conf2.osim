@@ -1,0 +1,392 @@
+<?xml version="1.0" ?><OpenSimDocument Version="20303">
+    <Model>
+        <ForceSet>
+            <objects>
+                <Thelen2003Muscle name="TRIlong">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="TRIlong-P1">
+                                    <location>-0.05365 -0.01373 0.14723</location>
+                                    <body>base</body>
+                                </PathPoint>
+                                <PathPoint name="TRIlong-P2">
+                                    <location>-0.02714 -0.11441 -0.00664</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRIlong-P3">
+                                    <location>-0.03184 -0.22637 -0.01217</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRIlong-P4">
+                                    <location>-0.01743 -0.26757 -0.01208</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRIlong-P5">
+                                    <location>-0.0219 0.01046 -0.00078</location>
+                                    <body>r_ulna_radius_hand</body>
+                                </PathPoint>
+                            </objects>
+                            <groups/>
+                        </PathPointSet>
+                    </GeometryPath>
+                    <max_isometric_force>798.52</max_isometric_force>
+                    <optimal_fiber_length>0.134</optimal_fiber_length>
+                    <tendon_slack_length>0.143</tendon_slack_length>
+                </Thelen2003Muscle>
+                <Thelen2003Muscle name="TRIlat">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="TRIlat-P1">
+                                    <location>-0.00599 -0.12646 0.00428</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRIlat-P2">
+                                    <location>-0.02344 -0.14528 0.00928</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRIlat-P3">
+                                    <location>-0.03184 -0.22637 -0.01217</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRIlat-P4">
+                                    <location>-0.01743 -0.26757 -0.01208</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRIlat-P5">
+                                    <location>-0.0219 0.01046 -0.00078</location>
+                                    <body>r_ulna_radius_hand</body>
+                                </PathPoint>
+                            </objects>
+                            <groups/>
+                        </PathPointSet>
+                    </GeometryPath>
+                    <max_isometric_force>624.3</max_isometric_force>
+                    <optimal_fiber_length>0.1138</optimal_fiber_length>
+                    <tendon_slack_length>0.098</tendon_slack_length>
+                </Thelen2003Muscle>
+                <Thelen2003Muscle name="TRImed">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="TRImed-P1">
+                                    <location>-0.00838 -0.13695 -0.00906</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRImed-P2">
+                                    <location>-0.02601 -0.15139 -0.0108</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRImed-P3">
+                                    <location>-0.03184 -0.22637 -0.01217</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRImed-P4">
+                                    <location>-0.01743 -0.26757 -0.01208</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="TRImed-P5">
+                                    <location>-0.0219 0.01046 -0.00078</location>
+                                    <body>r_ulna_radius_hand</body>
+                                </PathPoint>
+                            </objects>
+                            <groups/>
+                        </PathPointSet>
+                    </GeometryPath>
+                    <max_isometric_force>624.3</max_isometric_force>
+                    <optimal_fiber_length>0.1138</optimal_fiber_length>
+                    <tendon_slack_length>0.0908</tendon_slack_length>
+                </Thelen2003Muscle>
+                <Thelen2003Muscle name="BIClong">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="BIClong-P1">
+                                    <location>-0.039235 0.00347 0.14795</location>
+                                    <body>base</body>
+                                </PathPoint>
+                                <PathPoint name="BIClong-P2">
+                                    <location>-0.028945 0.01391 0.15639</location>
+                                    <body>base</body>
+                                </PathPoint>
+                                <PathPoint name="BIClong-P3">
+                                    <location>0.02131 0.01793 0.01028</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BIClong-P4">
+                                    <location>0.02378 -0.00511 0.01201</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BIClong-P5">
+                                    <location>0.01345 -0.02827 0.00136</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BIClong-P6">
+                                    <location>0.01068 -0.07736 -0.00165</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BIClong-P7">
+                                    <location>0.01703 -0.12125 0.00024</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BIClong-P8">
+                                    <location>0.0228 -0.1754 -0.0063</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BIClong-P9">
+                                    <location>0.00751 -0.04839 0.02179</location>
+                                    <body>r_ulna_radius_hand</body>
+                                </PathPoint>
+                            </objects>
+                            <groups/>
+                        </PathPointSet>
+                    </GeometryPath>
+                    <max_isometric_force>624.3</max_isometric_force>
+                    <optimal_fiber_length>0.1157</optimal_fiber_length>
+                    <tendon_slack_length>0.2723</tendon_slack_length>
+                </Thelen2003Muscle>
+                <Thelen2003Muscle name="BICshort">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="BICshort-P1">
+                                    <location>0.004675 -0.01231 0.13475</location>
+                                    <body>base</body>
+                                </PathPoint>
+                                <PathPoint name="BICshort-P2">
+                                    <location>-0.007075 -0.04004 0.14507</location>
+                                    <body>base</body>
+                                </PathPoint>
+                                <PathPoint name="BICshort-P3">
+                                    <location>0.01117 -0.07576 -0.01101</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BICshort-P4">
+                                    <location>0.01703 -0.12125 -0.01079</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BICshort-P5">
+                                    <location>0.0228 -0.1754 -0.0063</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BICshort-P6">
+                                    <location>0.00751 -0.04839 0.02179</location>
+                                    <body>r_ulna_radius_hand</body>
+                                </PathPoint>
+                            </objects>
+                            <groups/>
+                        </PathPointSet>
+                    </GeometryPath>
+                    <max_isometric_force>435.56</max_isometric_force>
+                    <optimal_fiber_length>0.1321</optimal_fiber_length>
+                    <tendon_slack_length>0.1923</tendon_slack_length>
+                </Thelen2003Muscle>
+                <Thelen2003Muscle name="BRA">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="BRA-P1">
+                                    <location>0.0068 -0.1739 -0.0036</location>
+                                    <body>r_humerus</body>
+                                </PathPoint>
+                                <PathPoint name="BRA-P2">
+                                    <location>-0.0032 -0.0239 0.0009</location>
+                                    <body>r_ulna_radius_hand</body>
+                                </PathPoint>
+                            </objects>
+                            <groups/>
+                        </PathPointSet>
+                    </GeometryPath>
+                    <max_isometric_force>987.26</max_isometric_force>
+                    <optimal_fiber_length>0.0858</optimal_fiber_length>
+                    <tendon_slack_length>0.0535</tendon_slack_length>
+                </Thelen2003Muscle>
+                <Thelen2003Muscle name="muscle0">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="muscle0_node0">
+                                    <location>0.0473777476346 -0.0159796442097 -0.0147661298832</location>
+                                    <body>shoulder</body>
+                                </PathPoint>
+                                <PathPoint name="muscle0_node1">
+                                    <location>0.0 0.028 0.0861438564493</location>
+                                    <body>upperArm</body>
+                                </PathPoint>
+                            </objects>
+                        </PathPointSet>
+                        <PathWrapSet>
+                            <objects/>
+                        </PathWrapSet>
+                    </GeometryPath>
+                    <max_isometric_force>1000.0</max_isometric_force>
+                    <optimal_fiber_length>0.5</optimal_fiber_length>
+                    <tendon_slack_length>0.015</tendon_slack_length>
+                </Thelen2003Muscle>
+                <Thelen2003Muscle name="muscle1">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="muscle1_node0">
+                                    <location>0.0 0.05 -0.0147661298832</location>
+                                    <body>shoulder</body>
+                                </PathPoint>
+                                <PathPoint name="muscle1_node1">
+                                    <location>0.0208555118099 0.0186828163602 0.0861438564493</location>
+                                    <body>upperArm</body>
+                                </PathPoint>
+                            </objects>
+                        </PathPointSet>
+                        <PathWrapSet>
+                            <objects/>
+                        </PathWrapSet>
+                    </GeometryPath>
+                    <max_isometric_force>1000.0</max_isometric_force>
+                    <optimal_fiber_length>0.5</optimal_fiber_length>
+                    <tendon_slack_length>0.015</tendon_slack_length>
+                </Thelen2003Muscle>
+                <Thelen2003Muscle name="muscle2">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="muscle2_node0">
+                                    <location>-0.0461302723349 0.0192872490082 -0.0147661298832</location>
+                                    <body>shoulder</body>
+                                </PathPoint>
+                                <PathPoint name="muscle2_node1">
+                                    <location>-0.0173205080757 -0.022 0.0861438564493</location>
+                                    <body>upperArm</body>
+                                </PathPoint>
+                            </objects>
+                        </PathPointSet>
+                        <PathWrapSet>
+                            <objects/>
+                        </PathWrapSet>
+                    </GeometryPath>
+                    <max_isometric_force>1000.0</max_isometric_force>
+                    <optimal_fiber_length>0.5</optimal_fiber_length>
+                    <tendon_slack_length>0.015</tendon_slack_length>
+                </Thelen2003Muscle>
+                <Thelen2003Muscle name="muscle3">
+                    <GeometryPath>
+                        <PathPointSet>
+                            <objects>
+                                <PathPoint name="muscle3_node0">
+                                    <location>-0.0458711020464 0.0198957783725 -0.0147661298832</location>
+                                    <body>shoulder</body>
+                                </PathPoint>
+                                <PathPoint name="muscle3_node1">
+                                    <location>-0.0 0.028 0.0861438564493</location>
+                                    <body>upperArm</body>
+                                </PathPoint>
+                            </objects>
+                        </PathPointSet>
+                        <PathWrapSet>
+                            <objects/>
+                        </PathWrapSet>
+                    </GeometryPath>
+                    <max_isometric_force>1000.0</max_isometric_force>
+                    <optimal_fiber_length>0.5</optimal_fiber_length>
+                    <tendon_slack_length>0.015</tendon_slack_length>
+                </Thelen2003Muscle>
+            </objects>
+            <groups/>
+        </ForceSet>
+        <BodySet>
+            <objects>
+                <Body name="base">
+                    <WrapObjectSet>
+                        <objects>
+                            <WrapCylinder name="TRIlongglen">
+                                <xyz_body_rotation>1.37532 -0.294612 2.43596</xyz_body_rotation>
+                                <translation>-0.043905 -0.0039 0.1478</translation>
+                                <active>true</active>
+                                <quadrant>x</quadrant>
+                                <VisibleObject>
+                                    <GeometrySet>
+                                        <objects/>
+                                        <groups/>
+                                    </GeometrySet>
+                                    <scale_factors>1 1 1</scale_factors>
+                                    <transform>1.37532 -0.294612 2.43596 -0.043905 -0.0039 0.1478</transform>
+                                    <show_axes>false</show_axes>
+                                    <display_preference>4</display_preference>
+                                </VisibleObject>
+                                <radius>0.003</radius>
+                                <length>0.03</length>
+                            </WrapCylinder>
+                        </objects>
+                        <groups/>
+                    </WrapObjectSet>
+                </Body>
+                <Body name="r_humerus">
+                    <WrapObjectSet>
+                        <objects>
+                            <WrapEllipsoid name="TRIlonghh">
+                                <xyz_body_rotation>3.00162 -0.853466 2.57419</xyz_body_rotation>
+                                <translation>-0.0078 -0.0041 -0.0014</translation>
+                                <active>true</active>
+                                <quadrant>z</quadrant>
+                                <VisibleObject>
+                                    <GeometrySet>
+                                        <objects/>
+                                        <groups/>
+                                    </GeometrySet>
+                                    <scale_factors>1 1 1</scale_factors>
+                                    <transform>3.00162 -0.853466 2.57419 -0.0078 -0.0041 -0.0014</transform>
+                                    <show_axes>false</show_axes>
+                                    <display_preference>4</display_preference>
+                                </VisibleObject>
+                                <dimensions>0.035 0.02 0.02</dimensions>
+                            </WrapEllipsoid>
+                            <WrapEllipsoid name="BIClonghh">
+                                <xyz_body_rotation>-2.00434 -1.00164 0.975465</xyz_body_rotation>
+                                <translation>0.0033 0.0073 0.0003</translation>
+                                <active>true</active>
+                                <quadrant>-y</quadrant>
+                                <VisibleObject>
+                                    <GeometrySet>
+                                        <objects/>
+                                        <groups/>
+                                    </GeometrySet>
+                                    <scale_factors>1 1 1</scale_factors>
+                                    <transform>-2.00434 -1.00164 0.975465 0.0033 0.0073 0.0003</transform>
+                                    <show_axes>false</show_axes>
+                                    <display_preference>4</display_preference>
+                                </VisibleObject>
+                                <dimensions>0.025 0.02 0.02</dimensions>
+                            </WrapEllipsoid>
+                            <WrapCylinder name="TRI">
+                                <xyz_body_rotation>-0.14015 -0.00628319 0.154985</xyz_body_rotation>
+                                <translation>0.0028 -0.2919 -0.0069</translation>
+                                <active>true</active>
+                                <quadrant>all</quadrant>
+                                <VisibleObject>
+                                    <GeometrySet>
+                                        <objects/>
+                                        <groups/>
+                                    </GeometrySet>
+                                    <scale_factors>1 1 1</scale_factors>
+                                    <transform>-0.14015 -0.00628319 0.154985 0.0028 -0.2919 -0.0069</transform>
+                                    <show_axes>false</show_axes>
+                                    <display_preference>4</display_preference>
+                                </VisibleObject>
+                                <radius>0.016</radius>
+                                <length>0.05</length>
+                            </WrapCylinder>
+                        </objects>
+                        <groups/>
+                    </WrapObjectSet>
+                </Body>
+                <Body name="r_ulna_radius_hand">
+                    <WrapObjectSet>
+                        <objects/>
+                        <groups/>
+                    </WrapObjectSet>
+                </Body>
+            </objects>
+            <groups/>
+        </BodySet>
+    </Model>
+</OpenSimDocument>

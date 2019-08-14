@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <model name="CARDSFlowExo">
-      <muscles>model://CARDSFlowExo/muscles.osim</muscles>
+      <muscles>model://CARDSFlowExo/conf3.osim</muscles>
       <link name="base">
         <pose frame="">0.0 0.0 0.8 1.5708 0.0 0.0</pose>
         <inertial>
@@ -531,7 +531,7 @@
         </physics>
       </joint>
       <plugin filename="libgazebo_ros_muscle_interface.so" name="muscle_interface_plugin"/>
-      <plugin filename="libmetabolic_plugin.so" name="metabolic_plugin"/>
+      <!-- <plugin filename="libmetabolic_plugin.so" name="metabolic_plugin"/> -->
       <!-- <plugin filename="libcardsflow_gazebo_plugin.so" name="cardsflow_gazebo_plugin"/> -->
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
